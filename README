@@ -1,0 +1,29 @@
+PyDownTV:
+=========
+
+Script programado en python al que se le pasa una url de un v’deo y muestra la url de localizaci—n del v’deo y lo descarga.
+
+Por ahora solo funciona con:
+- TVE
+- TVE a la carta
+- Antena 3 (Modo Salón)
+- Cualquier v’deo de la web de Antena 3 (no solo modo salón)
+
+Pr—ximamente:
+- Telecinco
+- Audio de Radio Nacional
+- Cuatro
+
+Lo he pensado para que cada servidor se pueda implementar de manera independiente de cualquier otro, y en el proyecto existe una plantilla con los pasos comunes a seguir.
+
+Es mi primer peque–o programa en Python, lo estoy escribiendo para aprender un poco la filosof’a y practicar. Es obvio que se puede hacer mucho m‡s funcional de planteamiento y de codificaci—n y que le da mil patadas a los libros de estilo de python, OOP, o de programaci—n en general.
+
+Website: http://code.google.com/p/pydowntv/
+Repository (Google Code): http://pydowntv.googlecode.com/svn/trunk/
+  $ svn checkout http://pydowntv.googlecode.com/svn/trunk/ pydowntv-read-only
+  
+Para reportar bugs y errores a la hora de descargar vídeos: http://code.google.com/p/pydowntv/issues/list
+
+
+For instructions on running from source, see RunningFromSource.mkd in
+the doc/ directory.

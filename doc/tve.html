@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>tve</title>
+</head>
+<body style="background-color:#FFFFFF;color:#000000"><a NAME="top" ID="top"></a>
+<h1 style="background-color:#FFFFFF;color:#0000FF">tve</h1>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Global Attributes</h3>
+<table>
+<tr><td>__author__</td></tr><tr><td>__date__</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Classes</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#TVE">TVE</a></td>
+<td></td>
+</tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="TVE" ID="TVE"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">TVE</h2>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
+object
+<h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
+<table>
+<tr><td>url</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#TVE.__init__">TVE</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#TVE.__descHTML">__descHTML</a></td>
+<td>M&#233;todo que utiliza la clase descargar para descargar el HTML</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#TVE.__descXML">__descXML</a></td>
+<td>M&#233;todo que utiliza la clase descargar para descargar HTML</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#TVE.__formatearNombre">__formatearNombre</a></td>
+<td>Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres que pueden colisionar a la hora de realizar el guardado en disco la descarga</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#TVE.getURL">getURL</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#TVE.procesarDescarga">procesarDescarga</a></td>
+<td>Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve esta y el nombre como se quiere que se descarge el archivo de la siguiente forma: return [ruta_url, nombre]</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#TVE.setURL">setURL</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="TVE.__init__" ID="TVE.__init__"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">TVE (Constructor)</h3>
+<b>TVE</b>(<i>url=""</i>)
+<a NAME="TVE.__descHTML" ID="TVE.__descHTML"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">TVE.__descHTML</h3>
+<b>__descHTML</b>(<i>url2down</i>)
+<p>
+ M&#233;todo que utiliza la clase descargar para descargar el HTML 
+</p><a NAME="TVE.__descXML" ID="TVE.__descXML"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">TVE.__descXML</h3>
+<b>__descXML</b>(<i>url2down</i>)
+<p>
+ M&#233;todo que utiliza la clase descargar para descargar HTML 
+</p><a NAME="TVE.__formatearNombre" ID="TVE.__formatearNombre"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">TVE.__formatearNombre</h3>
+<b>__formatearNombre</b>(<i>nombre</i>)
+<p>
+            Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres
+            que pueden colisionar a la hora de realizar el guardado en disco la descarga
+</p><a NAME="TVE.getURL" ID="TVE.getURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">TVE.getURL</h3>
+<b>getURL</b>(<i></i>)
+<a NAME="TVE.procesarDescarga" ID="TVE.procesarDescarga"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">TVE.procesarDescarga</h3>
+<b>procesarDescarga</b>(<i></i>)
+<p>
+            Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve
+            esta y el nombre como se quiere que se descarge el archivo de la siguiente forma:
+            return [ruta_url, nombre]
+</p><p>
+            Si no se quiere especificar un nombre para el archivo resultante en disco, o no se
+            conoce un procedimiento para obtener este autom&#225;ticamente se utilizar&#225;:
+            return [ruta_url, None]
+            Y el m&#233;todo de Descargar que descarga utilizar&#225; el nombre por defecto seg&#250;n la url.
+</p><a NAME="TVE.setURL" ID="TVE.setURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">TVE.setURL</h3>
+<b>setURL</b>(<i>url</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr />
+</body></html>

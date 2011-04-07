@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>telecinco</title>
+</head>
+<body style="background-color:#FFFFFF;color:#000000"><a NAME="top" ID="top"></a>
+<h1 style="background-color:#FFFFFF;color:#0000FF">telecinco</h1>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Global Attributes</h3>
+<table>
+<tr><td>__author__</td></tr><tr><td>__date__</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Classes</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#Telecinco">Telecinco</a></td>
+<td></td>
+</tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="Telecinco" ID="Telecinco"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">Telecinco</h2>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
+object
+<h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
+<table>
+<tr><td>URL_DESCARGA_TELECINCO</td></tr><tr><td>url</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#Telecinco.__init__">Telecinco</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#Telecinco.__descHTML">__descHTML</a></td>
+<td>M&#233;todo que utiliza la clase descargar para descargar el HTML</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#Telecinco.getURL">getURL</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#Telecinco.procesarDescarga">procesarDescarga</a></td>
+<td>Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve esta y el nombre como se quiere que se descarge el archivo de la siguiente forma: return [ruta_url, nombre]</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#Telecinco.setURL">setURL</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Telecinco.__init__" ID="Telecinco.__init__"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Telecinco (Constructor)</h3>
+<b>Telecinco</b>(<i>url=""</i>)
+<a NAME="Telecinco.__descHTML" ID="Telecinco.__descHTML"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Telecinco.__descHTML</h3>
+<b>__descHTML</b>(<i>url2down</i>)
+<p>
+ M&#233;todo que utiliza la clase descargar para descargar el HTML 
+</p><a NAME="Telecinco.getURL" ID="Telecinco.getURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Telecinco.getURL</h3>
+<b>getURL</b>(<i></i>)
+<a NAME="Telecinco.procesarDescarga" ID="Telecinco.procesarDescarga"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Telecinco.procesarDescarga</h3>
+<b>procesarDescarga</b>(<i></i>)
+<p>
+            Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve
+            esta y el nombre como se quiere que se descarge el archivo de la siguiente forma:
+            return [ruta_url, nombre]
+</p><p>
+            Si no se quiere especificar un nombre para el archivo resultante en disco, o no se
+            conoce un procedimiento para obtener este autom&#225;ticamente se utilizar&#225;:
+            return [ruta_url, None]
+            Y el m&#233;todo de Descargar que descarga utilizar&#225; el nombre por defecto seg&#250;n la url.
+</p><a NAME="Telecinco.setURL" ID="Telecinco.setURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Telecinco.setURL</h3>
+<b>setURL</b>(<i>url</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr />
+</body></html>

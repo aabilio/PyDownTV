@@ -30,6 +30,8 @@ from Servers.tve import TVE
 from Servers.rtve import RTVE
 # DEPRECATED from Servers.tvalacarta import TvAlacarta
 # from Servers.telecinco import Telecinco
+# from Servers.lasexta import LaSexta
+# from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
 
 class Servidor(object):

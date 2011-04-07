@@ -29,7 +29,7 @@ from Servers.a3 import A3
 from Servers.tve import TVE
 from Servers.rtve import RTVE
 # DEPRECATED from Servers.tvalacarta import TvAlacarta
-# from Servers.telecinco import Telecinco
+from Servers.telecinco import Telecinco
 # from Servers.lasexta import LaSexta
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
@@ -55,7 +55,7 @@ class Servidor(object):
             (self._url.find("/mediateca/audios/") != -1 or self._url.find("/alacarta/audios/") != -1):
             return True
     def isT5_(self):
-        if self._url.find("mitele.telecinco.es") != -1:
+        if self._url.find("telecinco.es") != -1:
             return True
     def isLaSexta_(self):
         if self._url.find("lasexta.com/sextatv/") != -1:
@@ -94,9 +94,8 @@ def qServidor(url):
         print "[INFO] Vídeo de RTVE.es"
         return TVE(url)
     elif server.isT5:
-        print "[INFO] Telecinco (Mitele)"
-        exit("En desarollo")
-        #return Telecinco(url)
+        print "[INFO] Telecinco"
+        return Telecinco(url)
     elif server.isLaSexta:
         exit("La Sexta: Todavía no implementado")
         # return LaSexta(url)

@@ -36,6 +36,8 @@ class Telecinco(object): # Identificativo del canal
     '''
 
     URL_DESCARGA_TELECINCO = "http://www.mitele.telecinco.es/deliverty/demo/resources/flv/"
+    URL_ASK4TOKEN = "http://www.mitele.telecinco.es/services/tk.php?provider=level3&protohash=/CDN/videos/"
+    string2split4id = ["xmlVideo: 'http://estaticos.telecinco.es/xml/Video/Video_", "\'"]
 
     def __init__(self, url=""):
         self._URL_recibida = url
@@ -77,13 +79,40 @@ class Telecinco(object): # Identificativo del canal
             return [ruta_url, None]
             Y el método de Descargar que descarga utilizará el nombre por defecto según la url.
         '''
+        
         streamHTML = self.__descHTML(self._URL_recibida)
-        videoID = streamHTML.split("\'http://level3/")[1].split("\\.")[0]
-        url2down = URL_DESCARGA_TELECINCO + videoID[-1] + "/" + videoID[-2] + "/" + videoID + ".flv"
+        
+        if streamHTML.find("http://level3/") != -1: # Método antiguo
+            print "[INFO] Método antiguo (mitele)"
+            videoID = streamHTML.split("\'http://level3/")[1].split(".")[0]
+            videoEXT = streamHTML.split("\'http://level3/")[1].split("\'")[0].split(".")[1]
+            videoEXT = "." + videoEXT
+            url2down = self.URL_DESCARGA_TELECINCO + videoID[-1] + "/" + videoID[-2] + "/" + videoID + videoEXT
+            name = None
+        elif streamHTML.find(self.string2split4id[0]) != -1: # Método nuevo
+            newID = streamHTML.split(self.string2split4id[0])[1].split(self.string2split4id[1])[0].split(".")[0]
+            print "[INFO] Nuevo Video ID:", newID
+            ask4token = self.URL_ASK4TOKEN + newID[-3:] + "/" + newID + ".mp4"
+            print "[+] Pidiendo nuevo token"
+            url2down = self.__descHTML(ask4token)
+            name = streamHTML.split("var title = \'")[1].split("\'")[0] + ".mp4"
+        elif self._URL_recibida.find("videoURL="): # Forma con el ID en la URL (nueva??)
+            videoID = self._URL_recibida.split("videoURL=")[1]
+            ask4token = self.URL_ASK4TOKEN + videoID[-3:] + "/" + videoID + ".mp4"
+            print "[+] Pidiendo nuevo token"
+            url2down = self.__descHTML(ask4token)
+            # Obtner nombre:
+            xmlURL = "http://estaticos.telecinco.es/xml/Video/Video_" + videoID + ".xml"
+            streamXML = self.__descHTML(xmlURL)
+            name = streamXML.split("<![CDATA[")[1].split("]")[0] + ".mp4"
+        else:
+            sys.exit("[!!!] No se encuentra URL de descarga")
 
-        name = None
-
-        return [url2down, None]
+        
+        if name != None:
+            name = self.__formatearNombre(name)
+        
+        return [url2down, name]
 
 
 

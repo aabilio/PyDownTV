@@ -24,6 +24,8 @@ __date__ = "$29-mar-2011 11:01:48$"
 from sys import argv, exit
 import re
 
+#from ui.gui import Ui_MainWindow
+
 # Ir añadiendo según se implementen
 from Servers.a3 import A3
 from Servers.tve import TVE
@@ -33,6 +35,26 @@ from Servers.telecinco import Telecinco
 # from Servers.lasexta import LaSexta
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
+
+###############################################################################
+
+# gui
+#class MainWindow(QMainWindow, Ui_MainWindow):
+#    def __init__(self, parent=None):
+#        '''
+#            __init__ MainWindow
+#        '''
+#        super(MainWindow, self).__init__(parent)
+#        self.setupUi(self)
+#        self.showButton.clicked.connect(self.fileRead)
+#        
+#    def fileRead(self):
+#        '''Read and display GPL licence.'''
+#        self.textEdit.setText(open('../COPYING.txt').read())
+#    def printt(self, string):
+#        
+        
+###############################################################################
 
 class Servidor(object):
     '''

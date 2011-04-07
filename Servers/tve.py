@@ -17,7 +17,7 @@
 #    along with PyDownTV.  If not, see <http://www.gnu.org/licenses/>.
 
 # Módulo para descargar todos los vídeos de la web de rtve.es ("A la carta" o no)
-# Antes ere el móddulo de tvalacarta.py modificado para dar soporte a todos los vídeos
+# Antes era el módulo de tvalacarta.py modificado para dar soporte a todos los vídeos
 
 __author__="aabilio"
 __date__ ="$31-mar-2011 11:35:37$"
@@ -65,6 +65,7 @@ class TVE(object): # Identificativo del canal
         nombre = nombre.replace(" ", "_") # Quirar espacios
         nombre = nombre.replace("_-_", "-")
         nombre = nombre.replace(". ", ".") # Punto + espacio = solo punto
+        nombre = nombre.replace("&#146;", "=") # Cambiar el caracter escapado (') por (=)
 
         return nombre
 

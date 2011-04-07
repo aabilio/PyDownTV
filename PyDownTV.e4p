@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-04-07, 04:07:28 -->
+<!-- Saved: 2011-04-07, 05:15:10 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -23,6 +23,7 @@
     <Source>__init__.py</Source>
     <Source>Servers/__init__.py</Source>
     <Source>Servers/pyaxel/__init__.py</Source>
+    <Source>Servers/rtve.py</Source>
   </Sources>
   <Forms>
   </Forms>
@@ -38,6 +39,7 @@
     <Other>README</Other>
     <Other>TODO</Other>
     <Other>doc</Other>
+    <Other>/Users/aabilio/Desktop/prueba.api</Other>
   </Others>
   <MainScript>pydowntv.py</MainScript>
   <Vcs>
@@ -162,6 +164,53 @@
   <Documentation>
     <DocumentationParams>
       <dict>
+        <key>
+          <string>ERIC4API</string>
+        </key>
+        <value>
+          <dict>
+            <key>
+              <string>basePackage</string>
+            </key>
+            <value>
+              <unicode>pydowntvAPI</unicode>
+            </value>
+            <key>
+              <string>ignoreFilePatterns</string>
+            </key>
+            <value>
+              <list>
+                <unicode></unicode>
+              </list>
+            </value>
+            <key>
+              <string>includePrivate</string>
+            </key>
+            <value>
+              <bool>True</bool>
+            </value>
+            <key>
+              <string>languages</string>
+            </key>
+            <value>
+              <list>
+                <unicode>Python</unicode>
+              </list>
+            </value>
+            <key>
+              <string>outputFile</string>
+            </key>
+            <value>
+              <unicode>/Users/aabilio/Desktop/prueba.api</unicode>
+            </value>
+            <key>
+              <string>useRecursion</string>
+            </key>
+            <value>
+              <bool>True</bool>
+            </value>
+          </dict>
+        </value>
         <key>
           <string>ERIC4DOC</string>
         </key>

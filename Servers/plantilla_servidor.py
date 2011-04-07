@@ -43,6 +43,20 @@ class nombreDeLaClase(object): # Identificativo del canal
     def setURL(self, url):
         self._URL_recibida = url
     url = property(getURL, setURL)
+    
+    def __formatearNombre(self, nombre):
+        '''
+            Se le pasa una cadena por parámetro y formatea esta quitándole caracteres
+            que pueden colisionar a la hora de realizar el guardado en disco la descarga
+        '''
+
+        nombre = nombre.replace('/',"-") # Quitar las barras "/"
+        nombre = nombre.replace(" ", "_") # Quirar espacios
+        nombre = nombre.replace("_-_", "-")
+        nombre = nombre.replace(". ", ".") # Punto + espacio = solo punto
+        nombre = nombre.replace("&#146;", "=") # Cambiar el caracter escapado (') por (=)
+
+        return nombre
 
     # Funciones privadas que ayuden a procesarDescarga(self):
 

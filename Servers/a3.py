@@ -61,6 +61,7 @@ class A3(object):
         nombre = nombre.replace('/',"-") # Quitar las barras "/"
         nombre = nombre.replace(" ", "_") # Quirar espacios
         nombre = nombre.replace("_-_", "-")
+        nombre = nombre.replace("&#146;", "=") # Cambiar el caracter escapado (') por (=)
 
         return nombre
         

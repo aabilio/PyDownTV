@@ -8,10 +8,10 @@ Por ahora solo funciona con:
 - TVE a la carta
 - Antena 3 (Modo Salón)
 - Cualquier v’deo de la web de Antena 3 (no solo modo salón)
+- Audios de Radio Nacional
 
 Pr—ximamente:
 - Telecinco
-- Audio de Radio Nacional
 - Cuatro
 
 Lo he pensado para que cada servidor se pueda implementar de manera independiente de cualquier otro, y en el proyecto existe una plantilla con los pasos comunes a seguir.

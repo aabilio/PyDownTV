@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-04-07, 05:25:22 -->
+<!-- Saved: 2011-04-07, 05:37:02 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
   <ProgLanguage mixed="0">Python</ProgLanguage>
   <ProjectType>Console</ProjectType>
   <Description>Script para descargar los vídeos de las webs de las principales televisiones españolas</Description>
-  <Version>Alpha 0.3</Version>
+  <Version>Alpha 0.4</Version>
   <Author>aabilio</Author>
   <Email>aabilio@gmail.com</Email>
   <Sources>

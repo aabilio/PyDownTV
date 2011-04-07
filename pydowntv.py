@@ -108,6 +108,9 @@ def qServidor(url):
         exit(msgErr)
     
 def help(args):
+    '''
+        Muestra la ayuda por pantalla (se le pasa como argumento siempre: argv)
+    '''
     print "USO:", args[0]
     print "o   ", args[0], "<url>"
     print "(Los dos métodos aceptan varias URLs separadas por un espacio)"

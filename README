@@ -13,6 +13,7 @@ Por ahora solo funciona con:
 Pr—ximamente:
 - Telecinco
 - Cuatro
+- La Sexta
 
 Lo he pensado para que cada servidor se pueda implementar de manera independiente de cualquier otro, y en el proyecto existe una plantilla con los pasos comunes a seguir.
 

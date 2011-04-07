@@ -18,8 +18,8 @@
 
 # Pequeña descripción de qué canal de tv es el módulo
 
-__author__="Tu nombre"
-__date__ ="$31-mar-2011 23:11:07$"
+__author__="aabilio"
+__date__ ="$07-abr-2011 23:11:07$"
 
 # Puedes importar Descargar para utilizar su método descargar al que se le pasa una
 # url y delvuelve un strema con el contenido de lo descargado:
@@ -30,7 +30,7 @@ from Descargar import Descargar
 import sys  # Utilizo sys para llamar a sys.exit() ya que si uso exit() me da
             # Problemas en ejecución tras usar Py2exe
 
-class Telecinco(object): # Identificativo del canal
+class Telecinco(object):
     '''
         Descripción de la clase
     '''

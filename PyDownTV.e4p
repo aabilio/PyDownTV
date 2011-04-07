@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-04-07, 03:38:58 -->
+<!-- Saved: 2011-04-07, 04:07:28 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -21,6 +21,8 @@
     <Source>Servers/tvalacarta.py</Source>
     <Source>Servers/tve.py</Source>
     <Source>__init__.py</Source>
+    <Source>Servers/__init__.py</Source>
+    <Source>Servers/pyaxel/__init__.py</Source>
   </Sources>
   <Forms>
   </Forms>

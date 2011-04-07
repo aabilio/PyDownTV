@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>PyDownTV.Servers.plantilla_servidor</title>
+</head>
+<body style="background-color:#FFFFFF;color:#000000"><a NAME="top" ID="top"></a>
+<h1 style="background-color:#FFFFFF;color:#0000FF">PyDownTV.Servers.plantilla_servidor</h1>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Global Attributes</h3>
+<table>
+<tr><td>__author__</td></tr><tr><td>__date__</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Classes</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#nombreDeLaClase">nombreDeLaClase</a></td>
+<td></td>
+</tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="nombreDeLaClase" ID="nombreDeLaClase"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">nombreDeLaClase</h2>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
+object
+<h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
+<table>
+<tr><td>url</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#nombreDeLaClase.__init__">nombreDeLaClase</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#nombreDeLaClase.__formatearNombre">__formatearNombre</a></td>
+<td>Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres que pueden colisionar a la hora de realizar el guardado en disco la descarga</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#nombreDeLaClase.getURL">getURL</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#nombreDeLaClase.procesarDescarga">procesarDescarga</a></td>
+<td>Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve esta y el nombre como se quiere que se descarge el archivo de la siguiente forma: return [ruta_url, nombre]</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#nombreDeLaClase.setURL">setURL</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="nombreDeLaClase.__init__" ID="nombreDeLaClase.__init__"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">nombreDeLaClase (Constructor)</h3>
+<b>nombreDeLaClase</b>(<i>url=""</i>)
+<a NAME="nombreDeLaClase.__formatearNombre" ID="nombreDeLaClase.__formatearNombre"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">nombreDeLaClase.__formatearNombre</h3>
+<b>__formatearNombre</b>(<i>nombre</i>)
+<p>
+            Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres
+            que pueden colisionar a la hora de realizar el guardado en disco la descarga
+</p><a NAME="nombreDeLaClase.getURL" ID="nombreDeLaClase.getURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">nombreDeLaClase.getURL</h3>
+<b>getURL</b>(<i></i>)
+<a NAME="nombreDeLaClase.procesarDescarga" ID="nombreDeLaClase.procesarDescarga"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">nombreDeLaClase.procesarDescarga</h3>
+<b>procesarDescarga</b>(<i></i>)
+<p>
+            Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve
+            esta y el nombre como se quiere que se descarge el archivo de la siguiente forma:
+            return [ruta_url, nombre]
+</p><p>
+            Si no se quiere especificar un nombre para el archivo resultante en disco, o no se
+            conoce un procedimiento para obtener este autom&#225;ticamente se utilizar&#225;:
+            return [ruta_url, None]
+            Y el m&#233;todo de Descargar que descarga utilizar&#225; el nombre por defecto seg&#250;n la url.
+</p><p>
+            Tanto "ruta_url" como "nombre" pueden ser listas (por supuesto, el nombre del ruta_url[0]
+            tiene que ser nombre[0] y as&#237; sucesivamente).
+</p><a NAME="nombreDeLaClase.setURL" ID="nombreDeLaClase.setURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">nombreDeLaClase.setURL</h3>
+<b>setURL</b>(<i>url</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr />
+</body></html>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>PyDownTV.Servers.pyaxel.pyaxel</title>
+</head>
+<body style="background-color:#FFFFFF;color:#000000"><a NAME="top" ID="top"></a>
+<h1 style="background-color:#FFFFFF;color:#0000FF">PyDownTV.Servers.pyaxel.pyaxel</h1>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Global Attributes</h3>
+<table>
+<tr><td>std_headers</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Classes</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#ConnectionState">ConnectionState</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#FetchData">FetchData</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ProgressBar">ProgressBar</a></td>
+<td></td>
+</tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Functions</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#download">download</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#general_configuration">general_configuration</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#get_file_size">get_file_size</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#main">main</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#report_bytes">report_bytes</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="ConnectionState" ID="ConnectionState"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">ConnectionState</h2>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
+None
+<h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#ConnectionState.__init__">ConnectionState</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ConnectionState.download_sofar">download_sofar</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ConnectionState.resume_state">resume_state</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ConnectionState.save_state">save_state</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ConnectionState.update_data_downloaded">update_data_downloaded</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ConnectionState.update_time_taken">update_time_taken</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="ConnectionState.__init__" ID="ConnectionState.__init__"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ConnectionState (Constructor)</h3>
+<b>ConnectionState</b>(<i>n_conn, filesize</i>)
+<a NAME="ConnectionState.download_sofar" ID="ConnectionState.download_sofar"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ConnectionState.download_sofar</h3>
+<b>download_sofar</b>(<i></i>)
+<a NAME="ConnectionState.resume_state" ID="ConnectionState.resume_state"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ConnectionState.resume_state</h3>
+<b>resume_state</b>(<i>in_fd</i>)
+<a NAME="ConnectionState.save_state" ID="ConnectionState.save_state"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ConnectionState.save_state</h3>
+<b>save_state</b>(<i>out_fd</i>)
+<a NAME="ConnectionState.update_data_downloaded" ID="ConnectionState.update_data_downloaded"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ConnectionState.update_data_downloaded</h3>
+<b>update_data_downloaded</b>(<i>fetch_size, conn_id</i>)
+<a NAME="ConnectionState.update_time_taken" ID="ConnectionState.update_time_taken"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ConnectionState.update_time_taken</h3>
+<b>update_time_taken</b>(<i>elapsed_time</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FetchData" ID="FetchData"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">FetchData</h2>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
+threading.Thread
+<h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#FetchData.__init__">FetchData</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#FetchData.run">run</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FetchData.__init__" ID="FetchData.__init__"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">FetchData (Constructor)</h3>
+<b>FetchData</b>(<i>name, url, out_file, state_file, start_offset, conn_state</i>)
+<a NAME="FetchData.run" ID="FetchData.run"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">FetchData.run</h3>
+<b>run</b>(<i></i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="ProgressBar" ID="ProgressBar"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">ProgressBar</h2>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
+None
+<h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#ProgressBar.__init__">ProgressBar</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ProgressBar._get_download_rate">_get_download_rate</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ProgressBar._get_pbar">_get_pbar</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ProgressBar._get_percentage_complete">_get_percentage_complete</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ProgressBar._get_term_width">_get_term_width</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ProgressBar._get_time_left">_get_time_left</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#ProgressBar.display_progress">display_progress</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="ProgressBar.__init__" ID="ProgressBar.__init__"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ProgressBar (Constructor)</h3>
+<b>ProgressBar</b>(<i>n_conn, conn_state</i>)
+<a NAME="ProgressBar._get_download_rate" ID="ProgressBar._get_download_rate"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ProgressBar._get_download_rate</h3>
+<b>_get_download_rate</b>(<i>bytes</i>)
+<a NAME="ProgressBar._get_pbar" ID="ProgressBar._get_pbar"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ProgressBar._get_pbar</h3>
+<b>_get_pbar</b>(<i>width</i>)
+<a NAME="ProgressBar._get_percentage_complete" ID="ProgressBar._get_percentage_complete"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ProgressBar._get_percentage_complete</h3>
+<b>_get_percentage_complete</b>(<i>dl_len</i>)
+<a NAME="ProgressBar._get_term_width" ID="ProgressBar._get_term_width"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ProgressBar._get_term_width</h3>
+<b>_get_term_width</b>(<i></i>)
+<a NAME="ProgressBar._get_time_left" ID="ProgressBar._get_time_left"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ProgressBar._get_time_left</h3>
+<b>_get_time_left</b>(<i>time_in_secs</i>)
+<a NAME="ProgressBar.display_progress" ID="ProgressBar.display_progress"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">ProgressBar.display_progress</h3>
+<b>display_progress</b>(<i></i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="download" ID="download"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">download</h2>
+<b>download</b>(<i>url, options</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="general_configuration" ID="general_configuration"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">general_configuration</h2>
+<b>general_configuration</b>(<i></i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="get_file_size" ID="get_file_size"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">get_file_size</h2>
+<b>get_file_size</b>(<i>url</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="main" ID="main"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">main</h2>
+<b>main</b>(<i>options, args</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="report_bytes" ID="report_bytes"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">report_bytes</h2>
+<b>report_bytes</b>(<i>bytes</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr />
+</body></html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>PyDownTV.Servers.a3</title>
+</head>
+<body style="background-color:#FFFFFF;color:#000000"><a NAME="top" ID="top"></a>
+<h1 style="background-color:#FFFFFF;color:#0000FF">PyDownTV.Servers.a3</h1>
+
+<h3 style="background-color:#FFFFFF;color:#FF0000">Global Attributes</h3>
+<table>
+<tr><td>__author__</td></tr><tr><td>__date__</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Classes</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#A3">A3</a></td>
+<td>Clase de de A3 que maneja los m&#233;todos para descargar los v&#237;deos de la web de antena3.com</td>
+</tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="A3" ID="A3"></a>
+<h2 style="background-color:#FFFFFF;color:#0000FF">A3</h2>
+<p>
+        Clase de de A3 que maneja los m&#233;todos para descargar los v&#237;deos de
+        la web de antena3.com
+</p>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
+object
+<h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
+<table>
+<tr><td>URL_DE_ANTENA3</td></tr><tr><td>URL_DE_DESCARGA</td></tr><tr><td>url</td></tr>
+</table>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
+<table>
+<tr>
+<td><a style="color:#0000FF" href="#A3.__init__">A3</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.__descHTML">__descHTML</a></td>
+<td>M&#233;todo que utiliza la clase descargar para descargar el HTML</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.__descXML">__descXML</a></td>
+<td>M&#233;todo que utiliza la clase descargar para descargar HTML</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.__formatearNombre">__formatearNombre</a></td>
+<td>Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres que pueden colisionar a la hora de realizar el guardado en disco la descarga</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.__modoNormalConURL">__modoNormalConURL</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.__modoNormalUnaParte">__modoNormalUnaParte</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.__modoNormalVariasPartes">__modoNormalVariasPartes</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.__modoSalon">__modoSalon</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.getURL">getURL</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.procesarDescarga">procesarDescarga</a></td>
+<td>Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve esta y el nombre como se quiere que se descarge el archivo de la siguiente forma: return [ruta_url, nombre]</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#A3.setURL">setURL</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="A3.__init__" ID="A3.__init__"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3 (Constructor)</h3>
+<b>A3</b>(<i>url=""</i>)
+<a NAME="A3.__descHTML" ID="A3.__descHTML"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.__descHTML</h3>
+<b>__descHTML</b>(<i>url2down</i>)
+<p>
+ M&#233;todo que utiliza la clase descargar para descargar el HTML 
+</p><a NAME="A3.__descXML" ID="A3.__descXML"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.__descXML</h3>
+<b>__descXML</b>(<i>url2down</i>)
+<p>
+ M&#233;todo que utiliza la clase descargar para descargar HTML 
+</p><a NAME="A3.__formatearNombre" ID="A3.__formatearNombre"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.__formatearNombre</h3>
+<b>__formatearNombre</b>(<i>nombre</i>)
+<p>
+            Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres
+            que pueden colisionar a la hora de realizar el guardado en disco la descarga
+</p><a NAME="A3.__modoNormalConURL" ID="A3.__modoNormalConURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.__modoNormalConURL</h3>
+<b>__modoNormalConURL</b>(<i>streamHTML</i>)
+<a NAME="A3.__modoNormalUnaParte" ID="A3.__modoNormalUnaParte"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.__modoNormalUnaParte</h3>
+<b>__modoNormalUnaParte</b>(<i>streamHTML</i>)
+<a NAME="A3.__modoNormalVariasPartes" ID="A3.__modoNormalVariasPartes"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.__modoNormalVariasPartes</h3>
+<b>__modoNormalVariasPartes</b>(<i>streamHTML</i>)
+<a NAME="A3.__modoSalon" ID="A3.__modoSalon"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.__modoSalon</h3>
+<b>__modoSalon</b>(<i>streamHTML</i>)
+<a NAME="A3.getURL" ID="A3.getURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.getURL</h3>
+<b>getURL</b>(<i></i>)
+<a NAME="A3.procesarDescarga" ID="A3.procesarDescarga"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.procesarDescarga</h3>
+<b>procesarDescarga</b>(<i></i>)
+<p>
+            Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve
+            esta y el nombre como se quiere que se descarge el archivo de la siguiente forma:
+            return [ruta_url, nombre]
+</p><p>
+            Si no se quiere especificar un nombre para el archivo resultante en disco, o no se
+            conoce un procedimiento para obtener este autom&#225;ticamente se utilizar&#225;:
+            return [ruta_url, None]
+            Y el m&#233;todo de Descargar que descarga utilizar&#225; el nombre por defecto seg&#250;n la url.
+</p><a NAME="A3.setURL" ID="A3.setURL"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">A3.setURL</h3>
+<b>setURL</b>(<i>url</i>)
+
+<div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
+<hr />
+</body></html>

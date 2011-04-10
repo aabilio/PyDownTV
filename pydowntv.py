@@ -38,31 +38,52 @@ from Servers.Descargar import Descargar
 
 class Servidor(object):
     '''
-        Contiene los métodos para identificar a que servidor pertenece la url que
+        Contiene los métodos para identificar a que servidor (tv) pertenece la url que
         introdujo el usuario.
     '''
     def __init__(self, url=None):
+        '''
+            Lo único a resalar es que reibirá la URL
+        '''
         self._url = url
     def isAntena3_(self):
+        '''
+            return True si la URL pertenece a antena 3
+        '''
         if self._url.find("antena3.com") != -1:
             return True
     def isTVE_(self):
+        '''
+            return True si la URL pertenece a Televisión Española
+        '''
         if self._url.find("rtve.es") != -1:
             return True
     #def isTVEaLaCarta_(self): # DEPRECATED
     #    if self._url.find("rtve.es") != -1 and self._url.find("/alacarta/") != -1:
     #        return True
     def isRTVE_(self):
+        '''
+            return True si la URL pertenece a los audios de a web de telvión española (Radio Nacional)
+        '''
         if self._url.find("rtve.es") != -1 and \
             (self._url.find("/mediateca/audios/") != -1 or self._url.find("/alacarta/audios/") != -1):
             return True
     def isT5_(self):
+        '''
+            return True si la URL pertenece a Telecinco
+        '''
         if self._url.find("telecinco.es") != -1:
             return True
     def isLaSexta_(self):
+        '''
+            return True si la URL pertenece a La Sexta
+        '''
         if self._url.find("lasexta.com/sextatv/") != -1:
             return True
     def isCuatro_(self):
+        '''
+            return True si la URL pertenece a Cuatro
+        '''
         if self._url.find("play.cuatro.com/") != -1:
             return True
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
@@ -78,7 +99,7 @@ class Servidor(object):
 def qServidor(url):
     '''
         Comprueba utlizando la clase Servidor de que servicio ha recibido la url
-        y devuelve un objeto sergún el servicio que del cual se haya pasado la
+        y devuelve el objeto según el servicio que del cual se haya pasado la
         url
     '''
     # Descomentar return según se vañan añadiendo
@@ -120,6 +141,10 @@ def help(args):
     print "PyDownTV <aabilio@gmail.com>"
 
 def compURL(url):
+    '''
+        Comara de foma muy básica si la cadena que se le pasa como parámetro es una URL válida
+    '''
+    # TODO: Implementar esto mejor (sin exagerar)
     p = re.compile('^http://.+\..+$', re.IGNORECASE)
     m = p.match(url)
     if m:

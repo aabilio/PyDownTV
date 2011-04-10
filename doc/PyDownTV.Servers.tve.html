@@ -36,31 +36,33 @@ object
 <table>
 <tr>
 <td><a style="color:#0000FF" href="#TVE.__init__">TVE</a></td>
-<td></td>
+<td>Solo rese&#241;ar que reibe una URL v&#225;lida de Televisi&#243;n Espa&#241;ola como par&#225;metro</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#TVE.__descHTML">__descHTML</a></td>
 <td>M&#233;todo que utiliza la clase descargar para descargar el HTML</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#TVE.__descXML">__descXML</a></td>
-<td>M&#233;todo que utiliza la clase descargar para descargar HTML</td>
+<td>M&#233;todo que utiliza la clase descargar para descargar XML</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#TVE.__formatearNombre">__formatearNombre</a></td>
-<td>Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres que pueden colisionar a la hora de realizar el guardado en disco la descarga</td>
+<td>Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres que pueden colisionar a la hora de realizar el guardado en disco la descarga.</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#TVE.getURL">getURL</a></td>
-<td></td>
+<td>Obtener la URL de televisi&#243;n espa&#241;ola</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#TVE.procesarDescarga">procesarDescarga</a></td>
 <td>Procesa lo necesario para obtener la url final del v&#237;deo a descargar y devuelve esta y el nombre como se quiere que se descarge el archivo de la siguiente forma: return [ruta_url, nombre]</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#TVE.setURL">setURL</a></td>
-<td></td>
+<td>return la URL v&#225;lida de TVE que se le pasa a la clase</td>
 </tr>
 </table>
 <a NAME="TVE.__init__" ID="TVE.__init__"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">TVE (Constructor)</h3>
 <b>TVE</b>(<i>url=""</i>)
-<a NAME="TVE.__descHTML" ID="TVE.__descHTML"></a>
+<p>
+            Solo rese&#241;ar que reibe una URL v&#225;lida de Televisi&#243;n Espa&#241;ola como par&#225;metro
+</p><a NAME="TVE.__descHTML" ID="TVE.__descHTML"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">TVE.__descHTML</h3>
 <b>__descHTML</b>(<i>url2down</i>)
 <p>
@@ -69,17 +71,24 @@ object
 <h3 style="background-color:#FFFFFF;color:#FF0000">TVE.__descXML</h3>
 <b>__descXML</b>(<i>url2down</i>)
 <p>
- M&#233;todo que utiliza la clase descargar para descargar HTML 
+ M&#233;todo que utiliza la clase descargar para descargar XML 
 </p><a NAME="TVE.__formatearNombre" ID="TVE.__formatearNombre"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">TVE.__formatearNombre</h3>
 <b>__formatearNombre</b>(<i>nombre</i>)
 <p>
             Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres
-            que pueden colisionar a la hora de realizar el guardado en disco la descarga
+            que pueden colisionar a la hora de realizar el guardado en disco la descarga.
+            Por ejemplo:
+                - Quita las barras "/"
+                - Quita los espacios
+                - Reduce las barras bajas
+                - Elimina las comillas simples
 </p><a NAME="TVE.getURL" ID="TVE.getURL"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">TVE.getURL</h3>
 <b>getURL</b>(<i></i>)
-<a NAME="TVE.procesarDescarga" ID="TVE.procesarDescarga"></a>
+<p>
+            Obtener la URL de televisi&#243;n espa&#241;ola
+</p><a NAME="TVE.procesarDescarga" ID="TVE.procesarDescarga"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">TVE.procesarDescarga</h3>
 <b>procesarDescarga</b>(<i></i>)
 <p>
@@ -94,7 +103,9 @@ object
 </p><a NAME="TVE.setURL" ID="TVE.setURL"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">TVE.setURL</h3>
 <b>setURL</b>(<i>url</i>)
-
+<p>
+            return la URL v&#225;lida de TVE que se le pasa a la clase
+</p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr />
 </body></html>

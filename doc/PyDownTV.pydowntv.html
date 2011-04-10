@@ -15,27 +15,27 @@
 <table>
 <tr>
 <td><a style="color:#0000FF" href="#Servidor">Servidor</a></td>
-<td>Contiene los m&#233;todos para identificar a que servidor pertenece la url que introdujo el usuario.</td>
+<td>Contiene los m&#233;todos para identificar a que servidor (tv) pertenece la url que introdujo el usuario.</td>
 </tr>
 </table>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Functions</h3>
 <table>
 <tr>
 <td><a style="color:#0000FF" href="#compURL">compURL</a></td>
-<td></td>
+<td>Comara de foma muy b&#225;sica si la cadena que se le pasa como par&#225;metro es una URL v&#225;lida</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#help">help</a></td>
 <td>Muestra la ayuda por pantalla (se le pasa como argumento siempre: argv)</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#qServidor">qServidor</a></td>
-<td>Comprueba utlizando la clase Servidor de que servicio ha recibido la url y devuelve un objeto serg&#250;n el servicio que del cual se haya pasado la url</td>
+<td>Comprueba utlizando la clase Servidor de que servicio ha recibido la url y devuelve el objeto seg&#250;n el servicio que del cual se haya pasado la url</td>
 </tr>
 </table>
 <hr /><hr />
 <a NAME="Servidor" ID="Servidor"></a>
 <h2 style="background-color:#FFFFFF;color:#0000FF">Servidor</h2>
 <p>
-        Contiene los m&#233;todos para identificar a que servidor pertenece la url que
+        Contiene los m&#233;todos para identificar a que servidor (tv) pertenece la url que
         introdujo el usuario.
 </p>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Derived from</h3>
@@ -48,55 +48,71 @@ object
 <table>
 <tr>
 <td><a style="color:#0000FF" href="#Servidor.__init__">Servidor</a></td>
-<td></td>
+<td>Lo &#250;nico a resalar es que reibir&#225; la URL</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isAntena3_">isAntena3_</a></td>
-<td></td>
+<td>return True si la URL pertenece a antena 3</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isCuatro_">isCuatro_</a></td>
-<td></td>
+<td>return True si la URL pertenece a Cuatro</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isLaSexta_">isLaSexta_</a></td>
-<td></td>
+<td>return True si la URL pertenece a La Sexta</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isRTVE_">isRTVE_</a></td>
-<td></td>
+<td>return True si la URL pertenece a los audios de a web de telvi&#243;n espa&#241;ola (Radio Nacional)</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isT5_">isT5_</a></td>
-<td></td>
+<td>return True si la URL pertenece a Telecinco</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isTVE_">isTVE_</a></td>
-<td></td>
+<td>return True si la URL pertenece a Televisi&#243;n Espa&#241;ola</td>
 </tr>
 </table>
 <a NAME="Servidor.__init__" ID="Servidor.__init__"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor (Constructor)</h3>
 <b>Servidor</b>(<i>url=None</i>)
-<a NAME="Servidor.isAntena3_" ID="Servidor.isAntena3_"></a>
+<p>
+            Lo &#250;nico a resalar es que reibir&#225; la URL
+</p><a NAME="Servidor.isAntena3_" ID="Servidor.isAntena3_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isAntena3_</h3>
 <b>isAntena3_</b>(<i></i>)
-<a NAME="Servidor.isCuatro_" ID="Servidor.isCuatro_"></a>
+<p>
+            return True si la URL pertenece a antena 3
+</p><a NAME="Servidor.isCuatro_" ID="Servidor.isCuatro_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isCuatro_</h3>
 <b>isCuatro_</b>(<i></i>)
-<a NAME="Servidor.isLaSexta_" ID="Servidor.isLaSexta_"></a>
+<p>
+            return True si la URL pertenece a Cuatro
+</p><a NAME="Servidor.isLaSexta_" ID="Servidor.isLaSexta_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isLaSexta_</h3>
 <b>isLaSexta_</b>(<i></i>)
-<a NAME="Servidor.isRTVE_" ID="Servidor.isRTVE_"></a>
+<p>
+            return True si la URL pertenece a La Sexta
+</p><a NAME="Servidor.isRTVE_" ID="Servidor.isRTVE_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isRTVE_</h3>
 <b>isRTVE_</b>(<i></i>)
-<a NAME="Servidor.isT5_" ID="Servidor.isT5_"></a>
+<p>
+            return True si la URL pertenece a los audios de a web de telvi&#243;n espa&#241;ola (Radio Nacional)
+</p><a NAME="Servidor.isT5_" ID="Servidor.isT5_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isT5_</h3>
 <b>isT5_</b>(<i></i>)
-<a NAME="Servidor.isTVE_" ID="Servidor.isTVE_"></a>
+<p>
+            return True si la URL pertenece a Telecinco
+</p><a NAME="Servidor.isTVE_" ID="Servidor.isTVE_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isTVE_</h3>
 <b>isTVE_</b>(<i></i>)
-
+<p>
+            return True si la URL pertenece a Televisi&#243;n Espa&#241;ola
+</p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr /><hr />
 <a NAME="compURL" ID="compURL"></a>
 <h2 style="background-color:#FFFFFF;color:#0000FF">compURL</h2>
 <b>compURL</b>(<i>url</i>)
-
+<p>
+        Comara de foma muy b&#225;sica si la cadena que se le pasa como par&#225;metro es una URL v&#225;lida
+</p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr /><hr />
 <a NAME="help" ID="help"></a>
@@ -112,7 +128,7 @@ object
 <b>qServidor</b>(<i>url</i>)
 <p>
         Comprueba utlizando la clase Servidor de que servicio ha recibido la url
-        y devuelve un objeto serg&#250;n el servicio que del cual se haya pasado la
+        y devuelve el objeto seg&#250;n el servicio que del cual se haya pasado la
         url
 </p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>

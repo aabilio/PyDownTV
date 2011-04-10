@@ -33,15 +33,24 @@ from Descargar import Descargar
 
 class TVE(object): # Identificativo del canal
     '''
-        Clase para menjera los vídeos de la RTVE (todos)
+        Clase para manejar los vídeos de la RTVE (todos).
     '''
 
     def __init__(self, url=""):
+        '''
+            Solo reseñar que reibe una URL válida de Televisión Española como parámetro
+        '''
         self._URL_recibida = url
 
     def getURL(self):
+        '''
+            Obtener la URL de televisión española
+        '''
         return self._URL_recibida
     def setURL(self, url):
+        '''
+            return la URL válida de TVE que se le pasa a la clase
+        '''
         self._URL_recibida = url
     url = property(getURL, setURL)
 
@@ -51,14 +60,19 @@ class TVE(object): # Identificativo del canal
         D = Descargar(url2down)
         return D.descargar()
     def __descXML(self, url2down):
-        ''' Método que utiliza la clase descargar para descargar HTML '''
+        ''' Método que utiliza la clase descargar para descargar XML '''
         D = Descargar(url2down)
         return D.descargar()
 
     def __formatearNombre(self, nombre):
         '''
             Se le pasa una cadena por parámetro y formatea esta quitándole caracteres
-            que pueden colisionar a la hora de realizar el guardado en disco la descarga
+            que pueden colisionar a la hora de realizar el guardado en disco la descarga.
+            Por ejemplo:
+                - Quita las barras "/"
+                - Quita los espacios
+                - Reduce las barras bajas
+                - Elimina las comillas simples
         '''
 
         nombre = nombre.replace('/',"-") # Quitar las barras "/"

@@ -36,26 +36,6 @@ from Servers.telecinco import Telecinco
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
 
-###############################################################################
-
-# gui
-#class MainWindow(QMainWindow, Ui_MainWindow):
-#    def __init__(self, parent=None):
-#        '''
-#            __init__ MainWindow
-#        '''
-#        super(MainWindow, self).__init__(parent)
-#        self.setupUi(self)
-#        self.showButton.clicked.connect(self.fileRead)
-#        
-#    def fileRead(self):
-#        '''Read and display GPL licence.'''
-#        self.textEdit.setText(open('../COPYING.txt').read())
-#    def printt(self, string):
-#        
-        
-###############################################################################
-
 class Servidor(object):
     '''
         Contiene los métodos para identificar a que servidor pertenece la url que

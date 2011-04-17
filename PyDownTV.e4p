@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-04-10, 05:32:10 -->
+<!-- Saved: 2011-04-17, 19:04:52 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -26,6 +26,9 @@
     <Source>Servers/rtve.py</Source>
     <Source>Servers/lasexta.py</Source>
     <Source>Servers/cuatro.py</Source>
+    <Source>setup_mac.py</Source>
+    <Source>setup_windows.py</Source>
+    <Source>setup.py</Source>
   </Sources>
   <Forms>
   </Forms>

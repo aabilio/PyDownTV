@@ -74,7 +74,7 @@ class ConnectionState:
         cPickle.dump(self, out_fd)
 
 
-class ProgressBar:
+class ProgressBar: # This is just for Unix like systems
     def __init__(self, n_conn, conn_state):
         self.n_conn = n_conn
         self.dots = ["" for i in range(n_conn)]
@@ -85,7 +85,8 @@ class ProgressBar:
                                                      'r').read().split())
         return term_cols
     
-    def getTerminalSize(self):
+    def getTerminalSize(self): # This is just for Windows
+        # TODO: Implement a better way to take term_width on Windows
         def ioctl_GWINSZ(fd):
             try:
                 import fcntl, termios, struct, os

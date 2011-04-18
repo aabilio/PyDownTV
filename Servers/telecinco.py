@@ -97,7 +97,7 @@ class Telecinco(object):
 
         
         if name != None:
-            name = self.formatearNombre(name)
+            name = formatearNombre(name)
         
         return [url2down, name]
 

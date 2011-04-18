@@ -135,10 +135,10 @@ class A3(object):
 
         if type(name) == list:
             for i in name:
-                b = self.formatearNombre(i)
+                b = formatearNombre(i)
                 name[name.index(i)] = b
         else:
-            name = self.formatearNombre(name)
+            name = formatearNombre(name)
         
         return [url2down , name]
 

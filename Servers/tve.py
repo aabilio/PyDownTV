@@ -140,6 +140,6 @@ class TVE(object): # Identificativo del canal
         # Nombre con el que se guardará la descarga:
         extension = '.' + urlVideo.split('.')[-1]
         name =  sourceXML.split("<name>")[1].split("</name")[0] + extension
-        name = self.formatearNombre(name)
+        name = formatearNombre(name)
 
         return [urlVideo, name]

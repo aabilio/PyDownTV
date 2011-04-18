@@ -12,7 +12,7 @@ def salir(msg):
     else:
         exit(msg)
 
-def formatearNombre(self, nombre):
+def formatearNombre(nombre):
     '''
         Se le pasa una cadena por parámetro y formatea esta quitándole caracteres
         que pueden colisionar a la hora de realizar el guardado en disco la descarga
@@ -21,6 +21,8 @@ def formatearNombre(self, nombre):
                 - Quita los espacios
                 - Reduce las barras bajas
                 - Elimina las comillas simples
+                - Elimina tildes
+                - Elimina comillas
     '''
 
     nombre = nombre.replace(": ",  ":")
@@ -28,5 +30,10 @@ def formatearNombre(self, nombre):
     nombre = nombre.replace(" ", "_") # Quirar espacios
     nombre = nombre.replace("_-_", "-")
     nombre = nombre.replace("&#146;", "=") # Cambiar el caracter escapado (') por (=)
+    nombre = nombre.replace("á", "a")
+    nombre = nombre.replace("é", "e")
+    nombre = nombre.replace("í", "i")
+    nombre = nombre.replace("ó", "o")
+    nombre = nombre.replace("ú", "u")
 
     return nombre

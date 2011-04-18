@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-04-18, 17:39:00 -->
+<!-- Saved: 2011-04-18, 22:08:47 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -46,6 +46,7 @@
     <Other>TODO</Other>
     <Other>doc</Other>
     <Other>doc/PyDownTV.Servers.rtve.html</Other>
+    <Other>icon.ico</Other>
   </Others>
   <MainScript>pydowntv.py</MainScript>
   <Vcs>

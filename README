@@ -1,29 +1,74 @@
 PyDownTV:
 =========
 
-Script programado en python al que se le pasa una url de un v�deo y muestra la url de localizaci�n del v�deo y lo descarga.
+Script programado en python al que se le pasa una url de un vdeo y muestra la url de localizacin del vdeo y lo descarga.
 
 Por ahora solo funciona con:
 - TVE
 - TVE a la carta
-- Antena 3 (Modo Sal�n)
-- Cualquier v�deo de la web de Antena 3 (no solo modo sal�n)
+- Antena 3 (Modo Salón)
+- Cualquier vdeo de la web de Antena 3 (no solo modo salón)
 - Audios de Radio Nacional
 
-Pr�ximamente:
+Prximamente:
 - Telecinco
 - Cuatro
 - La Sexta
 
 Lo he pensado para que cada servidor se pueda implementar de manera independiente de cualquier otro, y en el proyecto existe una plantilla con los pasos comunes a seguir.
 
-Es mi primer peque�o programa en Python, lo estoy escribiendo para aprender un poco la filosof�a y practicar. Es obvio que se puede hacer mucho m�s funcional de planteamiento y de codificaci�n y que le da mil patadas a los libros de estilo de python, OOP, o de programaci�n en general.
+Es mi primer pequeo programa en Python, lo estoy escribiendo para aprender un poco la filosofa y practicar. Es obvio que se puede hacer mucho ms funcional de planteamiento y de codificacin y que le da mil patadas a los libros de estilo de python, OOP, o de programacin en general.
 
 Website: http://code.google.com/p/pydowntv/
 Repository (Google Code): http://pydowntv.googlecode.com/svn/trunk/
   $ svn checkout http://pydowntv.googlecode.com/svn/trunk/ pydowntv-read-only
   
-Para reportar bugs y errores a la hora de descargar v�deos: http://code.google.com/p/pydowntv/issues/list
+Para reportar bugs y errores a la hora de descargar vídeos: http://code.google.com/p/pydowntv/issues/list
+
+==== Cómo Instalar ====
+
+--> GNU/Linux y Mac OS X
+
+Descargar el zip o el tar.gz desde la sección descargas
+
+Para instalar pydowntv tanto en GNU/Linux como en Mac OS X:
+
+- Descomprimir: $ tar xzvf PydownTV-xx.tar.gz
+- Entrar al directorio creado: $ cd PydownTV-xx.tar.gz
+- Ejecutar: $ python setup.py install
+  - (Depende de tu instalación de python puede que necesites ser root): $ sudo python setup.py install
+INSTALADO! Ejecutar desde cualquier directorio: $ pydowntv.py
+
+--> Windows:
+
+El ejecutable que se distribuye con la versión para Windows no necesita ser instalada, se ejecuta haciendo doble click o desde la consola de Windows.
+
+==== Cómo ejecutar ====
+
+--> Ejecutar desde Sources:
+
+Para lanzar PyDownTV:
+
+user@host: ~/PyDownTV $ pydowntv.py url ó
+user@host: ~/PyDownTV $ pydowntv.py (y se pedirá que introduzcas la url)
+Tanto una manera como la otra permiten pasarle como parámetro varias URLs separadas por un espacio. PyDownTV sin embargo no bajará los vídeos simultáneamente, sino que esperará a descargar uno para descargar el siguiente.
+
+--> Instalado con setup.py:
+
+Para lanzar PyDownTV:
+
+user@host: ~/ $ pydowntv url ó
+user@host: ~/ $ pydowntv (y se pedirá que introduzcas la url)
+Tanto una manera como la otra permiten pasarle como parámetro varias URLs separadas por un espacio. PyDownTV sin embargo no bajará los vídeos simultáneamente, sino que esperará a descargar uno para descargar el siguiente.
+
+--> Ejecutar el pydowntv.exe en Windows:
+
+Doble click y se pedirá la url (lo vídeos se descargarán en la carpeta donde se encuentre pydowntv.exe) ó
+Añadir pydowntv.exe al PATH y ejecutar:
+C:\> pydowntv.exe url ó
+C:\> pydowntv.exe (y se pedirá que introduzcas la url)
+Ejecutar en consola desde el directorio donde se encuentre.
+
 
 
 For instructions on running from source, see RunningFromSource.mkd in

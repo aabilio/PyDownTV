@@ -20,8 +20,9 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
+__version__ = "1.0-BETA"
 
-from sys import argv, exit
+from sys import argv, exit, platform
 import re
 
 #from ui.gui import Ui_MainWindow
@@ -35,6 +36,8 @@ from Servers.telecinco import Telecinco
 # from Servers.lasexta import LaSexta
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
+
+from Servers.salir import salir
 
 class Servidor(object):
     '''
@@ -120,17 +123,15 @@ def qServidor(url):
         print "[INFO] Telecinco"
         return Telecinco(url)
     elif server.isLaSexta:
-        exit("La Sexta: Todavía no implementado")
+        salir("La Sexta: Todavía no implementado")
         # return LaSexta(url)
-        pass
     elif server.isCuatro:
-        exit("Cuatro: Todavía no implementado")
+        salir("Cuatro: Todavía no implementado")
         # return Cuatro(url)
-        pass
     else:
         msgErr = "ERROR: La URL \"" + url + "\" no pertenece a ninguna Televisión"
-        exit(msgErr)
-    
+        salir(msgErr)
+        
 def help(args):
     '''
         Muestra la ayuda por pantalla (se le pasa como argumento siempre: argv)
@@ -139,6 +140,14 @@ def help(args):
     print "o   ", args[0], "<url>"
     print "(Los dos métodos aceptan varias URLs separadas por un espacio)"
     print "PyDownTV <aabilio@gmail.com>"
+
+def windowsPresentation():
+    '''
+        Muestra un presetación cuando se ejecuta en Windows
+    '''
+    print "PyDownTV",  __version__
+    print "========="
+    print u"Descarga los vídeos de las webs de las TVs".encode("cp850")
 
 def compURL(url):
     '''
@@ -155,6 +164,8 @@ def compURL(url):
 
 
 if __name__ == "__main__":
+    if platform == "win32":
+        windowsPresentation()
     # Ver si tenemos un parámetro, si no tenemos parámetro pedir la URL por 
     # entrada estándar.
     url = None
@@ -162,7 +173,7 @@ if __name__ == "__main__":
         #exit("ERROR: Demasiados parámetros.\nFlag --help: para ayuda")
         if argv[1] == "--help" or argv[1] == "-h":
             help(argv)
-            exit()
+            salir("")
         i = ""
         url = []
         for i in argv[1:]:
@@ -170,25 +181,38 @@ if __name__ == "__main__":
         nOfUrls = len(url)
     else:
         try:
-            inPut = raw_input("Introduce las URL de los vídeos (separadas por espacios): ")
-            url =  inPut.split(" ")
-
-            nOfUrls = len(url)
+            inPut = raw_input("Introduce las URL de los vídeos (separadas por espacios):\n")
+            url = inPut.split(" ")
+            
+            todasvacias = True
+            for i in url:
+                if i != "":
+                    todasvacias = False
+            if todasvacias:
+                url = None
+            
+            if url is not None:
+                nOfUrls = len(url)
         except KeyboardInterrupt:
-            exit("\nBye!")
+            salir("\nBye!")
 
     if url != None:
         # Comprobar la url y mandarla al servidor correspondiente
+        cuantasIncorrectas = 0
+        cuantasTotal = nOfUrls
         while nOfUrls-1 >= 0:
             if compURL(url[nOfUrls-1]):
                 # URL comprobada: http://"algo.algo"
                 servidor = qServidor(url[nOfUrls-1]) # Devuelve el objeto de la clase correspondiente
             else:
+                cuantasIncorrectas += 1
                 print "[!] URL incorrecta:",  url[nOfUrls-1]
                 #exit("ERROR: URL mal introducida\nFlag --help: para ayuda")
             nOfUrls -= 1
+        if cuantasIncorrectas == cuantasTotal:
+            salir("[!!!] Todas las URLs son incorrectas")
     else:
-        print "No has introducido la URL!"
+        salir("No has introducido la URL!")
 
     # Llegados a este punto tenemos la url comprobada y tenemos el objeto
     # "servidor" perteneciente a la correspondiente Clase de servers en la que estemos
@@ -202,3 +226,5 @@ if __name__ == "__main__":
     D.descargarVideo()
 
     #print "[+] Vídeo descargado correctamente"
+    if platform == "win32":
+        end = raw_input("[FIN] Presiona ENTER para SALIR")

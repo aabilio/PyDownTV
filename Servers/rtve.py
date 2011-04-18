@@ -29,6 +29,7 @@ __date__ ="$31-mar-2011 11:35:37$"
 
 import sys
 from Descargar import Descargar
+from salir import salir
 
 class RTVE(object): # Identificativo del canal
     '''
@@ -114,7 +115,7 @@ class RTVE(object): # Identificativo del canal
             #print "urllInSourceAssetXML =", urlInSourceAssetXML
             urlAudio = "http://www.rtve.es/resources/TE_NGVA/mp3/" + urlInSourceAssetXML.split("/mp3/")[1]
         else:
-            sys.exit("[!!!] No se encuentró la URL del Audio")
+            salir("[!!!] No se encuentró la URL del Audio")
         
         
 

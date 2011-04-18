@@ -27,8 +27,12 @@ __date__ ="$29-mar-2011 11:03:38$"
 # D = Descargar(url)
 # stream = D.descargar()
 from Descargar import Descargar
+from salir import salir
 import sys  # Utilizo sys para llamar a sys.exit() ya que si uso exit() me da
             # Problemas en ejecución tras usar Py2exe
+            
+# NOTA: Para salir en vez de utilizar exit("") o sys.exit("") utilizar salir("")
+# importante porner las comillas ("") si no se quiere pasar ningún msg al salir
 
 class nombreDeLaClase(object): # Identificativo del canal
     '''

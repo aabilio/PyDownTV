@@ -24,6 +24,7 @@ __date__ ="$29-mar-2011 11:03:38$"
 
 import sys
 from Descargar import Descargar
+from salir import salir
 
 class A3(object):
     '''
@@ -141,10 +142,10 @@ class A3(object):
                 
             # Comprobar si todas las partes están geobloqueadas (no quedan elementos en la lista):
             if len(url2down) == 0:
-                sys.exit("[!] No se puede descargar ninguna parte (geobloqueadas)")
+                salir("[!] No se puede descargar ninguna parte (geobloqueadas)")
         else:
             if url2down.find("geobloqueo") != -1:
-                sys.exit("[!] El vídeo no se puede descargar (geobloqueado)")
+                salir("[!] El vídeo no se puede descargar (geobloqueado)")
 
         if type(name) == list:
             for i in name:

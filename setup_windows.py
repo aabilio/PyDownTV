@@ -18,11 +18,11 @@
 
 # Archivo setup.py del proyecto PyDownTV:
 
-from ez_setup import use_setuptools
-use_setuptools()
+#from ez_setup import use_setuptools
+#use_setuptools()
 
-#from distutils.core import setup
-from setuptools import setup
+from distutils.core import setup
+#from setuptools import setup
 
 import py2exe
 
@@ -36,7 +36,9 @@ setup(name="PydownTV",
     scripts=["pydowntv.py"], 
     packages=["Servers", "Servers.pyaxel"], 
     py_modules=["tve", "rtve", "a3", "telecinco", "Descargar", "pyaxel"], 
-    console=["pydowntv.py"], 
+    console=[{"script": "pydowntv.py", "icon_resources": [(1, "icon.ico")]}], 
+    #console=["pydowntv.py"],
+    #windows=[{"script": "pydowntv.py", "icon_resources": [(1, "icon.ico")]}], 
     options={"py2exe": {"bundle_files": 1}},
     zipfile=None
 )

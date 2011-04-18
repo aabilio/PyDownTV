@@ -27,6 +27,7 @@ __date__ ="$07-abr-2011 23:11:07$"
 # D = Descargar(url)
 # stream = D.descargar()
 from Descargar import Descargar
+from salir import salir
 import sys  # Utilizo sys para llamar a sys.exit() ya que si uso exit() me da
             # Problemas en ejecución tras usar Py2exe
 
@@ -106,7 +107,7 @@ class Telecinco(object):
             streamXML = self.__descHTML(xmlURL)
             name = streamXML.split("<![CDATA[")[1].split("]")[0] + ".mp4"
         else:
-            sys.exit("[!!!] No se encuentra URL de descarga")
+            salir("[!!!] No se encuentra URL de descarga")
 
         
         if name != None:

@@ -26,6 +26,7 @@ import urllib
 import sys
 
 from pyaxel import pyaxel
+from salir import salir
 
 class Descargar(object):
     ''' Clase que se encarga de descargar con urllib2 '''
@@ -34,7 +35,7 @@ class Descargar(object):
         self._outputName = None
         self._URL = url
         if self._URL == None:
-            sys.exit("ERROR: No se puede descargar la url")
+            salir("ERROR: No se puede descargar la url")
     
     def getOutputName(self):
         return self._outputName
@@ -58,7 +59,7 @@ class Descargar(object):
             if self._URL.find("rtve.es") != -1: #No salir (para identificar si es a la carta o no)
                 return -1
             else:
-                sys.exit("ERROR al descargar!")
+                salir("ERROR al descargar!")
         else:
             pass
 
@@ -125,7 +126,7 @@ class Descargar(object):
                     try:
                         raw_input()
                     except KeyboardInterrupt:
-                        sys.exit("\nBye!")
+                        salir("\nBye!")
             #for (i, b) in (self._URL, self._outputName):
             #    options = {"output_file": b, "verbose": True, "max_speed": None, "num_connections": 4}
             #    pyaxel.download(i, options)

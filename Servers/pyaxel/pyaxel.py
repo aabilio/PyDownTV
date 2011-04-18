@@ -24,6 +24,14 @@ std_headers = {
     'Accept-Language': 'en-us,en;q=0.5',
 }
 
+def salir(msg):
+    if platform == "win32":
+        print "ERROR", msg, "en pyaxel"
+        print ""
+        raw_input("[FIN] Presiona ENTER para SALIR")
+        sys.exit()
+    else:
+        sys.exit(msg)
 
 class ConnectionState:
     def __init__(self, n_conn, filesize):
@@ -254,7 +262,7 @@ def download(url, options):
 
         if output_file == "":
             print "URL Inválida"
-            sys.exit(1)
+            salir("1")
 
         print "[Destino] ", output_file
 
@@ -332,7 +340,7 @@ def main(options, args):
         download(url, options)
 
     except KeyboardInterrupt, k:
-        sys.exit(1)
+        salir("1")
 
     except Exception, e:
         # TODO: handle other types of errors too.

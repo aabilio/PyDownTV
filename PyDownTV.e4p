@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-04-17, 19:04:52 -->
+<!-- Saved: 2011-04-18, 14:26:10 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -29,6 +29,7 @@
     <Source>setup_mac.py</Source>
     <Source>setup_windows.py</Source>
     <Source>setup.py</Source>
+    <Source>Servers/salir.py</Source>
   </Sources>
   <Forms>
   </Forms>

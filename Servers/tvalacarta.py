@@ -30,6 +30,7 @@ __date__ ="$31-mar-2011 11:35:37$"
 
 import sys
 from Descargar import Descargar
+from salir import salir
 
 class TvAlacarta(object): # Identificativo del canal
     '''
@@ -105,7 +106,7 @@ class TvAlacarta(object): # Identificativo del canal
             elif sourceHTML.find("<div id=\"vid") != -1:
                 id = sourceHTML.split("<div id=\"vid")[1].split("\"")[0]
             else:
-                sys.exit("[!] ERROR al generear el nuevo id")
+                salir("[!] ERROR al generear el nuevo id")
             xmlURL = "www.rtve.es/swf/data/es/videos/video/" + id[-1] \
                 + "/" + id[-2] + "/" + id[-3] \
                 + "/" + id[-4] + "/" + id + ".xml"
@@ -135,11 +136,11 @@ class TvAlacarta(object): # Identificativo del canal
                 urlVideo = "http://www.rtve.es/resources/TE_NGVA/mp4/" \
                         + urlInSourceAssetXML.split("/mp4/")[1]
             else:
-                sys.exit("Vídeo no encontrado")
+                salir("Vídeo no encontrado")
             
             
         else:
-            sys.exit("No se encuentra la URL del vídeo")
+            salir("No se encuentra la URL del vídeo")
 
         # Nombre con el que se guardará la descarga:
         extension = '.' + urlVideo.split('.')[-1]

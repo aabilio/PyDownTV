@@ -37,7 +37,7 @@ from Servers.telecinco import Telecinco
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
 
-from Servers.salir import salir
+from Servers.utiles import salir
 
 class Servidor(object):
     '''
@@ -228,3 +228,4 @@ if __name__ == "__main__":
     #print "[+] Vídeo descargado correctamente"
     if platform == "win32":
         end = raw_input("[FIN] Presiona ENTER para SALIR")
+        exit()

@@ -30,7 +30,7 @@ __date__ ="$31-mar-2011 11:35:37$"
 
 import sys
 from Descargar import Descargar
-from salir import salir
+from utiles import salir, formatearNombre
 
 class TVE(object): # Identificativo del canal
     '''
@@ -64,25 +64,6 @@ class TVE(object): # Identificativo del canal
         ''' Método que utiliza la clase descargar para descargar XML '''
         D = Descargar(url2down)
         return D.descargar()
-
-    def __formatearNombre(self, nombre):
-        '''
-            Se le pasa una cadena por parámetro y formatea esta quitándole caracteres
-            que pueden colisionar a la hora de realizar el guardado en disco la descarga.
-            Por ejemplo:
-                - Quita las barras "/"
-                - Quita los espacios
-                - Reduce las barras bajas
-                - Elimina las comillas simples
-        '''
-
-        nombre = nombre.replace('/',"-") # Quitar las barras "/"
-        nombre = nombre.replace(" ", "_") # Quirar espacios
-        nombre = nombre.replace("_-_", "-")
-        nombre = nombre.replace(". ", ".") # Punto + espacio = solo punto
-        nombre = nombre.replace("&#146;", "=") # Cambiar el caracter escapado (') por (=)
-
-        return nombre
 
     def procesarDescarga(self):
         '''
@@ -159,6 +140,6 @@ class TVE(object): # Identificativo del canal
         # Nombre con el que se guardará la descarga:
         extension = '.' + urlVideo.split('.')[-1]
         name =  sourceXML.split("<name>")[1].split("</name")[0] + extension
-        name = self.__formatearNombre(name)
+        name = self.formatearNombre(name)
 
         return [urlVideo, name]

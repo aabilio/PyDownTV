@@ -24,7 +24,7 @@ __date__ ="$29-mar-2011 11:03:38$"
 
 import sys
 from Descargar import Descargar
-from salir import salir
+from utiles import salir, formatearNombre
 
 class A3(object):
     '''
@@ -52,20 +52,6 @@ class A3(object):
         D = Descargar(url2down)
         return D.descargar()
 
-    def __formatearNombre(self, nombre):
-        '''
-            Se le pasa una cadena por parámetro y formatea esta quitándole caracteres
-            que pueden colisionar a la hora de realizar el guardado en disco la descarga
-        '''
-
-        nombre = nombre.replace(": ",  ":")
-        nombre = nombre.replace('/',"-") # Quitar las barras "/"
-        nombre = nombre.replace(" ", "_") # Quirar espacios
-        nombre = nombre.replace("_-_", "-")
-        nombre = nombre.replace("&#146;", "=") # Cambiar el caracter escapado (') por (=)
-
-        return nombre
-        
     def __modoSalon(self, streamHTML):
         print "[INFO] Modo Salón"
         streamXML = \
@@ -149,10 +135,10 @@ class A3(object):
 
         if type(name) == list:
             for i in name:
-                b = self.__formatearNombre(i)
+                b = self.formatearNombre(i)
                 name[name.index(i)] = b
         else:
-            name = self.__formatearNombre(name)
+            name = self.formatearNombre(name)
         
         return [url2down , name]
 

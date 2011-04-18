@@ -26,7 +26,7 @@ import urllib
 import sys
 
 from pyaxel import pyaxel
-from salir import salir
+from utiles import salir
 
 class Descargar(object):
     ''' Clase que se encarga de descargar con urllib2 '''

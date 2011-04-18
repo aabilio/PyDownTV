@@ -84,6 +84,32 @@ class ProgressBar:
         term_rows, term_cols = map(int, os.popen('stty size', \
                                                      'r').read().split())
         return term_cols
+    
+    def getTerminalSize(self):
+        def ioctl_GWINSZ(fd):
+            try:
+                import fcntl, termios, struct, os
+                cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,
+            '1234'))
+            except:
+                return None
+            return cr
+        cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
+        if not cr:
+            try:
+                fd = os.open(os.ctermid(), os.O_RDONLY)
+                cr = ioctl_GWINSZ(fd)
+                os.close(fd)
+            except:
+                pass
+        if not cr:
+            try:
+                cr = (env['LINES'], env['COLUMNS'])
+            except:
+                cr = (25, 80)
+        term_cols, term_rows = int(cr[1]), int(cr[0])
+        
+        return term_cols
 
     def _get_download_rate(self, bytes):
         ret_str = report_bytes(bytes)
@@ -142,7 +168,11 @@ class ProgressBar:
                                          avg_speed if avg_speed > 0 else 0)
         # term_width - #(|) + #([) + #(]) + #(strings) +
         # 6 (for spaces and periods)
-        available_width = self._get_term_width() - (ldr + lpc +
+        if sys.platform != "win32":
+            available_width = self._get_term_width() - (ldr + lpc +
+                                                    ltl) - self.n_conn - 1 - 6
+        else:
+            available_width = self.getTerminalSize() - (ldr + lpc +
                                                     ltl) - self.n_conn - 1 - 6
         lpb, pbar = self._get_pbar(available_width / self.n_conn)
         sys.stdout.flush()

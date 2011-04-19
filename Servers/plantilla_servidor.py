@@ -67,8 +67,12 @@ class nombreDeLaClase(object): # Identificativo del canal
 
         # Esta es realmente la parte importante, la que procesa lo necesario para obtener la url
         # final de descarga del vídeo.
+        
+        name = None # Procesar el nombre final del vídeos (para guardar en disco)
+        if name:
+            name = formatearNombre(name)
 
-        return [url, None]
+        return [url, name]
 
 
 

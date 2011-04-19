@@ -146,7 +146,7 @@ def windowsPresentation():
         Muestra un presetación cuando se ejecuta en Windows
     '''
     print "PyDownTV",  __version__
-    print "========="
+    print "======================="
     print u"Descarga los vídeos de las webs de las TVs".encode("cp850")
 
 def compURL(url):

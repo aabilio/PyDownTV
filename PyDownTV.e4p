@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-04-18, 22:08:47 -->
+<!-- Saved: 2011-04-19, 16:06:15 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -47,6 +47,31 @@
     <Other>doc</Other>
     <Other>doc/PyDownTV.Servers.rtve.html</Other>
     <Other>icon.ico</Other>
+    <Other>doc/a3.html</Other>
+    <Other>doc/Descargar.html</Other>
+    <Other>doc/index-PyDownTV.html</Other>
+    <Other>doc/index-PyDownTV.Servers.html</Other>
+    <Other>doc/index-PyDownTV.Servers.pyaxel.html</Other>
+    <Other>doc/index.html</Other>
+    <Other>doc/plantilla_servidor.html</Other>
+    <Other>doc/pyaxel.html</Other>
+    <Other>doc/PyDownTV.pydowntv.html</Other>
+    <Other>doc/PyDownTV.Servers.a3.html</Other>
+    <Other>doc/PyDownTV.Servers.cuatro.html</Other>
+    <Other>doc/PyDownTV.Servers.Descargar.html</Other>
+    <Other>doc/PyDownTV.Servers.lasexta.html</Other>
+    <Other>doc/PyDownTV.Servers.plantilla_servidor.html</Other>
+    <Other>doc/PyDownTV.Servers.pyaxel.pyaxel.html</Other>
+    <Other>doc/PyDownTV.Servers.telecinco.html</Other>
+    <Other>doc/PyDownTV.Servers.tvalacarta.html</Other>
+    <Other>doc/PyDownTV.Servers.tve.html</Other>
+    <Other>doc/PyDownTV.Servers.utiles.html</Other>
+    <Other>doc/PyDownTV.setup_mac.html</Other>
+    <Other>doc/PyDownTV.setup_windows.html</Other>
+    <Other>doc/PyDownTV.setup.html</Other>
+    <Other>doc/telecinco.html</Other>
+    <Other>doc/tvalacarta.html</Other>
+    <Other>doc/tve.html</Other>
   </Others>
   <MainScript>pydowntv.py</MainScript>
   <Vcs>

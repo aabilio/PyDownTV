@@ -133,6 +133,10 @@ def qServidor(url):
         salir(msgErr)
         
 def comprobar_version():
+    '''
+        Comprueba la versión del cliente con la última lanzada utilizando la clase
+        PdtVersion() de utilies.py
+    '''
     pdtv = PdtVersion()
     try:
         pdtv.comp_version(pdtv.get_new_version())
@@ -160,8 +164,8 @@ def compURL(url):
     '''
         Comara de foma muy básica si la cadena que se le pasa como parámetro es una URL válida
     '''
-    # TODO: Implementar esto mejor (sin exagerar)
-    p = re.compile('^http://.+\..+$', re.IGNORECASE)
+    #p = re.compile('^http://.+\..+$', re.IGNORECASE)
+    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)?)?$', re.IGNORECASE)
     m = p.match(url)
     if m:
         return True

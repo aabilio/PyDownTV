@@ -20,12 +20,19 @@ class PdtVersion(object):
         pass
 
     def get_new_version(self):
+        '''
+            Obtiene y devuelve la última versión oficial lanzada descargándola de URL_VERSION
+        '''
         new_version = Descargar.Descargar(self.URL_VERSION)
         stream_version = new_version.descargar().split("\"")[1]
         #print stream_version
         return stream_version
         
     def comp_version(self, version):
+        '''
+            Compara las versiones y muestra un mensaje con el changelog en caso de que
+            exista una versión nueva de el script
+        '''
         if self.PDT_VERSION < version:
             print "[INFO] Existe un nueva versión de PyDownTV:", version
             print "[INFO] Cambios en la nueva versión:"
@@ -33,7 +40,10 @@ class PdtVersion(object):
         else:
             pass
             
-    def changelog(self):
+    def get_changelog(self):
+        '''
+            Devuelve el changelog de el script
+        '''
         return self.CHANGELOG
 
 def salir(msg):

@@ -2,6 +2,24 @@
 # -*- coding: utf-8 -*-
 
 from sys import exit, platform
+from Descargar import Descargar
+
+pdt_version = "1.0"
+
+def get_version():
+    D = Descargar("URL para descargar la version")
+    return D.descargar()
+
+def comp_version(version):
+    if version != pdt_version:
+        pass
+        # Avisar nuva versión
+        # Mostrar Changelog
+    else:
+        pass
+        
+def changelog():
+    log = """"""
 
 def salir(msg):
     if platform == "win32":
@@ -11,6 +29,11 @@ def salir(msg):
         exit()
     else:
         exit(msg)
+    
+def windows_end():
+    if sys.platform == "win32":
+        end = raw_input("[FIN] Presiona ENTER para SALIR")
+        sys.exit()
 
 def formatearNombre(nombre):
     '''

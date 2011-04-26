@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 
 # Acelerador de descargas axel en python: http://code.google.com/p/pyaxelws/
-# modificado por aabilio@gmail.com para que funcione implicitamente en PyDownTV
+# Licenciado con GPL v3
+# modificado por aabilio@gmail.com para que funcione implicitamente en PyDownTV:
+# http://code.google.com/p/pydowntv/ con licencia GPL v3
 
 import cPickle
 import math
@@ -13,8 +15,6 @@ import threading
 import time
 import urllib2
 
-from optparse import OptionParser
-
 std_headers = {
     'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; '
         'en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6',
@@ -24,7 +24,7 @@ std_headers = {
     'Accept-Language': 'en-us,en;q=0.5',
 }
 
-def salir(msg):
+def salir(msg): # Compatibilidad con versiones anteriores de python
     if platform == "win32":
         print "ERROR", msg, "en pyaxel"
         print ""
@@ -292,8 +292,13 @@ def download(url, options):
             output_file = options["output_file"]
 
         if output_file == "":
-            print "URL Inválida"
-            salir("1")
+            #print "URL Inválida"
+            #salir("1")
+            if url != None:
+                ext = url.split('.')[-1]
+                output_file = salida + ext
+            else:
+                salir("URL y archivo de salida inválido")
 
         print "[Destino] ", output_file
 
@@ -371,42 +376,9 @@ def main(options, args):
         download(url, options)
 
     except KeyboardInterrupt, k:
-        salir("1")
+        salir("\n\nBye!")
 
     except Exception, e:
         # TODO: handle other types of errors too.
         print e
         pass
-
-#if __name__ == "__main__":
-#
-#    parser = OptionParser(usage="Usage: %prog [options] url")
-#    parser.add_option("-s", "--max-speed", dest="max_speed",
-#                      type="int",
-#                      help="Specifies maximum speed (Kbytes per second)."
-#                      " Useful if you don't want the program to suck up"
-#                      " all of your bandwidth",
-#                      metavar="SPEED")
-#    parser.add_option("-q", "--quiet",
-#                      action="store_false", dest="verbose", default=True,
-#                      help="don't print status messages to stdout")
-#    parser.add_option("-n", "--num-connections", dest="num_connections",
-#                      type="int", default=4,
-#                      help="You can specify an alternative number of"
-#                      " connections here.",
-#                      metavar="NUM")
-#    parser.add_option("-o", "--output", dest="output_file",
-#                      help="By default, data does to a local file of "
-#                      "the same name. If this option is used, downloaded"
-#                      " data will go to this file.")
-#
-#    (options, args) = parser.parse_args()
-#
-#    print "Options: ", options
-#    print "args: ", args
-#
-#    if len(args) != 1:
-#        parser.print_help()
-#        sys.exit(1)
-#
-#    main(options, args)

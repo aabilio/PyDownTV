@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "1.0-BETA"
+__version__ = "1.1-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -37,7 +37,7 @@ from Servers.telecinco import Telecinco
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
 
-from Servers.utiles import salir
+from Servers.utiles import salir, windows_end
 
 class Servidor(object):
     '''
@@ -226,6 +226,4 @@ if __name__ == "__main__":
     D.descargarVideo()
 
     #print "[+] Vídeo descargado correctamente"
-    if platform == "win32":
-        end = raw_input("[FIN] Presiona ENTER para SALIR")
-        exit()
+    windows_end()

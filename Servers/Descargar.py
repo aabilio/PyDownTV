@@ -45,7 +45,10 @@ class Descargar(object):
     outputName = property(getOutputName, setOutputName)
 
     def descargar(self):
-        ''' Recoge una url la descarga y lo devuelve '''
+        '''
+            Recoge una url la descarga y lo devuelve
+            Pensado para descargar streams HTML y XML
+        '''
 
         if self._URL.find("http://") == -1:
             self._URL = "http://" + self._URL
@@ -63,40 +66,10 @@ class Descargar(object):
         else:
             pass
 
-
-#    def descargarVideo(self, nombre=None):
-#        url = self._URL
-#        name = nombre if nombre != None else self._URL.split('/')[-1]
-#
-#        print "[    Descarga     ]", self._URL
-#        print "[ Nombre en disco ]", name
-#        #print "(Puedes copiar el enlace y descargarlo por tu cuenta si lo prefieres)"
-#        print "Presiona Ctrl + C para cancelar"
-#
-#        def estadodescarga(bloque, tamano_bloque, tamano_total):
-#            '''
-#                función reporthook que representa en pantalla información mientras
-#                se realiza la descarga
-#            '''
-#
-#            # En Megas
-#            try:
-#                cant_descargada = ((bloque * tamano_bloque) / 1024) / 1024
-#                tamano_total = (tamano_total / 1024) / 1024
-#                porcentaje = float(float(cant_descargada) / (tamano_total / 100))
-#            except ZeroDivisionError:
-#                print "[DEBUG] Error de divisiñon entre cero"
-#            #sys.stdout.write("\rDescarga: %s\nGuardado como: %s [%s Bytes] \n" % (self._URL, name, tamano_total * 1024 ** 2))
-#            sys.stdout.write("\r[Descargando]: [ %s MiB / %s MiB ]\t\t[ %.1f / 100.0 %% ]" \
-#                            % (cant_descargada, tamano_total, porcentaje))
-#
-#
-#        try:
-#            urllib.urlretrieve(url, name, reporthook=estadodescarga)
-#        except KeyboardInterrupt:
-#            sys.exit("\nCiao!")
-
     def descargarVideo(self):
+        '''
+            Procesa la descarga del vídeo llamanda a la función download de pyaxel
+        '''
         print ""
         print "DESCARGAR:"
         print "----------------------------------------------------------------"

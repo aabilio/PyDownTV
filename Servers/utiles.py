@@ -16,7 +16,7 @@ class PdtVersion(object):
 
     def get_new_version(self):
         new_version = Descargar.Descargar(self.URL_VERSION)
-        return new_version.descargar()
+        return new_version.descargar().split("\"")[1]
     
     def comp_version(self, version):
         if version != self.PDT_VERSION:

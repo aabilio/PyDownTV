@@ -9,17 +9,24 @@ class PdtVersion(object):
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
     PDT_VERSION = "1.1-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
-    CHANGELOG = """- Soporte para controlar la versión del cliente\n"""
+    CHANGELOG = (
+    """
+    - Soporte para controlar la versión del cliente
+    - Pequeños Bugs arreglados
+    """
+    )
     
     def __init__(self):
         pass
 
     def get_new_version(self):
         new_version = Descargar.Descargar(self.URL_VERSION)
-        return new_version.descargar().split("\"")[1]
-    
+        stream_version = new_version.descargar().split("\"")[1]
+        #print stream_version
+        return stream_version
+        
     def comp_version(self, version):
-        if version != self.PDT_VERSION:
+        if self.PDT_VERSION < version:
             print "[INFO] Existe un nueva versión de PyDownTV:", version
             print "[INFO] Cambios en la nueva versión:"
             print self.CHANGELOG

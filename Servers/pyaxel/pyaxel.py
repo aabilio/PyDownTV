@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # Acelerador de descargas axel en python: http://code.google.com/p/pyaxelws/

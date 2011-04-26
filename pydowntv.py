@@ -37,7 +37,7 @@ from Servers.telecinco import Telecinco
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
 
-from Servers.utiles import salir, windows_end
+from Servers.utiles import salir, windows_end, PdtVersion
 
 class Servidor(object):
     '''
@@ -132,6 +132,13 @@ def qServidor(url):
         msgErr = "ERROR: La URL \"" + url + "\" no pertenece a ninguna Televisión"
         salir(msgErr)
         
+def comprobar_version():
+    pdtv = PdtVersion()
+    try:
+        pdtv.comp_version(pdtv.get_new_version())
+    except:
+        print "[!!!] ERROR al comprobar la versión del cliente"
+        
 def help(args):
     '''
         Muestra la ayuda por pantalla (se le pasa como argumento siempre: argv)
@@ -164,8 +171,12 @@ def compURL(url):
 
 
 if __name__ == "__main__":
-    if platform == "win32":
+    if platform == "win32" and len(argv) == 1:
         windowsPresentation()
+    
+    # Comprobar la versión del cliente
+    comprobar_version()
+    
     # Ver si tenemos un parámetro, si no tenemos parámetro pedir la URL por 
     # entrada estándar.
     url = None

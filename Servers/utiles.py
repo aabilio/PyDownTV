@@ -2,24 +2,32 @@
 # -*- coding: utf-8 -*-
 
 from sys import exit, platform
-from Descargar import Descargar
+import Descargar
 
-pdt_version = "1.0"
-
-def get_version():
-    D = Descargar("URL para descargar la version")
-    return D.descargar()
-
-def comp_version(version):
-    if version != pdt_version:
+class PdtVersion(object):
+    
+    # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
+    PDT_VERSION = "1.1-BETA"
+    URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
+    CHANGELOG = """- Soporte para controlar la versión del cliente\n"""
+    
+    def __init__(self):
         pass
-        # Avisar nuva versión
-        # Mostrar Changelog
-    else:
-        pass
-        
-def changelog():
-    log = """"""
+
+    def get_new_version(self):
+        new_version = Descargar.Descargar(self.URL_VERSION)
+        return new_version.descargar()
+    
+    def comp_version(self, version):
+        if version != self.PDT_VERSION:
+            print "[INFO] Existe un nueva versión de PyDownTV:", version
+            print "[INFO] Cambios en la nueva versión:"
+            print self.CHANGELOG
+        else:
+            pass
+            
+    def changelog(self):
+        return self.CHANGELOG
 
 def salir(msg):
     if platform == "win32":

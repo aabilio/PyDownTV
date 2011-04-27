@@ -140,7 +140,11 @@ def comprobar_version():
     printt(u"[INFO] Comprobando si existen nuevas versiones de PyDownTV")
     pdtv = PdtVersion()
     try:
-        pdtv.comp_version(pdtv.get_new_version())
+        new_version = pdtv.get_new_version()
+        if new_version == -1:
+            printt(u"[!!!] ERROR al comprobar la versión del cliente")
+        else:
+            pdtv.comp_version(new_version)
     except:
         printt(u"[!!!] ERROR al comprobar la versión del cliente")
         

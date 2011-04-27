@@ -61,6 +61,8 @@ class Descargar(object):
         except:
             if self._URL.find("rtve.es") != -1: #No salir (para identificar si es a la carta o no)
                 return -1
+            elif self._URL == "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION":
+                return -1
             else:
                 salir(u"ERROR al descargar!")
         else:

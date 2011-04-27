@@ -31,6 +31,8 @@ class PdtVersion(object):
         # para que por problemas de internet no se descarge otra cosa
         new_version = Descargar.Descargar(self.URL_VERSION)
         stream_version = new_version.descargar().split("\"")[1]
+        if stream_version == -1:
+            pass
         #print stream_version
         return stream_version
         

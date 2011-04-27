@@ -161,9 +161,9 @@ def windowsPresentation():
     '''
         Muestra un presetación cuando se ejecuta en Windows
     '''
-    printt(u"||==========================")
+    printt(u"||=============================")
     printt(u"|| PyDownTV", __version__, u"[Windows]")
-    printt(u"||==========================")
+    printt(u"||=============================")
     printt(u"|| Descarga los vídeos de las webs de las TVs")
     printt(u"||___________________________________________")
     print ""

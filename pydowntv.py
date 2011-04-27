@@ -137,6 +137,7 @@ def comprobar_version():
         Comprueba la versión del cliente con la última lanzada utilizando la clase
         PdtVersion() de utilies.py
     '''
+    printt(u"[INFO] Comprobando si existen nuevas versiones de PyDownTV")
     pdtv = PdtVersion()
     try:
         pdtv.comp_version(pdtv.get_new_version())
@@ -156,10 +157,19 @@ def windowsPresentation():
     '''
         Muestra un presetación cuando se ejecuta en Windows
     '''
-    printt(u"PyDownTV",  __version__)
-    printt(u"=======================")
-    print u"Descarga los vídeos de las webs de las TVs".encode("cp850")
-
+    printt(u"||=====================")
+    printt(u"|| PyDownTV", __version__)
+    printt(u"||=====================")
+    printt(u"|| Descarga los vídeos de las webs de las TVs")
+    printt(u"||___________________________________________")
+    print ""
+    
+def nixPresentation():
+    '''
+        Muestra presentación cuando se ejecuta en sistemas *nix
+    '''
+    pass
+    
 def compURL(url):
     '''
         Comara de foma muy básica si la cadena que se le pasa como parámetro es una URL válida
@@ -177,6 +187,8 @@ def compURL(url):
 if __name__ == "__main__":
     if platform == "win32" and len(argv) == 1:
         windowsPresentation()
+    elif platform != "win32" and len(argv) == 1:
+        nixPresentation()
     
     # Comprobar la versión del cliente
     comprobar_version()
@@ -196,7 +208,8 @@ if __name__ == "__main__":
         nOfUrls = len(url)
     else:
         try:
-            inPut = raw_input("Introduce las URL de los vídeos (separadas por espacios):\n")
+            printt(u"\n[--->] Introduce las URL de los vídeos (separadas por espacios):")
+            inPut = raw_input()
             url = inPut.split(" ")
             
             todasvacias = True

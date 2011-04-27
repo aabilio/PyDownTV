@@ -60,7 +60,7 @@ def salir(msg):
         - segundo: Mostrar una buena configuración de la codificación en Windows
     '''
     if platform == "win32":
-        print msg.codgin("cp850")
+        print msg.encode("cp850")
         print ""
         end = raw_input("[FIN] Presiona ENTER para SALIR")
         exit()
@@ -78,10 +78,12 @@ def printt(*msg):
         
         Las cadenas explícitas siempre tienen que tener la 'u' antes de las comillas:
         printt(u"Esto es un mensaje")
+        
+        printt() ya impreme un caracter de salto de línea final como print
     '''
     if platform == "win32":
         for i in msg:
-            print i.encode("cp850")
+            print i.encode("cp850"), 
         print ""
     else:
         for i in msg:

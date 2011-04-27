@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "1.5-BETA"
+__version__ = "1.6-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -157,9 +157,9 @@ def windowsPresentation():
     '''
         Muestra un presetación cuando se ejecuta en Windows
     '''
-    printt(u"||=====================")
-    printt(u"|| PyDownTV", __version__)
-    printt(u"||=====================")
+    printt(u"||==========================")
+    printt(u"|| PyDownTV", __version__, u"[Windows]")
+    printt(u"||==========================")
     printt(u"|| Descarga los vídeos de las webs de las TVs")
     printt(u"||___________________________________________")
     print ""
@@ -168,7 +168,12 @@ def nixPresentation():
     '''
         Muestra presentación cuando se ejecuta en sistemas *nix
     '''
-    pass
+    printt(u"||===================")
+    printt(u"|| PyDownTV", __version__)
+    printt(u"||===================")
+    printt(u"|| Descarga los vídeos de las webs de las TVs")
+    printt(u"||___________________________________________")
+    print ""
     
 def compURL(url):
     '''

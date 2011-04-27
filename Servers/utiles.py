@@ -27,6 +27,8 @@ class PdtVersion(object):
         '''
             Obtiene y devuelve la última versión oficial lanzada descargándola de URL_VERSION
         '''
+        # TODO: Comprobar que sea un formato de de versión Válido:
+        # para que por problemas de internet no se descarge otra cosa
         new_version = Descargar.Descargar(self.URL_VERSION)
         stream_version = new_version.descargar().split("\"")[1]
         #print stream_version
@@ -38,6 +40,7 @@ class PdtVersion(object):
             exista una versión nueva de el script
         '''
         if self.PDT_VERSION < version:
+            print version, self.PDT_VERSION
             print "[INFO] Existe un nueva versión de PyDownTV:", version
             print "[INFO] Cambios en la nueva versión:"
             print self.CHANGELOG
@@ -90,7 +93,7 @@ def windows_end():
         Para el ciclo del programa a la espera de pulsación de ENTER en
         sistemas win32 al acabar las descargas
     '''
-    if sys.platform == "win32":
+    if platform == "win32":
         end = raw_input("[FIN] Presiona ENTER para SALIR")
         sys.exit()
 

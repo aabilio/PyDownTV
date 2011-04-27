@@ -28,7 +28,7 @@ def salir(msg): # Compatibilidad con versiones anteriores de python
     '''
         Análoga al salir de Servers.utiles. Ver documentación de esta para comprender esta.
     '''
-    if platform == "win32":
+    if sys.platform == "win32":
         print "ERROR", msg.codgin("cp850"), "en pyaxel"
         print ""
         raw_input("[FIN] Presiona ENTER para SALIR")
@@ -40,7 +40,7 @@ def printt(*msg):
     '''
         Análoga al printt de Servers.utiles. Ver documentación de esta para comprender esta.
     '''
-    if platform == "win32":
+    if sys.platform == "win32":
         for i in msg:
             print i.encode("cp850")
         print ""

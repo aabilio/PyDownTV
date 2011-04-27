@@ -24,7 +24,7 @@ __date__ ="$29-mar-2011 11:03:38$"
 
 import sys
 from Descargar import Descargar
-from utiles import salir, formatearNombre
+from utiles import salir, formatearNombre, printt
 
 class A3(object):
     '''
@@ -53,7 +53,7 @@ class A3(object):
         return D.descargar()
 
     def __modoSalon(self, streamHTML):
-        print "[INFO] Modo Salón"
+        printt(u"[INFO] Modo Salón")
         streamXML = \
         self.__descXML(self.URL_DE_ANTENA3 + streamHTML.split("player_capitulo.xml='")[1].split("'")[0])
         url2down = self.URL_DE_DESCARGA + \
@@ -73,7 +73,7 @@ class A3(object):
         streamHTML = streamHTML.split("<a title=\"Video Anterior\"")[1].split("<a title=\"Video Siguiente\"")[0]
         partes = len(streamHTML.split("<img title="))-1
         streamPARTES = streamHTML.split("<img title=")[1:]
-        print "[INFO] Número de partes:", partes
+        printt(u"[INFO] Número de partes:", partes)
         #print streamPARTES
         for i in streamPARTES:
             xmlURL = self.URL_DE_ANTENA3 + i.split("rel=\"/")[1].split("\"")[0]
@@ -81,8 +81,8 @@ class A3(object):
             url2down.append(self.URL_DE_DESCARGA + streamXML.split("<archivo><![CDATA[")[1].split("]")[0])
             name.append(i.split("\"")[1].split("\"")[0])
         
-        print "[INFO] URLs    :",  url2down
-        print "[INFO] Nombres :",  name
+        printt(u"[INFO] URLs    :",  url2down)
+        printt(u"[INFO] Nombres :",  name)
         
         return [url2down, name]
     def __modoNormalUnaParte(self, streamHTML):
@@ -110,7 +110,7 @@ class A3(object):
         if self._URL_recibida.find("antena3.com/videos/") != -1: # Modo Salón
             url2down,  name = self.__modoSalon(streamHTML)
         else: # Otro vídeos (No modo salón)
-            print "[INFO] Vídeo normal"
+            printt(u"[INFO] Vídeo normal")
             if streamHTML.find(".seoURL='") != -1: # Url directamente en HTML
                 url2down, name = self.__modoNormalConURL(streamHTML)
             else: # No está la url en el hmtl (buscar por varias partes)
@@ -122,16 +122,16 @@ class A3(object):
         if type(url2down) == list:
             for i in url2down:
                 if i.find("geobloqueo") != -1:
-                    print "[!!!] El vídeo \"" + i + "\" no se puedo descargar (geobloqueado)"
+                    printt(u"[!!!] El vídeo \"" + i + "\" no se puedo descargar (geobloqueado)")
                     url2down.remove(i)
                     # TODO: Borrar también su nombre correspondiente
                 
             # Comprobar si todas las partes están geobloqueadas (no quedan elementos en la lista):
             if len(url2down) == 0:
-                salir("[!] No se puede descargar ninguna parte (geobloqueadas)")
+                salir(u"[!] No se puede descargar ninguna parte (geobloqueadas)")
         else:
             if url2down.find("geobloqueo") != -1:
-                salir("[!] El vídeo no se puede descargar (geobloqueado)")
+                salir(u"[!] El vídeo no se puede descargar (geobloqueado)")
 
         if type(name) == list:
             for i in name:

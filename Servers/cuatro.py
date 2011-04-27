@@ -27,7 +27,7 @@ __date__ ="$07-abr-2011 11:03:38$"
 # D = Descargar(url)
 # stream = D.descargar()
 from Descargar import Descargar
-from salir import salir, formatearNombre
+from utiles import salir, formatearNombre, printt
 import sys  # Utilizo sys para llamar a sys.exit() ya que si uso exit() me da
             # Problemas en ejecución tras usar Py2exe
 

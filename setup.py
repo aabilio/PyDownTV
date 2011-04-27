@@ -34,7 +34,7 @@ setup(name="PydownTV",
     license="GPL3",
     scripts=["pydowntv.py"], 
     packages=["Servers", "Servers.pyaxel"], 
-    py_modules=["tve", "rtve", "a3", "telecinco", "Descargar", "pyaxel"]
+    py_modules=["tve", "rtve", "a3", "telecinco", "Descargar", "pyaxel", "utiles"]
 )
     
     

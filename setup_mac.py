@@ -35,7 +35,7 @@ setup(name="PydownTV",
     scripts=["pydowntv.py"],
     app=["pydowntv.py"],
     packages=["Servers", "Servers.pyaxel"], 
-    py_modules=["Servers.tve", "Servers.rtve", "Servers.a3", "Servers.telecinco", "Servers.Descargar", "Servers.pyaxel.pyaxel"], 
+    py_modules=["Servers.tve", "Servers.rtve", "Servers.a3", "Servers.telecinco", "Servers.Descargar", "Servers.pyaxel.pyaxel", "Servers.utiles"], 
     options={'py2app': {'argv_emulation': False}},
     setup_requires=['py2app'],
 )

@@ -27,7 +27,7 @@ __date__ ="$07-abr-2011 23:11:07$"
 # D = Descargar(url)
 # stream = D.descargar()
 from Descargar import Descargar
-from utiles import salir, formatearNombre
+from utiles import salir, formatearNombre, printt
 import sys  # Utilizo sys para llamar a sys.exit() ya que si uso exit() me da
             # Problemas en ejecución tras usar Py2exe
 
@@ -70,7 +70,7 @@ class Telecinco(object):
         streamHTML = self.__descHTML(self._URL_recibida)
         
         if streamHTML.find("http://level3/") != -1: # Método antiguo
-            print "[INFO] Método antiguo (mitele)"
+            printt(u"[INFO] Método antiguo (mitele)")
             videoID = streamHTML.split("\'http://level3/")[1].split(".")[0]
             videoEXT = streamHTML.split("\'http://level3/")[1].split("\'")[0].split(".")[1]
             videoEXT = "." + videoEXT
@@ -78,22 +78,22 @@ class Telecinco(object):
             name = None
         elif streamHTML.find(self.string2split4id[0]) != -1: # Método nuevo
             newID = streamHTML.split(self.string2split4id[0])[1].split(self.string2split4id[1])[0].split(".")[0]
-            print "[INFO] Nuevo Video ID:", newID
+            printt(u"[INFO] Nuevo Video ID:", newID)
             ask4token = self.URL_ASK4TOKEN + newID[-3:] + "/" + newID + ".mp4"
-            print "[+] Pidiendo nuevo token"
+            printt(u"[+] Pidiendo nuevo token")
             url2down = self.__descHTML(ask4token)
             name = streamHTML.split("var title = \'")[1].split("\'")[0] + ".mp4"
         elif self._URL_recibida.find("videoURL="): # Forma con el ID en la URL (nueva??)
             videoID = self._URL_recibida.split("videoURL=")[1]
             ask4token = self.URL_ASK4TOKEN + videoID[-3:] + "/" + videoID + ".mp4"
-            print "[+] Pidiendo nuevo token"
+            printt(u"[+] Pidiendo nuevo token")
             url2down = self.__descHTML(ask4token)
             # Obtner nombre:
             xmlURL = "http://estaticos.telecinco.es/xml/Video/Video_" + videoID + ".xml"
             streamXML = self.__descHTML(xmlURL)
             name = streamXML.split("<![CDATA[")[1].split("]")[0] + ".mp4"
         else:
-            salir("[!!!] No se encuentra URL de descarga")
+            salir(u"[!!!] No se encuentra URL de descarga")
 
         
         if name != None:

@@ -26,7 +26,7 @@ import urllib
 import sys
 
 from pyaxel import pyaxel
-from utiles import salir
+from utiles import salir, printt
 
 class Descargar(object):
     ''' Clase que se encarga de descargar con urllib2 '''
@@ -35,7 +35,7 @@ class Descargar(object):
         self._outputName = None
         self._URL = url
         if self._URL == None:
-            salir("ERROR: No se puede descargar la url")
+            salir(u"ERROR: No se puede descargar la url")
     
     def getOutputName(self):
         return self._outputName
@@ -62,7 +62,7 @@ class Descargar(object):
             if self._URL.find("rtve.es") != -1: #No salir (para identificar si es a la carta o no)
                 return -1
             else:
-                salir("ERROR al descargar!")
+                salir(u"ERROR al descargar!")
         else:
             pass
 
@@ -70,36 +70,36 @@ class Descargar(object):
         '''
             Procesa la descarga del vídeo llamanda a la función download de pyaxel
         '''
-        print ""
-        print "DESCARGAR:"
-        print "----------------------------------------------------------------"
+        printt(u"")
+        printt(u"DESCARGAR:")
+        printt(u"----------------------------------------------------------------")
         if type(self._URL) == list:
             b=1
             for i in self._URL:
-                print "[ URL DE DESCARGA FINAL ] [Parte %d] %s" % (b, i)
+                printt(u"[ URL DE DESCARGA FINAL ] [Parte %d] %s" % (b, i))
                 b += 1
         else:
-            print "[ URL DE DESCARGA FINAL ]", self._URL
+            printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
         
-        print "[INFO] Presiona \"Ctrl + C\" para cancelar"
-        print ""
+        printt(u"[INFO] Presiona \"Ctrl + C\" para cancelar")
+        printt(u"")
         if type(self._URL) == list:
             for i in range(0, len(self._URL)):
-                print "[Descargando %d parte]" % (int(i) + 1)
+                printt(u"[Descargando %d parte]" % (int(i) + 1))
                 options = {"output_file": self._outputName[i], "verbose": True, "max_speed": None, "num_connections": 4}
                 pyaxel.download(self._URL[i], options)
                 if i < len(self._URL)-1: 
-                    print "=================================="
-                    print ""
-                    print "Parte descargada o cancelanda"
-                    print "Presiona [ENTER] para continuar"
-                    print "Presiona[Ctrl + C] para Cancelar"
-                    print ""
-                    print "=================================="
+                    printt(u"==================================")
+                    printt(u"")
+                    printt(u"Parte descargada o cancelanda")
+                    printt(u"Presiona [ENTER] para continuar")
+                    printt(u"Presiona[Ctrl + C] para Cancelar")
+                    printt(u"")
+                    printt(u"==================================")
                     try:
                         raw_input()
                     except KeyboardInterrupt:
-                        salir("\nBye!")
+                        salir(u"\nBye!")
             #for (i, b) in (self._URL, self._outputName):
             #    options = {"output_file": b, "verbose": True, "max_speed": None, "num_connections": 4}
             #    pyaxel.download(i, options)

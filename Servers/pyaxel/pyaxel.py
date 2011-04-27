@@ -25,13 +25,29 @@ std_headers = {
 }
 
 def salir(msg): # Compatibilidad con versiones anteriores de python
+    '''
+        Análoga al salir de Servers.utiles. Ver documentación de esta para comprender esta.
+    '''
     if platform == "win32":
-        print "ERROR", msg, "en pyaxel"
+        print "ERROR", msg.codgin("cp850"), "en pyaxel"
         print ""
         raw_input("[FIN] Presiona ENTER para SALIR")
         sys.exit()
     else:
         sys.exit(msg)
+
+def printt(*msg):
+    '''
+        Análoga al printt de Servers.utiles. Ver documentación de esta para comprender esta.
+    '''
+    if platform == "win32":
+        for i in msg:
+            print i.encode("cp850")
+        print ""
+    else:
+        for i in msg:
+            print i, 
+        print ""
 
 class ConnectionState:
     def __init__(self, n_conn, filesize):
@@ -58,7 +74,7 @@ class ConnectionState:
         try:
             saved_obj = cPickle.load(in_fd)
         except cPickle.UnpicklingError:
-            print "Archivo de estado Dañado"
+            printt(u"Archivo de estado Dañado")
             #now start download from the beginning
             return 
 
@@ -225,7 +241,7 @@ class FetchData(threading.Thread):
             try:
                 data = urllib2.urlopen(request)
             except urllib2.URLError, u:
-                print "La conexión", self.name, " no comenzó con", u
+                printt(u"La conexión", self.name, u" no comenzó con", u)
             else:
                 break
 
@@ -250,16 +266,16 @@ class FetchData(threading.Thread):
             try:
                 data_block = data.read(fetch_size)
                 if len(data_block) == 0:
-                    print "Conexión %s: [TESTING]: 0 sized block" + \
-                        " fetched." % (self.name)
+                    printt(u"Conexión %s: [TESTING]: 0 sized block" + \
+                        u" fetched." % (self.name))
                 if len(data_block) != fetch_size:
-                    print "Conexión %s: len(data_block) != fetch_size" + \
-                        ", pero se continúa de todos modos." % (self.name)
+                    printt(u"Conexión %s: len(data_block) != fetch_size" + \
+                        u", pero se continúa de todos modos." % (self.name))
                     self.run()
                     return
 
             except socket.timeout, s:
-                print "Conexión", self.name, "tiempo de espera agotado", s
+                printt(u"Conexión", self.name, u"tiempo de espera agotado", s)
                 self.run()
                 return
 
@@ -298,9 +314,9 @@ def download(url, options):
                 ext = url.split('.')[-1]
                 output_file = salida + ext
             else:
-                salir("URL y archivo de salida inválido")
+                salir(u"URL y archivo de salida inválido")
 
-        print "[Destino] ", output_file
+        printt(u"[Destino] ", output_file)
 
         filesize = get_file_size(url)
 
@@ -319,7 +335,7 @@ def download(url, options):
             conn_state.resume_state(state_fd)
             state_fd.close()
 
-        print "\n[Tamaño de Descarga] %s\n" % report_bytes(conn_state.filesize - sum(conn_state.progress))
+        printt(u"\n[Tamaño de Descarga] %s\n" % report_bytes(conn_state.filesize - sum(conn_state.progress)))
         #create output file with a .part extension to indicate partial download
         out_fd = os.open(output_file+".part", os.O_CREAT | os.O_WRONLY)
 
@@ -376,7 +392,7 @@ def main(options, args):
         download(url, options)
 
     except KeyboardInterrupt, k:
-        salir("\n\nBye!")
+        salir(u"\n\nBye!")
 
     except Exception, e:
         # TODO: handle other types of errors too.

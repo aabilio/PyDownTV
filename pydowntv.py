@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "1.1-BETA"
+__version__ = "1.5-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -37,7 +37,7 @@ from Servers.telecinco import Telecinco
 # from Servers.cuatro import Cuatro
 from Servers.Descargar import Descargar
 
-from Servers.utiles import salir, windows_end, PdtVersion
+from Servers.utiles import salir, windows_end, PdtVersion, printt
 
 class Servidor(object):
     '''
@@ -108,28 +108,28 @@ def qServidor(url):
     # Descomentar return según se vañan añadiendo
     server = Servidor(url)
     if server.isAntena3:
-        print "[INFO] Antena 3 Televisión"
+        printt(u"[INFO] Antena 3 Televisión")
         return A3(url)
     #elif server.isTVEaLaCarta: # DEPRECATED
     #    print "[INFO] TV Española \"A la carta\""
     #    return TvAlacarta(url)
     elif server.isRTVE: # Tienes que comprobarse antes que isTVE
-        print "[INFO] Audio de RTVE.es"
+        printt(u"[INFO] Audio de RTVE.es")
         return RTVE(url)
     elif server.isTVE:
-        print "[INFO] Vídeo de RTVE.es"
+        printt(u"[INFO] Vídeo de RTVE.es")
         return TVE(url)
     elif server.isT5:
-        print "[INFO] Telecinco"
+        printt(u"[INFO] Telecinco")
         return Telecinco(url)
     elif server.isLaSexta:
-        salir("La Sexta: Todavía no implementado")
+        salir(u"La Sexta: Todavía no implementado")
         # return LaSexta(url)
     elif server.isCuatro:
-        salir("Cuatro: Todavía no implementado")
+        salir(u"Cuatro: Todavía no implementado")
         # return Cuatro(url)
     else:
-        msgErr = "ERROR: La URL \"" + url + "\" no pertenece a ninguna Televisión"
+        msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión"
         salir(msgErr)
         
 def comprobar_version():
@@ -141,23 +141,23 @@ def comprobar_version():
     try:
         pdtv.comp_version(pdtv.get_new_version())
     except:
-        print "[!!!] ERROR al comprobar la versión del cliente"
+        printt(u"[!!!] ERROR al comprobar la versión del cliente")
         
 def help(args):
     '''
         Muestra la ayuda por pantalla (se le pasa como argumento siempre: argv)
     '''
-    print "USO:", args[0]
-    print "o   ", args[0], "<url>"
-    print "(Los dos métodos aceptan varias URLs separadas por un espacio)"
-    print "PyDownTV <aabilio@gmail.com>"
+    printt(u"USO:", args[0])
+    printt(u"o   ", args[0], "<url>")
+    printt(u"(Los dos métodos aceptan varias URLs separadas por un espacio)")
+    printt(u"PyDownTV <aabilio@gmail.com>")
 
 def windowsPresentation():
     '''
         Muestra un presetación cuando se ejecuta en Windows
     '''
-    print "PyDownTV",  __version__
-    print "======================="
+    printt(u"PyDownTV",  __version__)
+    printt(u"=======================")
     print u"Descarga los vídeos de las webs de las TVs".encode("cp850")
 
 def compURL(url):
@@ -188,7 +188,7 @@ if __name__ == "__main__":
         #exit("ERROR: Demasiados parámetros.\nFlag --help: para ayuda")
         if argv[1] == "--help" or argv[1] == "-h":
             help(argv)
-            salir("")
+            salir(u"")
         i = ""
         url = []
         for i in argv[1:]:
@@ -209,7 +209,7 @@ if __name__ == "__main__":
             if url is not None:
                 nOfUrls = len(url)
         except KeyboardInterrupt:
-            salir("\nBye!")
+            salir(u"\nBye!")
 
     if url != None:
         # Comprobar la url y mandarla al servidor correspondiente
@@ -221,13 +221,13 @@ if __name__ == "__main__":
                 servidor = qServidor(url[nOfUrls-1]) # Devuelve el objeto de la clase correspondiente
             else:
                 cuantasIncorrectas += 1
-                print "[!] URL incorrecta:",  url[nOfUrls-1]
+                printt(u"[!] URL incorrecta:",  url[nOfUrls-1])
                 #exit("ERROR: URL mal introducida\nFlag --help: para ayuda")
             nOfUrls -= 1
         if cuantasIncorrectas == cuantasTotal:
-            salir("[!!!] Todas las URLs son incorrectas")
+            salir(u"[!!!] Todas las URLs son incorrectas")
     else:
-        salir("No has introducido la URL!")
+        salir(u"No has introducido la URL!")
 
     # Llegados a este punto tenemos la url comprobada y tenemos el objeto
     # "servidor" perteneciente a la correspondiente Clase de servers en la que estemos

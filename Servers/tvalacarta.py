@@ -30,7 +30,7 @@ __date__ ="$31-mar-2011 11:35:37$"
 
 import sys
 from Descargar import Descargar
-from utiles import salir, formatearNombre
+from utiles import salir, formatearNombre, printt
 
 class TvAlacarta(object): # Identificativo del canal
     '''
@@ -78,11 +78,11 @@ class TvAlacarta(object): # Identificativo del canal
             videoID = videoID.split('.')[0]
         
         
-        print "[INFO] ID del Vídeo :", videoID
+        printt(u"[INFO] ID del Vídeo :", videoID)
         xmlURL = "www.rtve.es/swf/data/es/videos/video/" + videoID[-1] \
                 + "/" + videoID[-2] + "/" + videoID[-3] \
                 + "/" + videoID[-4] + "/" + videoID + ".xml"
-        print "[INFO] Url de xml   :", xmlURL
+        printt(u"[INFO] Url de xml   :", xmlURL)
         #print "[+] Procesando Descarga"
 
         sourceXML = self.__descXML(xmlURL)
@@ -93,13 +93,13 @@ class TvAlacarta(object): # Identificativo del canal
             elif sourceHTML.find("<div id=\"vid") != -1:
                 id = sourceHTML.split("<div id=\"vid")[1].split("\"")[0]
             else:
-                salir("[!] ERROR al generear el nuevo id")
+                salir(u"[!] ERROR al generear el nuevo id")
             xmlURL = "www.rtve.es/swf/data/es/videos/video/" + id[-1] \
                 + "/" + id[-2] + "/" + id[-3] \
                 + "/" + id[-4] + "/" + id + ".xml"
             sourceXML = self.__descXML(xmlURL)
-            print "[INFO] Nuevo vídeo ID:",  id
-            print "[INFO] Nuevo url de xml:", xmlURL  
+            printt(u"[INFO] Nuevo vídeo ID:",  id)
+            printt(u"[INFO] Nuevo url de xml:", xmlURL) 
             
 
         # Ahora la url final del video puede estar entre las etiquetas <file></file>
@@ -123,11 +123,11 @@ class TvAlacarta(object): # Identificativo del canal
                 urlVideo = "http://www.rtve.es/resources/TE_NGVA/mp4/" \
                         + urlInSourceAssetXML.split("/mp4/")[1]
             else:
-                salir("Vídeo no encontrado")
+                salir(u"Vídeo no encontrado")
             
             
         else:
-            salir("No se encuentra la URL del vídeo")
+            salir(u"No se encuentra la URL del vídeo")
 
         # Nombre con el que se guardará la descarga:
         extension = '.' + urlVideo.split('.')[-1]

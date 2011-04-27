@@ -5,9 +5,13 @@ from sys import exit, platform
 import Descargar
 
 class PdtVersion(object):
+    '''
+        Clase que maneja el control de la versión del cliente con las correspondientes
+        versiones oficialmente puestas para descargar en la web de proyecto
+    '''
     
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
-    PDT_VERSION = "1.1-BETA"
+    PDT_VERSION = "1.5-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
     CHANGELOG = (
     """
@@ -47,15 +51,45 @@ class PdtVersion(object):
         return self.CHANGELOG
 
 def salir(msg):
+    '''
+        Recibe una cadena y sustituye al exit() de python para:
+        - primero: Parar la ejecución del programa en entornos win32
+        - segundo: Mostrar una buena configuración de la codificación en Windows
+    '''
     if platform == "win32":
-        print msg
+        print msg.codgin("cp850")
         print ""
         end = raw_input("[FIN] Presiona ENTER para SALIR")
         exit()
     else:
         exit(msg)
-    
+        
+def printt(*msg):
+    '''
+        Recibe una cadena y la muestra por pantalla en el formato adecuado para sistemas
+        win32 y *nix
+        Funciona de manera análoga a print de python:
+        - con sus concatenaciones de cadenas con '+' o ','
+        - con la posibilidad de usar variables directamente o con el formato do especificadore 
+          de formato --> printt(u"hola %s eres es usuario número %d" % (user, 925)) p.ejem..
+        
+        Las cadenas explícitas siempre tienen que tener la 'u' antes de las comillas:
+        printt(u"Esto es un mensaje")
+    '''
+    if platform == "win32":
+        for i in msg:
+            print i.encode("cp850")
+        print ""
+    else:
+        for i in msg:
+            print i, 
+        print ""
+
 def windows_end():
+    '''
+        Para el ciclo del programa a la espera de pulsación de ENTER en
+        sistemas win32 al acabar las descargas
+    '''
     if sys.platform == "win32":
         end = raw_input("[FIN] Presiona ENTER para SALIR")
         sys.exit()

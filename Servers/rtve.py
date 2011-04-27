@@ -29,7 +29,7 @@ __date__ ="$31-mar-2011 11:35:37$"
 
 import sys
 from Descargar import Descargar
-from utiles import salir, formatearNombre
+from utiles import salir, formatearNombre, printt
 
 class RTVE(object): # Identificativo del canal
     '''
@@ -76,11 +76,11 @@ class RTVE(object): # Identificativo del canal
             audioID = audioID.split('.')[0]
         
         
-        print "[INFO] ID del Audio   :", audioID
+        printt(u"[INFO] ID del Audio   :", audioID)
         xmlURL = "http://www.rtve.es/swf/data/es/audios/audio/" + audioID[-1] \
                 + "/" + audioID[-2] + "/" + audioID[-3] \
                 + "/" + audioID[-4] + "/" + audioID + ".xml"
-        print "[INFO] Url de xml     :", xmlURL
+        printt(u"[INFO] Url de xml     :", xmlURL)
         #print "[+] Procesando Descarga"
 
         sourceXML = self.__descXML(xmlURL)
@@ -91,17 +91,17 @@ class RTVE(object): # Identificativo del canal
             urlAudio = sourceXML.split("<file>")[1].split("</file>")[0]
         elif sourceXML.find("assetDataId::") != -1: # Dar el rodeo
             idAsset = sourceXML.split("assetDataId::")[1].split("\"/>")[0]
-            print "[INFO] Nuevo ID Asset :",  idAsset
+            printt(u"[INFO] Nuevo ID Asset :",  idAsset)
             urlXMLasset = "www.rtve.es/scd/CONTENTS/ASSET_DATA_AUDIO/" + idAsset[-1] \
                         + "/" + idAsset[-2] + "/" + idAsset[-3] \
                         + "/" + idAsset[-4] + "/ASSET_DATA_AUDIO-" + idAsset + ".xml"
-            print "[INFO] XML URL Asset  :",  urlXMLasset
+            printt(u"[INFO] XML URL Asset  :",  urlXMLasset)
             sourceAssetXML = self.__descXML(urlXMLasset)
             urlInSourceAssetXML = sourceAssetXML.split("defaultLocation=\"")[1].split("\"")[0]
             #print "urllInSourceAssetXML =", urlInSourceAssetXML
             urlAudio = "http://www.rtve.es/resources/TE_NGVA/mp3/" + urlInSourceAssetXML.split("/mp3/")[1]
         else:
-            salir("[!!!] No se encuentró la URL del Audio")
+            salir(u"[!!!] No se encuentró la URL del Audio")
         
         
 

@@ -199,8 +199,6 @@ if __name__ == "__main__":
     elif platform != "win32" and len(argv) == 1:
         nixPresentation()
     
-    # Comprobar la versión del cliente
-    comprobar_version()
     
     # Ver si tenemos un parámetro, si no tenemos parámetro pedir la URL por 
     # entrada estándar.
@@ -210,13 +208,23 @@ if __name__ == "__main__":
         if argv[1] == "--help" or argv[1] == "-h":
             help(argv)
             salir(u"")
+            
         i = ""
         url = []
-        for i in argv[1:]:
-            url.append(i)
+        
+        if argv[1] == "--no-check-version":
+            for i in argv[2:]:
+                url.append(i)
+        else:
+            comprobar_version()
+            for i in argv[1:]:
+                url.append(i)
+                
         nOfUrls = len(url)
     else:
         try:
+            comprobar_version()
+            
             printt(u"\n[--->] Introduce las URL de los vídeos (separadas por espacios):")
             inPut = raw_input()
             url = inPut.split(" ")
@@ -234,6 +242,8 @@ if __name__ == "__main__":
             salir(u"\nBye!")
 
     if url != None:
+        if len(url) == 0:
+            salir(u"No has introducido ninguna URL!")
         # Comprobar la url y mandarla al servidor correspondiente
         cuantasIncorrectas = 0
         cuantasTotal = nOfUrls
@@ -249,7 +259,7 @@ if __name__ == "__main__":
         if cuantasIncorrectas == cuantasTotal:
             salir(u"[!!!] Todas las URLs son incorrectas")
     else:
-        salir(u"No has introducido la URL!")
+        salir(u"No has introducido ninguna URL!")
 
     # Llegados a este punto tenemos la url comprobada y tenemos el objeto
     # "servidor" perteneciente a la correspondiente Clase de servers en la que estemos

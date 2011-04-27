@@ -6,4 +6,7 @@ Gui車n a recordar:
 
 - Añadir wiki de como crear servido siguiendo la plantilla
 - Añadir wiki para añadir pydowntv al path de windows y de GNU/Linux
+- Añadir wiki de cómo pegar en cmd de windows
+- Probar y subir las nuevas versiones y a continuación actualizar VERSION
+- Actualizar wiki con lo de --no-check-version (que está solo disponible para versión en líena de comandos)
 

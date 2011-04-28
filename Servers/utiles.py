@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import re
 from sys import exit, platform
 import Descargar
 
@@ -27,14 +28,18 @@ class PdtVersion(object):
         '''
             Obtiene y devuelve la última versión oficial lanzada descargándola de URL_VERSION
         '''
-        # TODO: Comprobar que sea un formato de de versión Válido:
-        # para que por problemas de internet no se descarge otra cosa
         new_version = Descargar.Descargar(self.URL_VERSION)
-        stream_version = new_version.descargar().split("\"")[1]
-        if stream_version == -1:
-            pass
-        #print stream_version
-        return stream_version
+        
+        # Comprobar que es un formao de versión válido:
+        p = re.compile('^\"[0-9]\.[0-9\-].*\"$', re.IGNORECASE)
+        m = p.match(new_version.descargar())
+        if m:
+            stream_version = new_version.descargar().split("\"")[1]
+        
+            #print stream_version
+            return stream_version
+        else:
+            return -1
         
     def comp_version(self, version):
         '''

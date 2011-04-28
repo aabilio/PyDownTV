@@ -184,7 +184,7 @@ def compURL(url):
         Comara de foma muy básica si la cadena que se le pasa como parámetro es una URL válida
     '''
     #p = re.compile('^http://.+\..+$', re.IGNORECASE)
-    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)?)?$', re.IGNORECASE)
+    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=\w+)?(?:&\w+=\w+)*)?)?)?$', re.IGNORECASE)
     m = p.match(url)
     if m:
         return True

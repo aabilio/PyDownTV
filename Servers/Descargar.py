@@ -103,6 +103,7 @@ class Descargar(object):
             except ZeroDivisionError:
                 pass
                 #print "[DEBUG] Error de divisiñon entre cero"
+            # TODO: Agregar velocidad de descarga al progreso
             sys.stdout.write("\r[Descargando]: [ %.2f MiB / %.2f MiB ]\t\t[ %.1f%% ]" \
                             % (cant_descargada, tamano_total, porcentaje))
         

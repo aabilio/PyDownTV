@@ -66,6 +66,7 @@ class A3(object):
         name = self.__descXML(self.URL_DE_ANTENA3 + streamHTML.split(".xml='")[1].split("'")[0]).split("<nombre><![CDATA[")[1].split("]]>")[0] + ".mp4"
                 
         return [url2down,  name]
+        
     def __modoNormalVariasPartes(self, streamHTML):
         url2down = []
         name = []
@@ -73,18 +74,20 @@ class A3(object):
         streamHTML = streamHTML.split("<a title=\"Video Anterior\"")[1].split("<a title=\"Video Siguiente\"")[0]
         partes = len(streamHTML.split("<img title="))-1
         streamPARTES = streamHTML.split("<img title=")[1:]
-        printt(u"[INFO] Número de partes:", partes)
+        printt(u"[INFO] Número de partes:", str(partes))
         #print streamPARTES
         for i in streamPARTES:
             xmlURL = self.URL_DE_ANTENA3 + i.split("rel=\"/")[1].split("\"")[0]
             streamXML = self.__descXML(xmlURL)
             url2down.append(self.URL_DE_DESCARGA + streamXML.split("<archivo><![CDATA[")[1].split("]")[0])
-            name.append(i.split("\"")[1].split("\"")[0])
+            ext = streamXML.split("<archivo><![CDATA[")[1].split("]")[0].split('.')[-1]
+            name.append(i.split("\"")[1].split("\"")[0] + '.' + ext)
         
-        printt(u"[INFO] URLs    :",  url2down)
-        printt(u"[INFO] Nombres :",  name)
+        print "[INFO] URLs    :",  url2down
+        print "[INFO] Nombres :",  name
         
         return [url2down, name]
+        
     def __modoNormalUnaParte(self, streamHTML):
         xmlURL = streamHTML.split("A3Player.swf?xml=")[1].split("\"")[0]
         streamXML = self.__descXML(xmlURL)
@@ -110,7 +113,7 @@ class A3(object):
         if self._URL_recibida.find("antena3.com/videos/") != -1: # Modo Salón
             url2down,  name = self.__modoSalon(streamHTML)
         else: # Otro vídeos (No modo salón)
-            printt(u"[INFO] Vídeo normal")
+            printt(u"[INFO] Vídeo normal (no Modo Salón)")
             if streamHTML.find(".seoURL='") != -1: # Url directamente en HTML
                 url2down, name = self.__modoNormalConURL(streamHTML)
             else: # No está la url en el hmtl (buscar por varias partes)

@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "1.6-BETA"
+__version__ = "2.0-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -153,7 +153,10 @@ def help(args):
         Muestra la ayuda por pantalla (se le pasa como argumento siempre: argv)
     '''
     printt(u"USO:", args[0])
-    printt(u"o   ", args[0], "<url>")
+    printt(u"o   ", args[0], u"[opciones] <url>")
+    printt(u"Opciones:")
+    printt(u"  - \"--help\": Muestra esta ayuda")
+    printt(u"  - \"--no-check-version\": No si existen nuevas versiones de PyDownTV")
     printt(u"(Los dos métodos aceptan varias URLs separadas por un espacio)")
     printt(u"PyDownTV <aabilio@gmail.com>")
 

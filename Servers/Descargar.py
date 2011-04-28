@@ -67,11 +67,84 @@ class Descargar(object):
                 salir(u"ERROR al descargar!")
         else:
             pass
+            
+    def descargarVideoWindows(self, nombre=None):
+        # TODO: IMPLEMENTAR descarga de varias partes en windows
+        url = self._URL
+        name = nombre if nombre != None else self._URL.split('/')[-1]
+        
+        printt(u"")
+        printt(u"DESCARGAR:")
+        printt(u"----------------------------------------------------------------")
+
+        if type(self._URL) == list:
+            b=1
+            for i in self._URL:
+                printt(u"[ URL DE DESCARGA FINAL ] [Parte %d] %s" % (b, i))
+                b += 1
+        else:
+            printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
+            
+        printt(u"[INFO] Presiona \"Ctrl + C\" para cancelar")
+        printt(u"")
+        
+        def estadodescarga(bloque, tamano_bloque, tamano_total):
+            '''
+                función reporthook que representa en pantalla información mientras
+                se realiza la descarga
+            '''
+            # En Megas
+            try:
+                cant_descargada = ((bloque * tamano_bloque) / 1024.00) / 1024.00
+                tamano_total = (tamano_total / 1024.00) / 1024.00
+                porcentaje = cant_descargada / (tamano_total / 100.00)
+                if porcentaje > 100.00:
+                    porcentaje = 100.00
+            except ZeroDivisionError:
+                pass
+                #print "[DEBUG] Error de divisiñon entre cero"
+            sys.stdout.write("\r[Descargando]: [ %.2f MiB / %.2f MiB ]\t\t[ %.1f%% ]" \
+                            % (cant_descargada, tamano_total, porcentaje))
+        
+        if type(self._URL) == list:
+            for i in range(0, len(self._URL)):
+                printt(u"[Descargando %d parte]" % (int(i) + 1))
+                printt(u"[Destino]", name[i])
+                try:
+                    urllib.urlretrieve(url[i], name[i], reporthook=estadodescarga)
+                    print ""
+                except KeyboardInterrupt:
+                    sys.exit("\nCiao!")
+                    
+                if i < len(self._URL)-1: 
+                    printt(u"==================================")
+                    printt(u"")
+                    printt(u"Parte descargada o cancelanda")
+                    printt(u"Presiona [ENTER] para continuar")
+                    printt(u"Presiona[Ctrl + C] para Cancelar")
+                    printt(u"")
+                    printt(u"==================================")
+                    try:
+                        raw_input()
+                    except KeyboardInterrupt:
+                        salir(u"\nBye!")
+        else:
+            try:
+                printt(u"[Destino]", name)
+                urllib.urlretrieve(url, name, reporthook=estadodescarga)
+                print ""
+            except KeyboardInterrupt:
+                salir("\nCiao!")
 
     def descargarVideo(self):
         '''
             Procesa la descarga del vídeo llamanda a la función download de pyaxel
         '''
+        
+        if sys.platform == "win32":
+            self.descargarVideoWindows(self.outputName)
+            return
+        
         printt(u"")
         printt(u"DESCARGAR:")
         printt(u"----------------------------------------------------------------")
@@ -82,6 +155,7 @@ class Descargar(object):
                 b += 1
         else:
             printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
+
         
         printt(u"[INFO] Presiona \"Ctrl + C\" para cancelar")
         printt(u"")

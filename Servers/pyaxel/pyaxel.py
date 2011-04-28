@@ -101,32 +101,32 @@ class ProgressBar: # This is just for Unix like systems
                                                      'r').read().split())
         return term_cols
     
-    def getTerminalSize(self): # This is just for Windows
-        # TODO: Implement a better way to take term_width on Windows
-        def ioctl_GWINSZ(fd):
-            try:
-                import fcntl, termios, struct, os
-                cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,
-            '1234'))
-            except:
-                return None
-            return cr
-        cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
-        if not cr:
-            try:
-                fd = os.open(os.ctermid(), os.O_RDONLY)
-                cr = ioctl_GWINSZ(fd)
-                os.close(fd)
-            except:
-                pass
-        if not cr:
-            try:
-                cr = (env['LINES'], env['COLUMNS'])
-            except:
-                cr = (25, 80)
-        term_cols, term_rows = int(cr[1]), int(cr[0])
-        
-        return term_cols
+#    def getTerminalSize(self): # This is just for Windows
+#        # TODO: Implement a better way to take term_width on Windows
+#        def ioctl_GWINSZ(fd):
+#            try:
+#                import fcntl, termios, struct, os
+#                cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,
+#            '1234'))
+#            except:
+#                return None
+#            return cr
+#        cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
+#        if not cr:
+#            try:
+#                fd = os.open(os.ctermid(), os.O_RDONLY)
+#                cr = ioctl_GWINSZ(fd)
+#                os.close(fd)
+#            except:
+#                pass
+#        if not cr:
+#            try:
+#                cr = (env['LINES'], env['COLUMNS'])
+#            except:
+#                cr = (25, 80)
+#        term_cols, term_rows = int(cr[1]), int(cr[0])
+#        
+#        return term_cols
 
     def _get_download_rate(self, bytes):
         ret_str = report_bytes(bytes)
@@ -189,8 +189,9 @@ class ProgressBar: # This is just for Unix like systems
             available_width = self._get_term_width() - (ldr + lpc +
                                                     ltl) - self.n_conn - 1 - 6
         else:
-            available_width = self.getTerminalSize() - (ldr + lpc +
-                                                    ltl) - self.n_conn - 1 - 6
+            available_width = 80 - (ldr + lpc + ltl) - self.n_conn - 1 - 6
+#            available_width = self.getTerminalSize() - (ldr + lpc +
+#                                                    ltl) - self.n_conn - 1 - 6
         lpb, pbar = self._get_pbar(available_width / self.n_conn)
         sys.stdout.flush()
         print "\r%s %s %s %s" % (drate, pcomp, tleft, pbar),
@@ -329,6 +330,7 @@ def download(url, options):
             os.stat(state_file)
         except OSError, o:
             #statefile is missing for all practical purposes
+            #print o
             pass
         else:
             state_fd = file(state_file, "r")

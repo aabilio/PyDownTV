@@ -12,11 +12,13 @@ class PdtVersion(object):
     '''
     
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
-    PDT_VERSION = "1.6-BETA"
+    PDT_VERSION = "2.0-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
     CHANGELOG = (
     """
     - Soporte para controlar la versión del cliente
+    - Fixed Bug de descarga en Windows (ya no se utiliza acelerador)
+    - Descarga de vídeos por partes en Windows (Modo normal A3)
     - Pequeños Bugs arreglados
     """
     )
@@ -104,7 +106,7 @@ def windows_end():
     '''
     if platform == "win32":
         end = raw_input("[FIN] Presiona ENTER para SALIR")
-        sys.exit()
+        exit()
 
 def formatearNombre(nombre):
     '''
@@ -123,11 +125,15 @@ def formatearNombre(nombre):
     nombre = nombre.replace('/',"-") # Quitar las barras "/"
     nombre = nombre.replace(" ", "_") # Quirar espacios
     nombre = nombre.replace("_-_", "-")
-    nombre = nombre.replace("&#146;", "=") # Cambiar el caracter escapado (') por (=)
+    nombre = nombre.replace("&#146;", "-") # Cambiar el caracter escapado (') por (=)
+    nombre = nombre.replace("\'", "-")
+    nombre = nombre.replace("\"", "-")
     nombre = nombre.replace("á", "a")
     nombre = nombre.replace("é", "e")
     nombre = nombre.replace("í", "i")
     nombre = nombre.replace("ó", "o")
     nombre = nombre.replace("ú", "u")
+    nombre = nombre.replace("ñ", "nh")
+    nombre = nombre.replace("\xc3\xb1", "nh") # Cambiar el caracter escapado (ñ) por (nh)
 
     return nombre

@@ -14,6 +14,7 @@ class PdtVersion(object):
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
     PDT_VERSION = "2.0-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
+    # TODO: FIXME: Solucionar esta tontería, CHANGELOG debe de estar en el Servidor, o local xD
     CHANGELOG = (
     """
     - Soporte para controlar la versión del cliente

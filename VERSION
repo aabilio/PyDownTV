@@ -1,1 +1,8 @@
 "2.0-BETA"
+"
+-Soporte para controlar la versión del cliente
+- Fixed Bug de descarga en Windows (ya no se utiliza acelerador)
+- Descarga de vídeos por partes en Windows (Modo normal A3)
+- Pequeños Bugs arreglados
+- Bug de control de versiones arreglado
+"

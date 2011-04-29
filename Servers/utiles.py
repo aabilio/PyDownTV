@@ -84,6 +84,7 @@ class PdtVersion(object):
             printt(u"[INFO] Existe un nueva versión de PyDownTV:", version)
             printt(u"[INFO] Cambios en la nueva versión:")
             printt(changelog)
+            # TODO: Añadir URL de descarga aquí y quitar de changelog
         else:
             printt(u"[INFO] Tu versión de PyDownTV es la más reciente")
 

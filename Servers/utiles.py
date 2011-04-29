@@ -49,7 +49,7 @@ class PdtVersion(object):
     '''
     
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
-    PDT_VERSION = "1.0-BETA"
+    PDT_VERSION = "2.1-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
     
     def __init__(self):
@@ -85,7 +85,7 @@ class PdtVersion(object):
             printt(u"[INFO] Cambios en la nueva versión:")
             printt(changelog)
         else:
-            pass
+            printt(u"[INFO] Tu versión de PyDownTV es la más reciente")
 
 def windows_end():
     '''

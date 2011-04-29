@@ -5,64 +5,6 @@ import re
 from sys import exit, platform
 import Descargar
 
-class PdtVersion(object):
-    '''
-        Clase que maneja el control de la versión del cliente con las correspondientes
-        versiones oficialmente puestas para descargar en la web de proyecto
-    '''
-    
-    # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
-    PDT_VERSION = "2.0-BETA"
-    URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
-    # TODO: FIXME: Solucionar esta tontería, CHANGELOG debe de estar en el Servidor, o local xD
-    CHANGELOG = (
-    """
-    - Soporte para controlar la versión del cliente
-    - Fixed Bug de descarga en Windows (ya no se utiliza acelerador)
-    - Descarga de vídeos por partes en Windows (Modo normal A3)
-    - Pequeños Bugs arreglados
-    """
-    )
-    
-    def __init__(self):
-        pass
-
-    def get_new_version(self):
-        '''
-            Obtiene y devuelve la última versión oficial lanzada descargándola de URL_VERSION
-        '''
-        new_version = Descargar.Descargar(self.URL_VERSION)
-        
-        # Comprobar que es un formao de versión válido:
-        p = re.compile('^\"[0-9]\.[0-9\-].*\"$', re.IGNORECASE)
-        m = p.match(new_version.descargar())
-        if m:
-            stream_version = new_version.descargar().split("\"")[1]
-        
-            #print stream_version
-            return stream_version
-        else:
-            return -1
-        
-    def comp_version(self, version):
-        '''
-            Compara las versiones y muestra un mensaje con el changelog en caso de que
-            exista una versión nueva de el script
-        '''
-        if self.PDT_VERSION < version:
-            print version, self.PDT_VERSION
-            print "[INFO] Existe un nueva versión de PyDownTV:", version
-            print "[INFO] Cambios en la nueva versión:"
-            print self.CHANGELOG
-        else:
-            pass
-            
-    def get_changelog(self):
-        '''
-            Devuelve el changelog de el script
-        '''
-        return self.CHANGELOG
-
 def salir(msg):
     '''
         Recibe una cadena y sustituye al exit() de python para:
@@ -99,6 +41,51 @@ def printt(*msg):
         for i in msg:
             print i, 
         print ""
+
+class PdtVersion(object):
+    '''
+        Clase que maneja el control de la versión del cliente con las correspondientes
+        versiones oficialmente puestas para descargar en la web de proyecto
+    '''
+    
+    # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
+    PDT_VERSION = "1.0-BETA"
+    URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
+    
+    def __init__(self):
+        pass
+
+    def get_new_version(self):
+        '''
+            Obtiene y devuelve la última versión oficial lanzada descargándola de URL_VERSION
+            y su changelog
+        '''
+        new_version = Descargar.Descargar(self.URL_VERSION)
+        
+        # Comprobar que es un formao de versión válido:
+        p = re.compile('^\"[0-9]\.[0-9\-].*\".*', re.IGNORECASE)
+        m = p.match(new_version.descargar())
+        if m:
+            stream = new_version.descargar()
+            stream_version = stream.split("\"")[1]
+            changelog = stream.split("\"")[3]
+        
+            #print stream_version
+            return [stream_version, changelog]
+        else:
+            return [-1, -1]
+        
+    def comp_version(self, version, changelog):
+        '''
+            Compara las versiones y muestra un mensaje con el changelog en caso de que
+            exista una versión nueva de el script
+        '''
+        if self.PDT_VERSION < version:
+            printt(u"[INFO] Existe un nueva versión de PyDownTV:", version)
+            printt(u"[INFO] Cambios en la nueva versión:")
+            printt(changelog)
+        else:
+            pass
 
 def windows_end():
     '''

@@ -32,7 +32,7 @@
 object
 <h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
 <table>
-<tr><td>outputName</td></tr>
+<tr><td>outputName</td></tr><tr><td>std_headers</td></tr>
 </table>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
 <table>
@@ -45,6 +45,12 @@ object
 </tr><tr>
 <td><a style="color:#0000FF" href="#Descargar.descargarVideo">descargarVideo</a></td>
 <td>Procesa la descarga del v&#237;deo llamanda a la funci&#243;n download de pyaxel</td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#Descargar.descargarVideoWindows">descargarVideoWindows</a></td>
+<td></td>
+</tr><tr>
+<td><a style="color:#0000FF" href="#Descargar.estadodescarga">estadodescarga</a></td>
+<td>funci&#243;n reporthook que representa en pantalla informaci&#243;n mientras se realiza la descarga</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Descargar.getOutputName">getOutputName</a></td>
 <td></td>
@@ -67,6 +73,15 @@ object
 <b>descargarVideo</b>(<i></i>)
 <p>
             Procesa la descarga del v&#237;deo llamanda a la funci&#243;n download de pyaxel
+</p><a NAME="Descargar.descargarVideoWindows" ID="Descargar.descargarVideoWindows"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Descargar.descargarVideoWindows</h3>
+<b>descargarVideoWindows</b>(<i>nombre=None</i>)
+<a NAME="Descargar.estadodescarga" ID="Descargar.estadodescarga"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Descargar.estadodescarga</h3>
+<b>estadodescarga</b>(<i>tamano_bloque, tamano_total</i>)
+<p>
+                funci&#243;n reporthook que representa en pantalla informaci&#243;n mientras
+                se realiza la descarga
 </p><a NAME="Descargar.getOutputName" ID="Descargar.getOutputName"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Descargar.getOutputName</h3>
 <b>getOutputName</b>(<i></i>)

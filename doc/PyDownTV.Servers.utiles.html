@@ -45,7 +45,7 @@
 object
 <h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
 <table>
-<tr><td>CHANGELOG</td></tr><tr><td>PDT_VERSION</td></tr><tr><td>URL_VERSION</td></tr>
+<tr><td>PDT_VERSION</td></tr><tr><td>URL_VERSION</td></tr>
 </table>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
 <table>
@@ -56,11 +56,8 @@ object
 <td><a style="color:#0000FF" href="#PdtVersion.comp_version">comp_version</a></td>
 <td>Compara las versiones y muestra un mensaje con el changelog en caso de que exista una versi&#243;n nueva de el script</td>
 </tr><tr>
-<td><a style="color:#0000FF" href="#PdtVersion.get_changelog">get_changelog</a></td>
-<td>Devuelve el changelog de el script</td>
-</tr><tr>
 <td><a style="color:#0000FF" href="#PdtVersion.get_new_version">get_new_version</a></td>
-<td>Obtiene y devuelve la &#250;ltima versi&#243;n oficial lanzada descarg&#225;ndola de URL_VERSION</td>
+<td>Obtiene y devuelve la &#250;ltima versi&#243;n oficial lanzada descarg&#225;ndola de URL_VERSION y su changelog</td>
 </tr>
 </table>
 <a NAME="PdtVersion.__init__" ID="PdtVersion.__init__"></a>
@@ -68,20 +65,16 @@ object
 <b>PdtVersion</b>(<i></i>)
 <a NAME="PdtVersion.comp_version" ID="PdtVersion.comp_version"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">PdtVersion.comp_version</h3>
-<b>comp_version</b>(<i>version</i>)
+<b>comp_version</b>(<i>version, changelog</i>)
 <p>
             Compara las versiones y muestra un mensaje con el changelog en caso de que
             exista una versi&#243;n nueva de el script
-</p><a NAME="PdtVersion.get_changelog" ID="PdtVersion.get_changelog"></a>
-<h3 style="background-color:#FFFFFF;color:#FF0000">PdtVersion.get_changelog</h3>
-<b>get_changelog</b>(<i></i>)
-<p>
-            Devuelve el changelog de el script
 </p><a NAME="PdtVersion.get_new_version" ID="PdtVersion.get_new_version"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">PdtVersion.get_new_version</h3>
 <b>get_new_version</b>(<i></i>)
 <p>
             Obtiene y devuelve la &#250;ltima versi&#243;n oficial lanzada descarg&#225;ndola de URL_VERSION
+            y su changelog
 </p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr /><hr />
@@ -121,7 +114,7 @@ object
 <hr /><hr />
 <a NAME="salir" ID="salir"></a>
 <h2 style="background-color:#FFFFFF;color:#0000FF">salir</h2>
-<b>salir</b>(<i>msg</i>)
+<b>salir</b>(<i>*msg</i>)
 <p>
         Recibe una cadena y sustituye al exit() de python para:
         - primero: Parar la ejecuci&#243;n del programa en entornos win32

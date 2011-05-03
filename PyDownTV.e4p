@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-05-03, 16:22:06 -->
+<!-- Saved: 2011-05-03, 16:24:29 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -33,6 +33,7 @@
     <Source>Servers/pylibmms/__init__.py</Source>
     <Source>Servers/pylibmms/core.py</Source>
     <Source>Servers/pylibmms/libmms.py</Source>
+    <Source>Servers/crtvg.py</Source>
   </Sources>
   <Forms>
   </Forms>

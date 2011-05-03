@@ -1,10 +1,10 @@
 "2.1-BETA"
 "
-- Soporte para controlar la versión del cliente
-- Fixed Bug de descarga en Windows (ya no se utiliza acelerador)
+- Soporte para Televisión de Galicia Modo normal
+- Soporte para Televisión de Galicia modo "Á carta"
+- Soporte para realizar descargar de protocolo mms:// en Mac OS X
 - Descarga de vídeos por partes en Windows (Modo normal A3)
 - Pequeños Bugs arreglados
-- Bug de control de versiones arreglado
 
---> Visita: http://code.google.com/p/pydowntv/downloads/list
+--> [Para descargar] http://code.google.com/p/pydowntv/downloads/list
 "

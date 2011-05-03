@@ -6,3 +6,11 @@ Gui車n a recordar:
 
 - Añadir wiki de como crear servidor siguiendo la plantilla
 - Añadir wiki para añadir pydowntv al path de windows y de GNU/Linux
+- Velocidad de descarga en windows
+- Traducir mensajes de pylibmms
+
+
+- ¿Cambiar la descargarVideoWindows() ese antiguo urllib.urlretrieve() por otro más fiable?
+
+
+- Actualizar la versión en VERSION, utilies y septups cuando esté todo probadamente funcionando

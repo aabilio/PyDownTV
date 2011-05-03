@@ -28,8 +28,17 @@ import sys
 from pyaxel import pyaxel
 from utiles import salir, printt
 
+
 class Descargar(object):
     ''' Clase que se encarga de descargar con urllib2 '''
+    std_headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; '
+        'en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6',
+    'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
+    'Accept': 'text/xml,application/xml,application/xhtml+xml,'
+        'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5',
+    'Accept-Language': 'en-us,en;q=0.5',
+    }
 
     def __init__(self, url=None):
         self._outputName = None
@@ -54,22 +63,29 @@ class Descargar(object):
             self._URL = "http://" + self._URL
 
         try:
-            f = urllib2.urlopen(self._URL)
-            stream = f.read()
-            f.close()
-            return stream
-        except:
+            # TVG necesita headers:
+            if self._URL.find("crtvg.es/") != -1:
+                request = urllib2.Request(self._URL, None, self.std_headers)
+                f = urllib2.urlopen(request)
+                stream = f.read()
+                f.close()
+                return stream
+            else:
+                f = urllib2.urlopen(self._URL)
+                stream = f.read()
+                f.close()
+                return stream
+        except Exception, e:
             if self._URL.find("rtve.es") != -1: #No salir (para identificar si es a la carta o no)
                 return -1
             elif self._URL == "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION":
                 return -1
             else:
-                salir(u"ERROR al descargar!")
+                salir(u"[!!!] ERROR al descargar:", e)
         else:
             pass
             
     def descargarVideoWindows(self, nombre=None):
-        # TODO: IMPLEMENTAR descarga de varias partes en windows
         url = self._URL
         name = nombre if nombre != None else self._URL.split('/')[-1]
         
@@ -141,7 +157,22 @@ class Descargar(object):
         '''
             Procesa la descarga del vídeo llamanda a la función download de pyaxel
         '''
-        
+        # Utilizar pylibmms si el protocoo es mms://
+        if self._URL.startswith("mms"):
+            # Por ahora solo tengo libmms compilado para Mac OS X
+            if sys.platform == "darwin":
+                try:
+                    from pylibmms import core as libmmscore
+                except ImportError, e:
+                    print e
+                    salir(u"[!!!] ERROR al impotar libmms")
+                
+                options = [self._URL, self.outputName]
+                libmmscore.run(options)
+            else:
+                printt(u"Protocolo mms solo diposnible en MacOS X (por ahora)")
+            
+            
         if sys.platform == "win32":
             self.descargarVideoWindows(self.outputName)
             return

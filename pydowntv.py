@@ -35,6 +35,7 @@ from Servers.rtve import RTVE
 from Servers.telecinco import Telecinco
 # from Servers.lasexta import LaSexta
 # from Servers.cuatro import Cuatro
+from Servers.crtvg import CRTVG
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -89,6 +90,13 @@ class Servidor(object):
         '''
         if self._url.find("play.cuatro.com/") != -1:
             return True
+    def isCRTVG_(self):
+        '''
+            return True is la URL pertenece a TV de Galiza
+        '''
+        if self._url.find("crtvg.es/") != -1:
+            return True
+            
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
     isAntena3 = property(isAntena3_)
@@ -98,6 +106,7 @@ class Servidor(object):
     isT5 = property(isT5_)
     isLaSexta = property(isLaSexta_)
     isCuatro = property(isCuatro_)
+    isCRTVG = property(isCRTVG_)
     
 def qServidor(url):
     '''
@@ -128,6 +137,9 @@ def qServidor(url):
     elif server.isCuatro:
         salir(u"Cuatro: Todavía no implementado")
         # return Cuatro(url)
+    elif server.isCRTVG:
+        printt(u"[INFO] Televisión de Galiza")
+        return CRTVG(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión"
         salir(msgErr)
@@ -145,7 +157,9 @@ def comprobar_version():
             printt(u"[!!!] ERROR al comprobar la versión del cliente")
         else:
             pdtv.comp_version(new_version, changelog)
-    except:
+    except KeyboardInterrupt:
+        printt(u"[+] Comprobación cancelada")
+    except Exception:
         printt(u"[!!!] ERROR al comprobar la versión del cliente")
         
 def help(args):
@@ -186,8 +200,11 @@ def compURL(url):
     '''
         Comara de foma muy básica si la cadena que se le pasa como parámetro es una URL válida
     '''
+    # El primero que tuve (básico):
     #p = re.compile('^http://.+\..+$', re.IGNORECASE)
-    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=\w+)?(?:&\w+=\w+)*)?)?)?$', re.IGNORECASE)
+    # La siguiente no valida los vídeos de la TVG:
+    #p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=\w+)?(?:&\w+=\w+)*)?)?)?$', re.IGNORECASE)
+    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=[-a-z0-9/%:]+)?(?:&\w+=[-a-zA-Z0-9/%:]+)*)?)?)?$', re.IGNORECASE)
     m = p.match(url)
     if m:
         return True

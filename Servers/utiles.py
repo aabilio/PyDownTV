@@ -5,19 +5,23 @@ import re
 from sys import exit, platform
 import Descargar
 
-def salir(msg):
+def salir(*msg):
     '''
         Recibe una cadena y sustituye al exit() de python para:
         - primero: Parar la ejecución del programa en entornos win32
         - segundo: Mostrar una buena configuración de la codificación en Windows
     '''
     if platform == "win32":
-        print msg.encode("cp850")
+        for i in msg:
+            print i.encode("cp850"), 
         print ""
         end = raw_input("[FIN] Presiona ENTER para SALIR")
         exit()
     else:
-        exit(msg)
+        for i in msg:
+            print i, 
+        print ""
+        exit()
         
 def printt(*msg):
     '''

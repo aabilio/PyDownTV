@@ -6,8 +6,13 @@ Gui車n a recordar:
 
 - Añadir wiki de como crear servidor siguiendo la plantilla
 - Añadir wiki para añadir pydowntv al path de windows y de GNU/Linux
+- Añadir en Wiki que se tiene que poner las url con "" (comillas)
+- Añadir en Wiki cómo coger la URL de TVG sección "A galega INFO"
+- Añadir en Wiki como instalar libmms en los distintos OS:
+  - En Mac libmms con mac ports y después enlaces simbólicos desde /opt/local/lib en /usr/lib 
 - Velocidad de descarga en windows
 - Traducir mensajes de pylibmms
+
 
 
 - ¿Cambiar la descargarVideoWindows() ese antiguo urllib.urlretrieve() por otro más fiable?

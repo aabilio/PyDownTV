@@ -33,8 +33,20 @@ setup(name="PydownTV",
     url="http://code.google.com/p/pydowntv/",
     license="GPL3",
     scripts=["pydowntv.py"], 
-    packages=["Servers", "Servers.pyaxel"], 
-    py_modules=["Servers.tve", "Servers.rtve", "Servers.a3", "Servers.telecinco", "Servers.Descargar", "Servers.pyaxel.pyaxel", "Servers.utiles"]
+    packages = ["Servers",
+                "Servers.pyaxel",
+                "Servers.pylibmms"], 
+    py_modules=["Servers.tve", 
+                "Servers.rtve",
+                "Servers.a3",
+                "Servers.telecinco",
+                "Servers.crtvg",
+                "Servers.btv", 
+                "Servers.utiles",
+                "Servers.Descargar",
+                "Servers.pyaxel.pyaxel",
+                "Servers.pylibmms.core",
+                "Servers.pylibmms.libmms"]
 )
     
     

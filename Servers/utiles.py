@@ -128,5 +128,8 @@ def formatearNombre(nombre):
     nombre = nombre.replace("ú", "u")
     nombre = nombre.replace("ñ", "nh")
     nombre = nombre.replace("\xc3\xb1", "nh") # Cambiar el caracter escapado (ñ) por (nh)
+    nombre = nombre.replace("&#8220;","") # (parece que: &#8220; = ")
+    nombre = nombre.replace("&#8221;","") # Lo mismo que lo anterior
+    nombre = nombre.replace("&#8217;", "")
 
     return nombre

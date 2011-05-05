@@ -158,7 +158,7 @@ class Descargar(object):
             Procesa la descarga del vídeo llamanda a la función download de pyaxel
         '''
         # Utilizar pylibmms si el protocoo es mms://
-        if self._URL.startswith("mms"):
+        if self._URL.startswith("mms://"):
             # Por ahora solo tengo libmms compilado para Mac OS X
             if sys.platform == "darwin":
                 try:
@@ -167,10 +167,19 @@ class Descargar(object):
                     print e
                     salir(u"[!!!] ERROR al impotar libmms")
                 
+                printt(u"")
+                printt(u"DESCARGAR:")
+                printt(u"----------------------------------------------------------------")
+                printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
+                printt(u"[   DESTINO   ]", self.outputName)
+                printt(u"\n[INFO] Presiona \"Ctrl + C\" para cancelar\n")
+                
                 options = [self._URL, self.outputName]
                 libmmscore.run(options)
             else:
                 printt(u"Protocolo mms solo diposnible en MacOS X (por ahora)")
+            
+            return
             
             
         if sys.platform == "win32":

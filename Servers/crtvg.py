@@ -27,8 +27,10 @@ import sys
 
 class CRTVG(object): # Identificativo del canal
     '''
-        Descripción de la clase
+        Clase que maneja la descarga de vídeos de la Televisión de Galicia
     '''
+    
+    URL_CRTVG = "http://www.crtvg.es/"
 
     def __init__(self, url=""):
         self._URL_recibida = url
@@ -56,27 +58,46 @@ class CRTVG(object): # Identificativo del canal
         # Creo que lo más recomendable es pedir el código javascript
         # de las WWW de debajo del vídeo
         printt(u"[INFO] A galega info")
-        printt(u"El vídeo que intentas descargar pertenece a la sección A galega Info")
-        printt(u"Para asegurar bajar el vídeo que quieres, haz click con el ratón a las WWW")
+        printt(u"El vídeo que intentas descargar pertenece a la sección \"A galega Info\".")
+        printt(u"Para asegurar que se baja el vídeo deseado, haz click con el ratón a las WWW")
         printt(u"que aparecen debajo del vídeo (a la izquierda).")
-        printt(u"Copiar todo el contenido y pégalo aquí")
-        javascript = raw_input("Pegua aquí: ")
+        printt(u"Copia todo el contenido y pégalo aquí")
+        try:
+            javascript = raw_input("Pegua aquí: ")
+        except KeyboardInterrupt, e:
+            salir(u"\nKeyboardInterrupt: Ciao!")
+        except Exception, a:
+            printt(a)
         asxFile = javascript.split("data=\'")[1].split("\'")[0]
+        printt(u"\n[INFO] ASX FILE:", asxFile)
         asxStream = self.__descHTML(asxFile)
         
-        name = asxStream.split("<title>")[1].asplit("<")[0]
+        #name = asxStream.split("<title>")[1].split("<")[0] + emi + ".wmv"
+        name = javascript.split(" title=\'")[1].split("\'")[0] + ".wmv"
         url  = asxStream.split("<ref href = \"")[1].split("\"")[0]
-        return [name, url]
+        return [url, name]
     
     def __aCarta(self):
+        '''
+            return URL (mms) y NAME 
+        '''
         printt(u"[INFO] Á Carta (tvg)")
         urlStream = self.__descHTML(self._URL_recibida)
-        asxFile = urlStream.split("<a href=\"")[1].split("\"")[0]
+        urlframeiParte = urlStream.split("<frame src=\"")[1].split("\"")[0]
+        urlframei =  self.URL_CRTVG + "reproductor/" + urlframeiParte
+        urlframei = urlframei.replace("&amp;", "&").replace(" ",  "%20")
+        frameiStream = self.__descHTML(urlframei)
+        frameVideo = frameiStream.split("<frame src=\"")[1].split("\"")[0]
+        urlframeVideo = self.URL_CRTVG + "reproductor/" + frameVideo
+        urlframeVideo = urlframeVideo.replace("&amp;", "&").replace(" ",  "%20")
+        frameVideoStream = self.__descHTML(urlframeVideo)
+        asxFile = frameVideoStream.split("<PARAM NAME=\"URL\" value=\"")[1].split("\"")[0]
+        printt(u"[INFO] ASX File:", asxFile)
         asxStream = self.__descHTML(asxFile)
         
-        name = asxStream.split("<TITLE>")[1].asplit("<")[0]
+        name = asxStream.split("<TITLE>")[1].split("<")[0] + ".wmv"
         url  = asxStream.split("<ENTRY><REF HREF=\"")[1].split("\"")[0]
-        return [name, url]
+        return [url, name]
 
     def procesarDescarga(self):
         '''

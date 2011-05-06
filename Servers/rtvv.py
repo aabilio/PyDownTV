@@ -63,6 +63,17 @@ class RTVV(object):
         htmlURL = self.URL_RTVV + frameID.split("<a href=\"")[1].split("\"")[0]
         
         return htmlURL
+    
+    def __rtvvRadio(self, htmlStream, sep):
+        '''
+            Dada una URL de la radio de RTVV devuelve la URL y el NOMBRE de descarga del audio
+        '''
+        printt(u"[INFO] Modo Audios de Ràdio")
+        url = self.URL_RTVV + htmlStream.split(sep)[1].split("\"")[0]
+        ext = "." + url.split(".")[-1]
+        name = htmlStream.split("class=\"title\"><strong>")[1].split("<")[0] + ext
+        
+        return [url, name]
 
     def procesarDescarga(self):
         '''
@@ -78,6 +89,17 @@ class RTVV(object):
             Tanto "ruta_url" como "nombre" pueden ser listas (por supuesto, el nombre del ruta_url[0]
             tiene que ser nombre[0] y así sucesivamente).
         '''
+        # Comprobar si es de radio primero:
+        firstHtmlCheck = self.__descHTML(self._URL_recibida)
+        separador = "this.element.jPlayer(\"setFile\", \""
+        if firstHtmlCheck.find(separador) != -1 and firstHtmlCheck.find(".mp3") != -1:
+            url, name = self.__rtvvRadio(firstHtmlCheck, separador)
+            if name:
+                name = formatearNombre(name)
+            return [url, name]
+        # FIN Ràdio
+        
+        # Ahora Vídeos
         if self._URL_recibida.find("rtvv.es/va/noualacarta") != -1:
             printt(u"[INFO] A la Carta")
             xmlURL = self.URL_RTVV + self.__descHTML(self.__getHtmlUrlFromAlacarta()).split("file: \"")[1].split("\"")[0]

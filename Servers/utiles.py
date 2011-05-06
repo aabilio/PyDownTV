@@ -115,6 +115,7 @@ def formatearNombre(nombre):
     '''
 
     nombre = nombre.replace(": ",  ":")
+    nombre = nombre.replace(". ", ".")
     nombre = nombre.replace('/',"-") # Quitar las barras "/"
     nombre = nombre.replace(" ", "_") # Quirar espacios
     nombre = nombre.replace("_-_", "-")
@@ -126,6 +127,12 @@ def formatearNombre(nombre):
     nombre = nombre.replace("í", "i")
     nombre = nombre.replace("ó", "o")
     nombre = nombre.replace("ú", "u")
+    nombre = nombre.replace("à", "a")
+    nombre = nombre.replace("è", "e")
+    nombre = nombre.replace("ì", "i")
+    nombre = nombre.replace("ò", "o")
+    nombre = nombre.replace("ù", "u")
+    nombre = nombre.replace("´", "")
     nombre = nombre.replace("ñ", "nh")
     nombre = nombre.replace("\xc3\xb1", "nh") # Cambiar el caracter escapado (ñ) por (nh)
     nombre = nombre.replace("&#8220;","") # (parece que: &#8220; = ")

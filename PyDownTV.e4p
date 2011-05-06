@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-05-06, 11:05:41 -->
+<!-- Saved: 2011-05-06, 12:43:00 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -36,6 +36,7 @@
     <Source>Servers/crtvg.py</Source>
     <Source>Servers/btv.py</Source>
     <Source>Servers/canalsur.py</Source>
+    <Source>Servers/rtvv.py</Source>
   </Sources>
   <Forms>
   </Forms>

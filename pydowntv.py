@@ -38,6 +38,7 @@ from Servers.telecinco import Telecinco
 from Servers.crtvg import CRTVG
 from Servers.btv import BTV
 from Servers.canalsur import CSur
+from Servers.rtvv import RTVV
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -104,12 +105,17 @@ class Servidor(object):
         '''
         if self._url.find("btvnoticies.cat") != -1 or self._url.find("btv.cat/alacarta") != -1:
             return True
-    
     def isCSur_(self):
         '''
-            return True si ls URL pertenece a Canal Sur TV
+            return True si la URL pertenece a Canal Sur TV
         '''
         if self._url.find("canalsuralacarta.es") != -1 or self._url.find("canalsur.es") != -1:
+            return True
+    def isRTVV_(self):
+        '''
+            return True si la URL pertenece a Ràdio Televisió Valenciana
+        '''
+        if self._url.find("rtvv.es") != -1:
             return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
@@ -124,6 +130,7 @@ class Servidor(object):
     isCRTVG = property(isCRTVG_)
     isBTV = property(isBTV_)
     isCSur = property(isCSur_)
+    isRTVV = property(isRTVV_)
     
 def qServidor(url):
     '''
@@ -163,6 +170,9 @@ def qServidor(url):
     elif server.isCSur:
         printt(u"[INFO] Canal Sur")
         return CSur(url)
+    elif server.isRTVV:
+        printt(u"[INFO] Ràdio Televisió Valenciana")
+        return RTVV(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión"
         salir(msgErr)

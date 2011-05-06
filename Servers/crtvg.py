@@ -46,6 +46,7 @@ class CRTVG(object): # Identificativo del canal
         ''' Método que utiliza la clase descargar para descargar el HTML '''
         D = Descargar(url2down)
         return D.descargar()
+        
     def __descXML(self, url2down):
         ''' Método que utiliza la clase descargar para descargar HTML '''
         D = Descargar(url2down)

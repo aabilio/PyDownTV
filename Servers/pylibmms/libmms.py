@@ -24,14 +24,13 @@ from sys import platform
 from ctypes import *
 
 if platform == "darwin":
-    # Tiene que ser ruta completa desde el lanzador script principal: pydowntv
     try:
         libmms = cdll.LoadLibrary("libmms.0.dylib")
     except Exception, e:
         print e
         sys.exit("No se encuentra dependencia: libmms")
 elif platform == "win32":
-    sys.exit(" no implementado en Windows")
+    sys.exit(" No implementado en Windows")
 else:
 	libmms = cdll.LoadLibrary("libmms.so.0")
 

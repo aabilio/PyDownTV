@@ -98,7 +98,8 @@ def get_filename(options):
 def download(options):
   "Using the given options, download the stream to a file."
 
-  status = "Connecting ..."
+  #status = "Connecting ..."
+  status = "[ Conectando ... ]" 
   if not options.quiet: print status,
   sys.stdout.flush()  
 
@@ -116,7 +117,7 @@ def download(options):
     f = open(filename, "w")
 
   clear = " " * len(status)
-  status = "%s => %s" % (options.url, filename)
+  status = "[  Origen  ] %s\n[ Destino  ] %s" % (options.url, filename)
   if not options.quiet: print "\r", clear, "\r", status
   sys.stdout.flush()  
 
@@ -164,7 +165,7 @@ def download(options):
           remaining = options.time*60 - timeout_timer.elapsed()
 
       clear = " " * len(status)
-      status = "%s / %s (%s/s, %s remaining)" % (
+      status = "%s / %s (%s/s, Tiempo restante: %s)" % (
         bytes_to_string(stream.position()),
         bytes_to_string(length),
         bytes_to_string(bytes_per_second),
@@ -240,7 +241,7 @@ def run(argv):
   except KeyboardInterrupt:
     if not options.quiet:
       print
-    print >> sys.stderr, "Download aborted by user."
+    print >> sys.stderr, "Descarga abortada por el uasuario. Bye!"
   except libmms.Error, e:
     print >> sys.stderr, "libmms error:", e.message
   else:

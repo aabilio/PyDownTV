@@ -140,5 +140,6 @@ def formatearNombre(nombre):
     nombre = nombre.replace("&#8217;", "")
     nombre = nombre.replace("(", "-")
     nombre = nombre.replace(")", "-")
+    nombre = nombre.replace(":", "-")
 
     return nombre

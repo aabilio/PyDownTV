@@ -53,7 +53,8 @@ class PdtVersion(object):
     '''
     
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
-    PDT_VERSION = "2.1-BETA"
+    PDT_VERSION_NIX = "2.5-BETA"
+    PDT_VERSION_WIN = "2.1-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
     
     def __init__(self):
@@ -71,11 +72,14 @@ class PdtVersion(object):
         m = p.match(new_version.descargar())
         if m:
             stream = new_version.descargar()
-            stream_version = stream.split("\"")[1]
-            changelog = stream.split("\"")[3]
-        
+            stream_version_nix = stream.split("\"")[1]
+            stream_version_win = stream.split("\"")[3]
+            changelog = stream.split("\"")[5]
+            
+            ver2return = stream_version_win if platform == "win32" else stream_version_nix
+            
             #print stream_version
-            return [stream_version, changelog]
+            return [ver2return, changelog]
         else:
             return [-1, -1]
         
@@ -84,7 +88,8 @@ class PdtVersion(object):
             Compara las versiones y muestra un mensaje con el changelog en caso de que
             exista una versión nueva de el script
         '''
-        if self.PDT_VERSION < version:
+        ver2compare = self.PDT_VERSION_WIN if platform == "win32" else self.PDT_VERSION_NIX
+        if ver2compare < version:
             printt(u"[INFO] Existe un nueva versión de PyDownTV:", version)
             printt(u"[INFO] Cambios en la nueva versión:")
             printt(changelog)

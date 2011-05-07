@@ -28,11 +28,15 @@ if platform == "darwin":
         libmms = cdll.LoadLibrary("libmms.0.dylib")
     except Exception, e:
         print e
-        sys.exit("No se encuentra dependencia: libmms")
+        sys.exit("[!!!] ERROR: No se encuentra dependencia: libmms\nhttp://sourceforge.net/projects/libmms/")
 elif platform == "win32":
-    sys.exit(" No implementado en Windows")
+    sys.exit("[!!!] Protocolo mms:// no implementado en Windows")
 else:
-	libmms = cdll.LoadLibrary("libmms.so.0")
+    try:
+        libmms = cdll.LoadLibrary("libmms.so.0")
+    except Exception, e:
+        print e
+        sys.exit("[!!!] ERROR: No se encuentra dependencia: libmms\nhttp://sourceforge.net/projects/libmms/")
 
 # opening and closing the stream
 libmms.mmsx_connect.argtypes = [c_void_p, c_void_p, c_char_p, c_int]

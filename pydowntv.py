@@ -174,7 +174,7 @@ def qServidor(url):
         printt(u"[INFO] Ràdio Televisió Valenciana")
         return RTVV(url)
     else:
-        msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión"
+        msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)
         
 def comprobar_version():

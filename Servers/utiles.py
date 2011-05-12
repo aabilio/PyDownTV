@@ -35,7 +35,7 @@ def printt(*msg):
         Las cadenas explícitas siempre tienen que tener la 'u' antes de las comillas:
         printt(u"Esto es un mensaje")
         
-        printt() ya impreme un caracter de salto de línea final como print
+        printt() ya imprime un caracter de salto de línea final como print
     '''
     if platform == "win32":
         for i in msg:
@@ -74,11 +74,13 @@ class PdtVersion(object):
             stream = new_version.descargar()
             stream_version_nix = stream.split("\"")[1]
             stream_version_win = stream.split("\"")[3]
-            changelog = stream.split("\"")[5]
+            if platform == "win32":
+                changelog = stream.split("\"")[7]
+            else:
+                changelog = stream.split("\"")[5]
             
             ver2return = stream_version_win if platform == "win32" else stream_version_nix
             
-            #print stream_version
             return [ver2return, changelog]
         else:
             return [-1, -1]
@@ -117,16 +119,19 @@ def formatearNombre(nombre):
                 - Elimina las comillas simples
                 - Elimina tildes
                 - Elimina comillas
+                - ...
     '''
-
+    
+    # FIXME: Para los replace de la forma ("caracter", "") utilizar mejor strip("caracter")
     nombre = nombre.replace(": ",  ":")
     nombre = nombre.replace(". ", ".")
     nombre = nombre.replace('/',"-") # Quitar las barras "/"
     nombre = nombre.replace(" ", "_") # Quirar espacios
     nombre = nombre.replace("_-_", "-")
     nombre = nombre.replace("&#146;", "-") # Cambiar el caracter escapado (') por (=)
-    nombre = nombre.replace("\'", "-")
-    nombre = nombre.replace("\"", "-")
+    nombre = nombre.replace("\'", "")
+    nombre = nombre.replace("\"", "")
+    nombre = nombre.replace("?", "")
     nombre = nombre.replace("á", "a")
     nombre = nombre.replace("é", "e")
     nombre = nombre.replace("í", "i")
@@ -146,5 +151,8 @@ def formatearNombre(nombre):
     nombre = nombre.replace("(", "-")
     nombre = nombre.replace(")", "-")
     nombre = nombre.replace(":", "-")
+    nombre = nombre.replace(",", "")
+    #nombre = nombre.replace(";", "")
+    nombre = nombre.replace("&quot;", "")
 
     return nombre

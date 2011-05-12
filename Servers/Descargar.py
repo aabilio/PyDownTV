@@ -24,6 +24,7 @@ __date__ ="$30-mar-2011 20:57:46$"
 import urllib2
 import urllib
 import sys
+from os import system, path
 
 from pyaxel import pyaxel
 from utiles import salir, printt
@@ -31,6 +32,7 @@ from utiles import salir, printt
 
 class Descargar(object):
     ''' Clase que se encarga de descargar con urllib2 '''
+    
     std_headers = {
     'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; '
         'en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6',
@@ -76,7 +78,7 @@ class Descargar(object):
                 f.close()
                 return stream
         except Exception, e:
-            if self._URL.find("rtve.es") != -1: #No salir (para identificar si es a la carta o no)
+            if self._URL.find("rtve.es") != -1: # No salir (para identificar si es a la carta o no)
                 return -1
             elif self._URL == "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION":
                 return -1
@@ -155,36 +157,81 @@ class Descargar(object):
 
     def descargarVideo(self):
         '''
-            Procesa la descarga del vídeo llamanda a la función download de pyaxel
+            Procesa la descarga del vídeo llamanda a la función download de pyaxel para la mayoría de los
+            vídeos en GNU/Linux y Mac OS X. Para sistemas win32, se llama a descargarVideoWindows() y tanto para
+            GNU/Linux como para Mac OS X y Windows cuando el protocolo es mms:// se utiliza libmms (por ahora Windows no)
+            y cuando el protocolo es rtmp:// se utiliza el binario rtmpdump que el cliente debe tener instalado.
         '''
+        # Utilizar el binario de rtmpdu si el protocolo es rtmp://
+        if self._URL.startswith("rtmp://"):
+            printt(u"")
+            printt(u"DESCARGAR:")
+            printt(u"----------------------------------------------------------------")
+            printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
+            printt(u"[   DESTINO   ]", self.outputName)
+            printt(u"\n[INFO] Presiona \"Ctrl + C\" para cancelar\n")
+            
+            rtmpdump = "rtmpdump -o \"" + self.outputName +  "\" -r \"" + self._URL + "\""
+            rtmpdump_resume = "rtmpdump --resume -o \"" + self.outputName +  "\" -r \"" + self._URL + "\""
+            rtmpdump_win = "rtmpdump.exe -o \"" + self.outputName +  "\" -r \"" + self._URL + "\""
+            rtmpdump_resume_win = "rtmpdump.exe --resume -o \"" + self.outputName +  "\" -r \"" + self._URL + "\""
+
+            try:
+                if path.isfile(self.outputName):
+                    printt(u"Se ha encontrado una descarga parcial anterior, se continúa...\n")
+                    printt(u"\nLanzando rtmpdump...\n")
+                    if sys.platform == "win32":
+                        system(rtmpdump_resume_win)
+                    else:
+                        system(rtmpdump_resume)
+                else:
+                    printt(u"\nLanzando rtmpdump...\n")
+                    if sys.platform == "win32":
+                        system(rtmpdump_win)
+                    else:
+                        system(rtmpdump)
+            except OSError, e:
+                printt(u"[!!!] ERROR. No se encuenta rtmpdump:", e)
+            except KeyboardInterrupt:
+                salir(u"Bye!")
+                
+            return
+            
+        #### FIN RTMP://
+            
+            
         # Utilizar pylibmms si el protocoo es mms://
         if self._URL.startswith("mms://"):
             # Por ahora solo tengo libmms compilado para Mac OS X
-            if sys.platform == "darwin":
-                try:
-                    from pylibmms import core as libmmscore
-                except ImportError, e:
-                    print e
-                    salir(u"[!!!] ERROR al impotar libmms")
-                
-                printt(u"")
-                printt(u"DESCARGAR:")
-                printt(u"----------------------------------------------------------------")
-                printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
-                printt(u"[   DESTINO   ]", self.outputName)
-                printt(u"\n[INFO] Presiona \"Ctrl + C\" para cancelar\n")
-                
-                options = [self._URL, self.outputName]
-                libmmscore.run(options)
-            else:
-                printt(u"Protocolo mms solo diposnible en MacOS X (por ahora)")
+            try:
+                from pylibmms import core as libmmscore
+            except ImportError, e:
+                print e
+                salir(u"[!!!] ERROR al impotar libmms")
+            
+            printt(u"")
+            printt(u"DESCARGAR:")
+            printt(u"----------------------------------------------------------------")
+            printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
+            printt(u"[   DESTINO   ]", self.outputName)
+            printt(u"\n[INFO] Presiona \"Ctrl + C\" para cancelar\n")
+            
+            options = [self._URL, self.outputName]
+            libmmscore.run(options)
             
             return
             
+        #### FIN MMS://
             
+        # Solo en descara normal (para no utilizar pyaxel) por eso los protocolos rtmp:// y mms://
+        # NO están incluídos aquí y están antes
         if sys.platform == "win32":
             self.descargarVideoWindows(self.outputName)
             return
+            
+        #### FIN WINDOWS
+        
+        #### START PYAXEL
         
         printt(u"")
         printt(u"DESCARGAR:")

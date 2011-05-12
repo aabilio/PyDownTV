@@ -20,7 +20,7 @@
 This module uses ctypes to interface to libmms. Currently, it just
 exposes the mmsx interface, since this one is the most flexible.
 """
-from sys import platform
+from sys import platform, exit
 from ctypes import *
 
 if platform == "darwin":
@@ -30,7 +30,12 @@ if platform == "darwin":
         print e
         sys.exit("[!!!] ERROR: No se encuentra dependencia: libmms\nhttp://sourceforge.net/projects/libmms/")
 elif platform == "win32":
-    sys.exit("[!!!] Protocolo mms:// no implementado en Windows")
+    exit("[!!!] ERROR: libmms aun no disponible en Windows")
+    try:
+        libmms = cdll.LoadLibrary("libmms/cygmms-0.dll")
+    except Exception, e:
+        print e
+        sys.exit("[!!!] ERROR: No se encuentra dependencia: libmms\nhttp://sourceforge.net/projects/libmms/")
 else:
     try:
         libmms = cdll.LoadLibrary("libmms.so.0")

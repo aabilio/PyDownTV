@@ -22,7 +22,7 @@
 <table>
 <tr>
 <td><a style="color:#0000FF" href="#formatearNombre">formatearNombre</a></td>
-<td>Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres que pueden colisionar a la hora de realizar el guardado en disco la descarga Por ejemplo: - Quita las barras "/" - Quita los espacios - Reduce las barras bajas - Elimina las comillas simples - Elimina tildes - Elimina comillas</td>
+<td>Se le pasa una cadena por par&#225;metro y formatea esta quit&#225;ndole caracteres que pueden colisionar a la hora de realizar el guardado en disco la descarga Por ejemplo: - Quita las barras "/" - Quita los espacios - Reduce las barras bajas - Elimina las comillas simples - Elimina tildes - Elimina comillas - ...</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#printt">printt</a></td>
 <td>Recibe una cadena y la muestra por pantalla en el formato adecuado para sistemas win32 y *nix Funciona de manera an&#225;loga a print de python: - con sus concatenaciones de cadenas con '+' o ',' - con la posibilidad de usar variables directamente o con el formato do especificadore de formato --> printt(u"hola %s eres es usuario n&#250;mero %d" % (user, 925)) p.ejem..</td>
@@ -45,7 +45,7 @@
 object
 <h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
 <table>
-<tr><td>PDT_VERSION</td></tr><tr><td>URL_VERSION</td></tr>
+<tr><td>PDT_VERSION_NIX</td></tr><tr><td>PDT_VERSION_WIN</td></tr><tr><td>URL_VERSION</td></tr>
 </table>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
 <table>
@@ -91,6 +91,7 @@ object
                 - Elimina las comillas simples
                 - Elimina tildes
                 - Elimina comillas
+                - ...
 </p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr /><hr />
@@ -108,7 +109,7 @@ object
         Las cadenas expl&#237;citas siempre tienen que tener la 'u' antes de las comillas:
         printt(u"Esto es un mensaje")
 </p><p>
-        printt() ya impreme un caracter de salto de l&#237;nea final como print
+        printt() ya imprime un caracter de salto de l&#237;nea final como print
 </p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr /><hr />

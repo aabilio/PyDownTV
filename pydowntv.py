@@ -39,6 +39,7 @@ from Servers.crtvg import CRTVG
 from Servers.btv import BTV
 from Servers.canalsur import CSur
 from Servers.rtvv import RTVV
+from Servers.tv3 import TV3
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -49,73 +50,55 @@ class Servidor(object):
         introdujo el usuario.
     '''
     def __init__(self, url=None):
-        '''
-            Lo único a resalar es que reibirá la URL
-        '''
+        '''Lo único a resaltar es que reibirá la URL'''
         self._url = url
     def isAntena3_(self):
-        '''
-            return True si la URL pertenece a antena 3
-        '''
+        '''return True si la URL pertenece a antena 3'''
         if self._url.find("antena3.com") != -1:
             return True
     def isTVE_(self):
-        '''
-            return True si la URL pertenece a Televisión Española
-        '''
+        '''return True si la URL pertenece a Televisión Española'''
         if self._url.find("rtve.es") != -1:
             return True
     #def isTVEaLaCarta_(self): # DEPRECATED
     #    if self._url.find("rtve.es") != -1 and self._url.find("/alacarta/") != -1:
     #        return True
     def isRTVE_(self):
-        '''
-            return True si la URL pertenece a los audios de a web de telvión española (Radio Nacional)
-        '''
+        '''return True si la URL pertenece a los audios de a web de telvión española (Radio Nacional)'''
         if self._url.find("rtve.es") != -1 and \
             (self._url.find("/mediateca/audios/") != -1 or self._url.find("/alacarta/audios/") != -1):
             return True
     def isT5_(self):
-        '''
-            return True si la URL pertenece a Telecinco
-        '''
+        '''return True si la URL pertenece a Telecinco'''
         if self._url.find("telecinco.es") != -1:
             return True
     def isLaSexta_(self):
-        '''
-            return True si la URL pertenece a La Sexta
-        '''
+        '''return True si la URL pertenece a La Sexta'''
         if self._url.find("lasexta.com/sextatv/") != -1:
             return True
     def isCuatro_(self):
-        '''
-            return True si la URL pertenece a Cuatro
-        '''
+        '''return True si la URL pertenece a Cuatro'''
         if self._url.find("play.cuatro.com/") != -1:
             return True
     def isCRTVG_(self):
-        '''
-            return True is la URL pertenece a TV de Galiza
-        '''
+        '''return True is la URL pertenece a TV de Galiza'''
         if self._url.find("crtvg.es/") != -1:
             return True
     def isBTV_(self):
-        '''
-            return True si la URL pertenece a BTV
-        '''
+        '''return True si la URL pertenece a BTV'''
         if self._url.find("btvnoticies.cat") != -1 or self._url.find("btv.cat/alacarta") != -1:
             return True
     def isCSur_(self):
-        '''
-            return True si la URL pertenece a Canal Sur TV
-        '''
+        '''return True si la URL pertenece a Canal Sur TV'''
         if self._url.find("canalsuralacarta.es") != -1 or self._url.find("canalsur.es") != -1:
             return True
     def isRTVV_(self):
-        '''
-            return True si la URL pertenece a Ràdio Televisió Valenciana
-        '''
+        '''return True si la URL pertenece a Ràdio Televisió Valenciana'''
         if self._url.find("rtvv.es") != -1:
+            return True
+    def isTV3_(self):
+        '''return True si la url perteneces a TV3'''
+        if self._url.find("tv3.cat") != -1 or self._url.find("3cat24.cat") != -1 or self._url.find("catradio.cat") != -1:
             return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
@@ -131,6 +114,7 @@ class Servidor(object):
     isBTV = property(isBTV_)
     isCSur = property(isCSur_)
     isRTVV = property(isRTVV_)
+    isTV3 = property(isTV3_)
     
 def qServidor(url):
     '''
@@ -173,6 +157,9 @@ def qServidor(url):
     elif server.isRTVV:
         printt(u"[INFO] Ràdio Televisió Valenciana")
         return RTVV(url)
+    elif server.isTV3:
+        printt(u"[INFO] TV3")
+        return TV3(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)
@@ -231,7 +218,7 @@ def nixPresentation():
     
 def compURL(url):
     '''
-        Comara de foma muy básica si la cadena que se le pasa como parámetro es una URL válida
+        Compara de forma muy básica si la cadena que se le pasa como parámetro es una URL válida
     '''
     # El primero que tuve (básico):
     #p = re.compile('^http://.+\..+$', re.IGNORECASE)

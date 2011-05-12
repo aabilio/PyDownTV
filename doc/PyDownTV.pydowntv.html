@@ -22,7 +22,7 @@
 <table>
 <tr>
 <td><a style="color:#0000FF" href="#compURL">compURL</a></td>
-<td>Comara de foma muy b&#225;sica si la cadena que se le pasa como par&#225;metro es una URL v&#225;lida</td>
+<td>Compara de forma muy b&#225;sica si la cadena que se le pasa como par&#225;metro es una URL v&#225;lida</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#comprobar_version">comprobar_version</a></td>
 <td>Comprueba la versi&#243;n del cliente con la &#250;ltima lanzada utilizando la clase PdtVersion() de utilies.py</td>
@@ -51,13 +51,13 @@
 object
 <h3 style="background-color:#FFFFFF;color:#FF0000">Class Attributes</h3>
 <table>
-<tr><td>isAntena3</td></tr><tr><td>isBTV</td></tr><tr><td>isCRTVG</td></tr><tr><td>isCSur</td></tr><tr><td>isCuatro</td></tr><tr><td>isLaSexta</td></tr><tr><td>isRTVE</td></tr><tr><td>isRTVV</td></tr><tr><td>isT5</td></tr><tr><td>isTVE</td></tr>
+<tr><td>isAntena3</td></tr><tr><td>isBTV</td></tr><tr><td>isCRTVG</td></tr><tr><td>isCSur</td></tr><tr><td>isCuatro</td></tr><tr><td>isLaSexta</td></tr><tr><td>isRTVE</td></tr><tr><td>isRTVV</td></tr><tr><td>isT5</td></tr><tr><td>isTV3</td></tr><tr><td>isTVE</td></tr>
 </table>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Methods</h3>
 <table>
 <tr>
 <td><a style="color:#0000FF" href="#Servidor.__init__">Servidor</a></td>
-<td>Lo &#250;nico a resalar es que reibir&#225; la URL</td>
+<td>Lo &#250;nico a resaltar es que reibir&#225; la URL</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isAntena3_">isAntena3_</a></td>
 <td>return True si la URL pertenece a antena 3</td>
@@ -86,6 +86,9 @@ object
 <td><a style="color:#0000FF" href="#Servidor.isT5_">isT5_</a></td>
 <td>return True si la URL pertenece a Telecinco</td>
 </tr><tr>
+<td><a style="color:#0000FF" href="#Servidor.isTV3_">isTV3_</a></td>
+<td>return True si la url perteneces a TV3</td>
+</tr><tr>
 <td><a style="color:#0000FF" href="#Servidor.isTVE_">isTVE_</a></td>
 <td>return True si la URL pertenece a Televisi&#243;n Espa&#241;ola</td>
 </tr>
@@ -94,57 +97,62 @@ object
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor (Constructor)</h3>
 <b>Servidor</b>(<i>url=None</i>)
 <p>
-            Lo &#250;nico a resalar es que reibir&#225; la URL
+Lo &#250;nico a resaltar es que reibir&#225; la URL
 </p><a NAME="Servidor.isAntena3_" ID="Servidor.isAntena3_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isAntena3_</h3>
 <b>isAntena3_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a antena 3
+return True si la URL pertenece a antena 3
 </p><a NAME="Servidor.isBTV_" ID="Servidor.isBTV_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isBTV_</h3>
 <b>isBTV_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a BTV
+return True si la URL pertenece a BTV
 </p><a NAME="Servidor.isCRTVG_" ID="Servidor.isCRTVG_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isCRTVG_</h3>
 <b>isCRTVG_</b>(<i></i>)
 <p>
-            return True is la URL pertenece a TV de Galiza
+return True is la URL pertenece a TV de Galiza
 </p><a NAME="Servidor.isCSur_" ID="Servidor.isCSur_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isCSur_</h3>
 <b>isCSur_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a Canal Sur TV
+return True si la URL pertenece a Canal Sur TV
 </p><a NAME="Servidor.isCuatro_" ID="Servidor.isCuatro_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isCuatro_</h3>
 <b>isCuatro_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a Cuatro
+return True si la URL pertenece a Cuatro
 </p><a NAME="Servidor.isLaSexta_" ID="Servidor.isLaSexta_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isLaSexta_</h3>
 <b>isLaSexta_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a La Sexta
+return True si la URL pertenece a La Sexta
 </p><a NAME="Servidor.isRTVE_" ID="Servidor.isRTVE_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isRTVE_</h3>
 <b>isRTVE_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a los audios de a web de telvi&#243;n espa&#241;ola (Radio Nacional)
+return True si la URL pertenece a los audios de a web de telvi&#243;n espa&#241;ola (Radio Nacional)
 </p><a NAME="Servidor.isRTVV_" ID="Servidor.isRTVV_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isRTVV_</h3>
 <b>isRTVV_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a R&#224;dio Televisi&#243; Valenciana
+return True si la URL pertenece a R&#224;dio Televisi&#243; Valenciana
 </p><a NAME="Servidor.isT5_" ID="Servidor.isT5_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isT5_</h3>
 <b>isT5_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a Telecinco
+return True si la URL pertenece a Telecinco
+</p><a NAME="Servidor.isTV3_" ID="Servidor.isTV3_"></a>
+<h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isTV3_</h3>
+<b>isTV3_</b>(<i></i>)
+<p>
+return True si la url perteneces a TV3
 </p><a NAME="Servidor.isTVE_" ID="Servidor.isTVE_"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Servidor.isTVE_</h3>
 <b>isTVE_</b>(<i></i>)
 <p>
-            return True si la URL pertenece a Televisi&#243;n Espa&#241;ola
+return True si la URL pertenece a Televisi&#243;n Espa&#241;ola
 </p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr /><hr />
@@ -152,7 +160,7 @@ object
 <h2 style="background-color:#FFFFFF;color:#0000FF">compURL</h2>
 <b>compURL</b>(<i>url</i>)
 <p>
-        Comara de foma muy b&#225;sica si la cadena que se le pasa como par&#225;metro es una URL v&#225;lida
+        Compara de forma muy b&#225;sica si la cadena que se le pasa como par&#225;metro es una URL v&#225;lida
 </p>
 <div align="right"><a style="color:#0000FF" href="#top">Up</a></div>
 <hr /><hr />

@@ -46,6 +46,10 @@ class Cuatro(object): # Identificativo del canal
     url = property(getURL, setURL)
 
     # Funciones privadas que ayuden a procesarDescarga(self):
+    def __descHTML(self, url2down):
+        ''' Método que utiliza la clase descargar para descargar el HTML '''
+        D = Descargar(url2down)
+        return D.descargar()
 
     def procesarDescarga(self):
         '''

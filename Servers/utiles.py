@@ -53,8 +53,8 @@ class PdtVersion(object):
     '''
     
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
-    PDT_VERSION_NIX = "2.5-BETA"
-    PDT_VERSION_WIN = "2.1-BETA"
+    PDT_VERSION_NIX = "2.6-BETA"
+    PDT_VERSION_WIN = "2.6-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
     
     def __init__(self):

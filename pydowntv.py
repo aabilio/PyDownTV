@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "2.1-BETA"
+__version__ = "2.6-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -297,7 +297,7 @@ if __name__ == "__main__":
                 #exit("ERROR: URL mal introducida\nFlag --help: para ayuda")
             nOfUrls -= 1
         if cuantasIncorrectas == cuantasTotal:
-            salir(u"[!!!] Todas las URLs son incorrectas")
+            salir(u"[!!!] Todas las URLs son incorrectas (empiezan por: http://)")
     else:
         salir(u"No has introducido ninguna URL!")
 

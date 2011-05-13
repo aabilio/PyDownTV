@@ -24,10 +24,11 @@ __date__ ="$30-mar-2011 20:57:46$"
 import urllib2
 import urllib
 import sys
+import codecs
 from os import system, path
 
 from pyaxel import pyaxel
-from utiles import salir, printt
+from utiles import salir, printt, PdtVersion
 
 
 class Descargar(object):
@@ -72,6 +73,12 @@ class Descargar(object):
                 stream = f.read()
                 f.close()
                 return stream
+            elif self._URL == PdtVersion.URL_VERSION:
+                f = urllib2.urlopen(self._URL)
+                Reader = codecs.getreader("utf-8")
+                fh = Reader(f)
+                stream = fh.read()
+                return stream
             else:
                 f = urllib2.urlopen(self._URL)
                 stream = f.read()
@@ -80,10 +87,11 @@ class Descargar(object):
         except Exception, e:
             if self._URL.find("rtve.es") != -1: # No salir (para identificar si es a la carta o no)
                 return -1
-            elif self._URL == "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION":
+            elif self._URL == PdtVersion.URL_VERSION:
                 return -1
             else:
-                salir(u"[!!!] ERROR al descargar:", e)
+                print e
+                salir(u"[!!!] ERROR al descargar:")
         else:
             pass
             
@@ -203,19 +211,29 @@ class Descargar(object):
         # Utilizar pylibmms si el protocoo es mms://
         if self._URL.startswith("mms://"):
             # Por ahora solo tengo libmms compilado para Mac OS X
+            printt(u"")
+            printt(u"DESCARGAR:")
+            printt(u"----------------------------------------------------------------")
+            printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
+            printt(u"[   DESTINO   ]", self.outputName)
+            
+            
+            if sys.platform == "win32":
+                msg = '''Protocolo MMS aun no disponible en Windows.
+                La URL FINAL DE DESCARGA que se muestra, es la localización final del archivo.
+                Puedes descargar el archivo mediante esta URL a través de algun gestor de
+                descargas que soporte la descarga a través del protocolo mms://
+                '''
+                printt(msg)
+                return
+            
             try:
                 from pylibmms import core as libmmscore
             except ImportError, e:
                 print e
                 salir(u"[!!!] ERROR al impotar libmms")
             
-            printt(u"")
-            printt(u"DESCARGAR:")
-            printt(u"----------------------------------------------------------------")
-            printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
-            printt(u"[   DESTINO   ]", self.outputName)
             printt(u"\n[INFO] Presiona \"Ctrl + C\" para cancelar\n")
-            
             options = [self._URL, self.outputName]
             libmmscore.run(options)
             

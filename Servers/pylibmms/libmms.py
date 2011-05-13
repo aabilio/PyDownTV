@@ -29,7 +29,7 @@ if platform == "darwin":
     except Exception, e:
         print e
         sys.exit("[!!!] ERROR: No se encuentra dependencia: libmms\nhttp://sourceforge.net/projects/libmms/")
-elif platform == "win32":
+elif platform == "win32": # Nunca entrará por aquí, se filtra en Descargar.py antes de entrar aquí (se deja a futuro)
     exit("[!!!] ERROR: libmms aun no disponible en Windows")
     try:
         libmms = cdll.LoadLibrary("libmms/cygmms-0.dll")

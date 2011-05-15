@@ -26,7 +26,7 @@ from setuptools import setup
 import py2app
 
 setup(name="PydownTV", 
-    version="2.6",
+    version="2.7",
     description="Descarga vídeos de las webs de TVs Españolas",
     author="Abilio Almeida Eiroa",
     author_email="aabilio@gmail.com",
@@ -47,6 +47,7 @@ setup(name="PydownTV",
                 "Servers.rtvv", 
                 "Servers.tv3", 
                 "Servers.eitb", 
+                "Servers.extremadura", 
                 "Servers.utiles",
                 "Servers.Descargar",
                 "Servers.pyaxel.pyaxel",

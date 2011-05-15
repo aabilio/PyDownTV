@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "2.6-BETA"
+__version__ = "2.7-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -41,6 +41,7 @@ from Servers.canalsur import CSur
 from Servers.rtvv import RTVV
 from Servers.tv3 import TV3
 from Servers.eitb import EITB
+from Servers.extremadura import ETV
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -105,6 +106,10 @@ class Servidor(object):
         '''return True si la url pertenece a EITB'''
         if self._url.find("eitb.com") != -1:
             return True
+    def isETV_(self):
+        '''return True si la url pertenece a extremadura TV'''
+        if self._url.find("canalextremadura.es/") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -121,6 +126,7 @@ class Servidor(object):
     isRTVV = property(isRTVV_)
     isTV3 = property(isTV3_)
     isEITB = property(isEITB_)
+    isETV = property(isETV_)
     
 def qServidor(url):
     '''
@@ -169,6 +175,9 @@ def qServidor(url):
     elif server.isEITB:
         printt(u"[INFO] EITB")
         return EITB(url)
+    elif server.isETV:
+        printt(u"[INFO] Televisión de Extremadura")
+        return ETV(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)

@@ -92,12 +92,12 @@ class PdtVersion(object):
         '''
         ver2compare = self.PDT_VERSION_WIN if platform == "win32" else self.PDT_VERSION_NIX
         if ver2compare < version:
-            printt(u"[INFO] Existe un nueva versión de PyDownTV:", version)
-            printt(u"[INFO] Cambios en la nueva versión:")
+            printt(u"[INFO VERSIÓN] Existe un nueva versión de PyDownTV:", version)
+            printt(u"[INFO VERSIÓN] Cambios en la nueva versión:")
             printt(changelog)
             # TODO: Añadir URL de descarga aquí y quitar de changelog
         else:
-            printt(u"[INFO] Tu versión de PyDownTV es la más reciente")
+            printt(u"[INFO VERSIÓN] Tu versión de PyDownTV es la más reciente")
 
 def windows_end():
     '''
@@ -142,6 +142,11 @@ def formatearNombre(nombre):
     nombre = nombre.replace("ì", "i")
     nombre = nombre.replace("ò", "o")
     nombre = nombre.replace("ù", "u")
+    nombre = nombre.replace("&aacute;", "a")
+    nombre = nombre.replace("&eacute;", "e")
+    nombre = nombre.replace("&iacute;", "i")
+    nombre = nombre.replace("&oacute;", "o")
+    nombre = nombre.replace("&uacute;", "u")
     nombre = nombre.replace("´", "")
     nombre = nombre.replace("ñ", "nh")
     nombre = nombre.replace("\xc3\xb1", "nh") # Cambiar el caracter escapado (ñ) por (nh)

@@ -34,12 +34,13 @@ from Servers.rtve import RTVE
 # DEPRECATED from Servers.tvalacarta import TvAlacarta
 from Servers.telecinco import Telecinco
 # from Servers.lasexta import LaSexta
-# from Servers.cuatro import Cuatro
+from Servers.cuatro import Cuatro
 from Servers.crtvg import CRTVG
 from Servers.btv import BTV
 from Servers.canalsur import CSur
 from Servers.rtvv import RTVV
 from Servers.tv3 import TV3
+from Servers.eitb import EITB
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -78,7 +79,7 @@ class Servidor(object):
             return True
     def isCuatro_(self):
         '''return True si la URL pertenece a Cuatro'''
-        if self._url.find("play.cuatro.com/") != -1:
+        if self._url.find("cuatro.com/") != -1:
             return True
     def isCRTVG_(self):
         '''return True is la URL pertenece a TV de Galiza'''
@@ -100,6 +101,10 @@ class Servidor(object):
         '''return True si la url perteneces a TV3'''
         if self._url.find("tv3.cat") != -1 or self._url.find("3cat24.cat") != -1 or self._url.find("catradio.cat") != -1:
             return True
+    def isEITB_(self):
+        '''return True si la url pertenece a EITB'''
+        if self._url.find("eitb.com") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -115,6 +120,7 @@ class Servidor(object):
     isCSur = property(isCSur_)
     isRTVV = property(isRTVV_)
     isTV3 = property(isTV3_)
+    isEITB = property(isEITB_)
     
 def qServidor(url):
     '''
@@ -143,8 +149,8 @@ def qServidor(url):
         salir(u"La Sexta: Todavía no implementado")
         # return LaSexta(url)
     elif server.isCuatro:
-        salir(u"Cuatro: Todavía no implementado")
-        # return Cuatro(url)
+        printt(u"[INFO] Cuatro")
+        return Cuatro(url)
     elif server.isCRTVG:
         printt(u"[INFO] Televisión de Galiza")
         return CRTVG(url)
@@ -160,6 +166,9 @@ def qServidor(url):
     elif server.isTV3:
         printt(u"[INFO] TV3")
         return TV3(url)
+    elif server.isEITB:
+        printt(u"[INFO] EITB")
+        return EITB(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)
@@ -169,7 +178,7 @@ def comprobar_version():
         Comprueba la versión del cliente con la última lanzada utilizando la clase
         PdtVersion() de utilies.py
     '''
-    printt(u"[INFO] Comprobando si existen nuevas versiones de PyDownTV")
+    printt(u"[INFO VERSIÓN] Comprobando si existen nuevas versiones de PyDownTV")
     pdtv = PdtVersion()
     try:
         new_version, changelog = pdtv.get_new_version()

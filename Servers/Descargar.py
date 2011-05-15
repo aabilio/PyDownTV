@@ -73,7 +73,7 @@ class Descargar(object):
                 stream = f.read()
                 f.close()
                 return stream
-            elif self._URL == PdtVersion.URL_VERSION:
+            elif self._URL == PdtVersion.URL_VERSION: # Si lo que se descarga es VERSION (convertir a utf-8)
                 f = urllib2.urlopen(self._URL)
                 Reader = codecs.getreader("utf-8")
                 fh = Reader(f)

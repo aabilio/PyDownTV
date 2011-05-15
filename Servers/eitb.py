@@ -16,22 +16,21 @@
 #    You should have received a copy of the GNU General Public License
 #    along with PyDownTV.  If not, see <http://www.gnu.org/licenses/>.
 
-# Módulo que manera la clase de Cuatro
+# Pequeña descripción de qué canal de tv es el módulo
 
 __author__="aabilio"
-__date__ ="$07-abr-2011 11:03:38$"
+__date__ ="$15-may-2011 11:03:38$"
 
 from Descargar import Descargar
 from utiles import salir, formatearNombre, printt
 import sys  
 
-class Cuatro(object):
+class EITB(object):
     '''
-        Clase que maneja las descargas de los vídeos de la web de Cuatro.com
+        Clase que maneja la descarga los vídeos de la EITB
     '''
     
-    URL_CUATRO = "http://cuatro.com"
-    URL_PLAY_CUATRO = "http://play.cuatro.com"
+    URL_EITB = "http://www.eitb.com/"
 
     def __init__(self, url=""):
         self._URL_recibida = url
@@ -63,19 +62,24 @@ class Cuatro(object):
             tiene que ser nombre[0] y así sucesivamente).
         '''
         
-        # Por ahora videos que no sean de Play Cuatro:
-        if self._URL_recibida.find("http://play.cuatro.com/") != -1:
-            salir(u"[!!!] Modo Play Cuatro todavía no soportado")
-        else:
-            printt(u"[INFO] Vídeo Común")
-            streamHTML = self.__descHTML(self._URL_recibida)
+        streamHTML = self.__descHTML(self._URL_recibida)
+        if self._URL_recibida.find("audios/") != -1:
+            printt(u"[INFO] Audio")
             name = streamHTML.split("<title>")[1].split("<")[0]
-            urlComunes = self.URL_CUATRO + streamHTML.split("src_iframe:")[1].replace(" ", "").split("\'")[1].split("\'")[0]
-            streamComunes = self.__descHTML(urlComunes)
-            url = streamComunes.split("document.write(\'<video id=")[1].split("src=\"")[1].split("\"")[0]
-            ext= "." + url.split(".")[-1]
-            name += ext
-
+            streamMP3 = streamHTML.split("<a id=\"descargaMp3\"")[1].split(">")[0]
+            url = self.URL_EITB + streamMP3.split("href=\"")[1].split("\"")[0]
+            name += ".mp3"
+            
+        elif self._URL_recibida.find("videos/") != -1:
+            printt(u"[INFO] Vídeo de %s" % (self._URL_recibida.split("/")[4]))
+            name = streamHTML.split("<title>")[1].split("<")[0]
+            streamMP4 = streamHTML.split("<a id=\"descargaMp4\"")[1].split(">")[0]
+            url = self.URL_EITB + streamMP4.split("href=\"")[1].split("\"")[0]
+            name += ".mp4"
+        else:
+            salir(u"[!!!] No se reconoce el tipo de contenido")
+        
+        
         if name:
             name = formatearNombre(name)
 

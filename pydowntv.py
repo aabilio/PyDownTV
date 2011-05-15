@@ -176,7 +176,7 @@ def qServidor(url):
         printt(u"[INFO] EITB")
         return EITB(url)
     elif server.isETV:
-        printt(u"[INFO] Televisión de Extremadura")
+        printt(u"[INFO] Radio Televisión de Extremadura")
         return ETV(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"

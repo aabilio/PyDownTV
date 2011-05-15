@@ -70,6 +70,11 @@ class ETV(object):
             url = "http://" + streamFLV.split("http://")[1]
             ext = "." + url.split(".")[-1].split("?")[0]
             name = streamHTML.split("<title>")[1].split("<")[0] + ext
+        elif self._URL_recibida.find("radio-a-la-carta/") != -1:
+            printt(u"[INFO] Radio A la Carta")
+            streamHTML = self.__descHTML(self._URL_recibida).replace(" ", "")
+            url = streamHTML.split("s1.addVariable(\'file\',\'")[1].split("\'")[0]
+            name = streamHTML.split("<title>")[1].split("<")[0] + ".mp3"
         else:
             salir(u"[!!!] No se reconoce el tipo de contenido")
         

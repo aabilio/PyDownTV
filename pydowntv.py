@@ -42,6 +42,8 @@ from Servers.rtvv import RTVV
 from Servers.tv3 import TV3
 from Servers.eitb import EITB
 from Servers.extremadura import ETV
+from Servers.televigo import TeleVigo
+from Servers.tvamurcia import TVAmurcia
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -110,6 +112,14 @@ class Servidor(object):
         '''return True si la url pertenece a extremadura TV'''
         if self._url.find("canalextremadura.es/") != -1:
             return True
+    def isTeleVigo_(self):
+        '''return True si la url pertenece a TeleVigo'''
+        if self._url.find("televigo.com/") != -1:
+            return True
+    def isTVAmurcia_(self):
+        '''return True si la url pertenece a la televisión autonómica de Murcia'''
+        if self._url.find("7rm.es/") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -127,6 +137,8 @@ class Servidor(object):
     isTV3 = property(isTV3_)
     isEITB = property(isEITB_)
     isETV = property(isETV_)
+    isTeleVigo = property(isTeleVigo_)
+    isTVAmurcia = property(isTVAmurcia_)
     
 def qServidor(url):
     '''
@@ -178,6 +190,12 @@ def qServidor(url):
     elif server.isETV:
         printt(u"[INFO] Radio Televisión de Extremadura")
         return ETV(url)
+    elif server.isTeleVigo:
+        printt(u"[INFO] Tele Vigo")
+        return TeleVigo(url)
+    elif server.isTVAmurcia:
+        printt(u"[INFO] TV Autonómica de Murcia")
+        return TVAmurcia(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)
@@ -242,7 +260,7 @@ def compURL(url):
     #p = re.compile('^http://.+\..+$', re.IGNORECASE)
     # La siguiente no valida los vídeos de la TVG:
     #p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=\w+)?(?:&\w+=\w+)*)?)?)?$', re.IGNORECASE)
-    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=[-a-z0-9/%:]+)?(?:&\w+=[-a-zA-Z0-9/%:]+)*)?)?)?$', re.IGNORECASE)
+    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=[-a-z0-9/%:,]+)?(?:&\w+=[-a-zA-Z0-9/%:,]+)*)?)?)?$', re.IGNORECASE)
     m = p.match(url)
     if m:
         return True

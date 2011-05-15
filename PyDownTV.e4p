@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-05-15, 18:55:00 -->
+<!-- Saved: 2011-05-15, 23:09:24 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -40,6 +40,8 @@
     <Source>Servers/tv3.py</Source>
     <Source>Servers/eitb.py</Source>
     <Source>Servers/extremadura.py</Source>
+    <Source>Servers/televigo.py</Source>
+    <Source>Servers/tvamurcia.py</Source>
   </Sources>
   <Forms>
   </Forms>

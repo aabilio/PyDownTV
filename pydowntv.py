@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "2.7-BETA"
+__version__ = "3.0-BETA"
 
 from sys import argv, exit, platform
 import re

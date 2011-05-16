@@ -44,6 +44,7 @@ from Servers.eitb import EITB
 from Servers.extremadura import ETV
 from Servers.televigo import TeleVigo
 from Servers.tvamurcia import TVAmurcia
+from Servers.intereconomia import Intereconomia
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -120,6 +121,10 @@ class Servidor(object):
         '''return True si la url pertenece a la televisión autonómica de Murcia'''
         if self._url.find("7rm.es/") != -1:
             return True
+    def isIntereconomia_(self):
+        '''return True si la url pertenecea Intereconomia'''
+        if self._url.find("intereconomia.com/") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -139,6 +144,7 @@ class Servidor(object):
     isETV = property(isETV_)
     isTeleVigo = property(isTeleVigo_)
     isTVAmurcia = property(isTVAmurcia_)
+    isIntereconomia = property(isIntereconomia_)
     
 def qServidor(url):
     '''
@@ -196,6 +202,9 @@ def qServidor(url):
     elif server.isTVAmurcia:
         printt(u"[INFO] TV Autonómica de Murcia")
         return TVAmurcia(url)
+    elif server.isIntereconomia:
+        printt(u"[INFO] Intereconomia")
+        return Intereconomia(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)

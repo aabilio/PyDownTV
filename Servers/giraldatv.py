@@ -21,7 +21,6 @@
 __author__="aabilio"
 __date__ ="$16-may-2011 11:03:38$"
 
-from pprint import pprint
 from Descargar import Descargar
 from utiles import salir, formatearNombre, printt
 import sys  
@@ -62,7 +61,7 @@ class GiraldaTV(object):
         '''
         
         streamHTML = self.__descHTML(self._URL_recibida)#.replace(" ", "")
-        if streamHTML.find("") != -1:
+        if streamHTML.find("contentArray[") != -1:
             printt(u"[INFO] Se han detectado varios vídeos en la página:")
             # Deleimitar los bloques de vídeos:
             bloques = streamHTML.split("contentArray[")[1:]

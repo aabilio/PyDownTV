@@ -30,6 +30,9 @@ class Cuatro(object):
         Clase que maneja las descargas de los vídeos de la web de Cuatro.com
     '''
     
+    URL_STREAMS_START = "http://api.cuatro.webtv.flumotion.com/videos/"
+    URL_STREAMS_END = "/streams"
+    
     URL_CUATRO = "http://cuatro.com"
     URL_PLAY_CUATRO = "http://play.cuatro.com"
 
@@ -47,6 +50,42 @@ class Cuatro(object):
         ''' Método que utiliza la clase descargar para descargar el HTML '''
         D = Descargar(url2down)
         return D.descargar()
+        
+    def __playCuatro(self):
+        '''return url y name pertenecientes a los vídeos de Play Cuatro'''
+        streamHTML = self.__descHTML(self._URL_recibida).replace(" ", "")
+        videoID = streamHTML.split("videoId:")[1].split(",")[0]
+        printt(u"[INFO] Video ID:", videoID)
+        streamStreams = self.__descHTML(self.URL_STREAMS_START + videoID + self.URL_STREAMS_END)
+        streamStreams = streamStreams.replace(" ", "").replace("\n", "")
+        videos = streamStreams.split("{")[1:]
+        printt(u"[INFO] Se han detectado varios tipos de calidad:")
+        b = 0
+        for i in videos:
+            printt(u"\t[%4d] %s" % (b, i.split("\"quality\":\"")[1].split("\"")[0]))
+            b += 1
+        # Presentar menú para elegir vídeo:
+        printt(u"[-->] Introduce el número del tipo vídeo que quieres descargar (Ctrl+C para cancelar): ")
+        while True:
+            try:
+                ID = int(raw_input())
+            except ValueError:
+                printt(u"[!!!] Parece que no has introducido un número. Pruena otra vez:")
+                continue
+            except KeyboardInterrupt:
+                salir(u"\nBye!")
+                
+            if ID < 0 or ID > len(videos)-1:
+                printt(u"[!!!] No existe el vídeo con número [%4d] Prueba otra vez:" % ID)
+                continue
+            else:
+                break
+        
+        url = videos[ID].split("\"url\":\"")[1].split("\"")[0]
+        ext = "." + url.split("?")[0].split(".")[-1]
+        name = name = streamHTML.split("playerPageURL:\'")[1].split("\'")[0].split("/")[-1] + ext
+        
+        return [url, name]
 
     def procesarDescarga(self):
         '''
@@ -65,7 +104,8 @@ class Cuatro(object):
         
         # Por ahora videos que no sean de Play Cuatro:
         if self._URL_recibida.find("http://play.cuatro.com/") != -1:
-            salir(u"[!!!] Modo Play Cuatro todavía no soportado")
+            printt(u"[INFO] Play Cuatro")
+            url, name = self.__playCuatro()
         else:
             printt(u"[INFO] Vídeo Común")
             streamHTML = self.__descHTML(self._URL_recibida)

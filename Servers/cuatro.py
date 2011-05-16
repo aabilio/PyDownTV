@@ -70,7 +70,7 @@ class Cuatro(object):
             try:
                 ID = int(raw_input())
             except ValueError:
-                printt(u"[!!!] Parece que no has introducido un número. Pruena otra vez:")
+                printt(u"[!!!] Parece que no has introducido un número. Prueba otra vez:")
                 continue
             except KeyboardInterrupt:
                 salir(u"\nBye!")

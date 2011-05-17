@@ -47,6 +47,7 @@ from Servers.tvamurcia import TVAmurcia
 from Servers.intereconomia import Intereconomia
 from Servers.giraldatv import GiraldaTV
 from Servers.riasbaixas import RiasBaixas
+from Servers.rtvcyl import RTVCYL
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -135,6 +136,10 @@ class Servidor(object):
         '''return True si la url pertenece a Canal Rías Baixas'''
         if self._url.find("canalriasbaixas.com/") != -1:
             return True
+    def isRTVCYL_(self):
+        '''return True si la utl pertenecea Radio TV de Castilla y León'''
+        if self._url.find("rtvcyl.es/") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -157,6 +162,7 @@ class Servidor(object):
     isIntereconomia = property(isIntereconomia_)
     isGiraldaTV = property(isGiraldaTV_)
     isCanalRiasBaixas = property(isCanalRiasBaixas_)
+    isRTVCYL = property(isRTVCYL_)
     
 def qServidor(url):
     '''
@@ -223,6 +229,9 @@ def qServidor(url):
     elif server.isCanalRiasBaixas:
         printt(u"[INFO] canalriasbaixas.com")
         return RiasBaixas(url)
+    elif server.isRTVCYL:
+        printt(u"[INFO] Radio Televisión de Castilla y León")
+        return RTVCYL(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)

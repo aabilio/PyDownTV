@@ -19,7 +19,7 @@
 # Módulo que manera la clase de Cuatro
 
 __author__="aabilio"
-__date__ ="$07-abr-2011 11:03:38$"
+__date__ ="$17-may-2011 11:03:38$"
 
 from Descargar import Descargar
 from utiles import salir, formatearNombre, printt
@@ -83,7 +83,7 @@ class Cuatro(object):
         
         url = videos[ID].split("\"url\":\"")[1].split("\"")[0]
         ext = "." + url.split("?")[0].split(".")[-1]
-        name = name = streamHTML.split("playerPageURL:\'")[1].split("\'")[0].split("/")[-1] + ext
+        name = streamHTML.split("playerPageURL:\'")[1].split("\'")[0].split("/")[-1] + ext
         
         return [url, name]
 

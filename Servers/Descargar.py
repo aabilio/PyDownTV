@@ -171,7 +171,7 @@ class Descargar(object):
             y cuando el protocolo es rtmp:// se utiliza el binario rtmpdump que el cliente debe tener instalado.
         '''
         # Utilizar el binario de rtmpdu si el protocolo es rtmp://
-        if self._URL.startswith("rtmp://"):
+        if type(self._URL) != list and self._URL.startswith("rtmp://"):
             printt(u"")
             printt(u"DESCARGAR:")
             printt(u"----------------------------------------------------------------")
@@ -209,7 +209,7 @@ class Descargar(object):
             
             
         # Utilizar pylibmms si el protocoo es mms://
-        if self._URL.startswith("mms://"):
+        if type(self._URL) != list and self._URL.startswith("mms://"):
             # Por ahora solo tengo libmms compilado para Mac OS X
             printt(u"")
             printt(u"DESCARGAR:")

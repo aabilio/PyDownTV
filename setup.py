@@ -26,7 +26,7 @@ from setuptools import setup
 
 
 setup(name="PydownTV", 
-    version="3.0",
+    version="3.0.1",
     description="Descarga vídeos de las webs de TVs Españolas",
     author="Abilio Almeida Eiroa",
     author_email="aabilio@gmail.com",

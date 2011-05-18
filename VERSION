@@ -1,7 +1,12 @@
-"3.0-BETA"
-"3.0-BETA"
+"3.0.1-BETA"
+"3.0.1-BETA"
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
+
+- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
+- Soporte para Radio TV de Castilla y León
+
+CAMBIOS EN LA VERSIÓN ANTERIOR:
 
 - Soporte para Vídeos de Play Cuatro
 - Soporte para vídeos Comunes de Cuatro (no Play Cuatro)
@@ -18,6 +23,11 @@ DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
 "
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
+
+- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
+- Soporte para Radio TV de Castilla y León
+
+CAMBIOS EN LA VERSIÓN ANTERIOR:
 
 - Soporte para Vídeos de Play Cuatro
 - Soporte para vídeos Comunes de Cuatro (no Play Cuatro)

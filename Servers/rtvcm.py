@@ -25,10 +25,13 @@ from Descargar import Descargar
 from utiles import salir, formatearNombre, printt
 import sys  
 
-class RTVC(object):
+class RTVCM(object):
     '''
-        Clase que maneja la descarga los vídeos de RTVC
+        Clase que maneja la descarga los vídeos de RTVCM
     '''
+    
+    URL_RTVCM = "http://www.rtvcm.es"
+    URL_MULTIMEDIA = "http://www.rtvcm.es/mm.php?id="
     
     def __init__(self, url=""):
         self._URL_recibida = url
@@ -44,6 +47,20 @@ class RTVC(object):
         ''' Método que utiliza la clase descargar para descargar el HTML '''
         D = Descargar(url2down)
         return D.descargar()
+        
+    def __paginaDvideo(self, streamHTML, nuevoID=None, name=None):
+        '''return url & name si la página que se pasa es directamente la del vídeo'''
+        if nuevoID is None and name is None:
+            nStreamHTML = streamHTML.replace(" ", "")
+        else:
+            nStreamHTML = self.__descHTML(self.URL_MULTIMEDIA + nuevoID).replace(" ", "")
+            
+        url = nStreamHTML.split("data=\"")[1].split("\"")[0]
+        if name is None:
+            name = url.split("/")[-1]
+            
+        return [url, name]
+            
 
     def procesarDescarga(self):
         '''
@@ -61,16 +78,29 @@ class RTVC(object):
         '''
         
         streamHTML = self.__descHTML(self._URL_recibida)
-        if streamHTML.find(".WMV") != -1:
-            name = streamHTML.split("<span id=\"lbltitulo_detalle\">")[1].split("<")[0]
-            url = streamHTML.split("<input type=\"hidden\" id=\"hidden_url\" value=\'")[1].split("\'")[0]
-            ext = "." + url.split(".")[-1].lower()
-            name += ext
-        elif streamHTML.find("youtube") != -1:
+        if self._URL_recibida.find("detail.php?id") != -1: # Aun no es el vídeo
+            if streamHTML.find("ShowPreviewMM(\'") != -1:
+                url = streamHTML.split("ShowPreviewMM(\'")[1].split("\'")[0]
+                name = streamHTML.split("); return false;\">")[1].split("<")[0]
+            elif streamHTML.find("onClick=\"ShowPreviewMM(") != -1:
+                printt(u"[INFO] Buscando ID del vídeo")
+                nuevoID = streamHTML.split("onClick=\"ShowPreviewMM(")[1].split(")")[0]
+                printt(u"[INFO] Vídeo ID:", nuevoID)
+                name = streamHTML.split("); return false;\">")[1].split("<")[0]
+                url, name = self.__paginaDvideo(streamHTML, nuevoID, name)
+            else:
+                salir(u"[!!!] No se reconoce el tipo de contenido")
+        elif self._URL_recibida.find("mm.php?id") != -1:
+            url, name = self.__paginaDvideo(streamHTML)
+        elif streamHTML.find("youtube"):
             salir(u"[!!!] No se reconoce el tipo de contenido.\nPuede que el vídeo sea de YouTube??")
         else:
             salir(u"[!!!] No se reconoce el tipo de contenido")
         
+        url = url.replace("http://", "mms://")
+        ext = "." + url.split(".")[-1]
+        if name.find(ext) == -1:
+            name += ext.lower()
         
         if name:
             name = formatearNombre(name)

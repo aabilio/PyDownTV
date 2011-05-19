@@ -49,6 +49,7 @@ from Servers.giraldatv import GiraldaTV
 from Servers.riasbaixas import RiasBaixas
 from Servers.rtvcyl import RTVCYL
 from Servers.rtvc import RTVC
+from Servers.rtvcm import RTVCM
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -145,6 +146,10 @@ class Servidor(object):
         '''return True si la url pertenece a RTVC'''
         if self._url.find("rtvc.es/") != -1:
             return True
+    def isRTVCM_(self):
+        '''return True si la url pertenece a RTV de Castilla - La Mancha'''
+        if self._url.find("rtvcm.es/") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -169,6 +174,7 @@ class Servidor(object):
     isCanalRiasBaixas = property(isCanalRiasBaixas_)
     isRTVCYL = property(isRTVCYL_)
     isRTVC = property(isRTVC_)
+    isRTVCM = property(isRTVCM_)
     
 def qServidor(url):
     '''
@@ -241,6 +247,9 @@ def qServidor(url):
     elif server.isRTVC:
         printt(u"[INFO] Radio Televisión Canaria")
         return RTVC(url)
+    elif server.isRTVCM:
+        printt(u"[INFO] Radio Televisión de Castilla - La Mancha")
+        return RTVCM(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)

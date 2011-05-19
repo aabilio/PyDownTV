@@ -247,4 +247,4 @@ def run(argv):
   else:
     if not options.quiet:
       print
-      print "Download complete!"
+      print "[INFO] Descarga con libmms completada"

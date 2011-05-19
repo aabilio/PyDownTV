@@ -48,6 +48,7 @@ from Servers.intereconomia import Intereconomia
 from Servers.giraldatv import GiraldaTV
 from Servers.riasbaixas import RiasBaixas
 from Servers.rtvcyl import RTVCYL
+from Servers.rtvc import RTVC
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -140,6 +141,10 @@ class Servidor(object):
         '''return True si la utl pertenecea Radio TV de Castilla y León'''
         if self._url.find("rtvcyl.es/") != -1:
             return True
+    def isRTVC_(self):
+        '''return True si la url pertenece a RTVC'''
+        if self._url.find("rtvc.es/") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -163,6 +168,7 @@ class Servidor(object):
     isGiraldaTV = property(isGiraldaTV_)
     isCanalRiasBaixas = property(isCanalRiasBaixas_)
     isRTVCYL = property(isRTVCYL_)
+    isRTVC = property(isRTVC_)
     
 def qServidor(url):
     '''
@@ -232,6 +238,9 @@ def qServidor(url):
     elif server.isRTVCYL:
         printt(u"[INFO] Radio Televisión de Castilla y León")
         return RTVCYL(url)
+    elif server.isRTVC:
+        printt(u"[INFO] Radio Televisión Canaria")
+        return RTVC(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)
@@ -296,7 +305,7 @@ def compURL(url):
     #p = re.compile('^http://.+\..+$', re.IGNORECASE)
     # La siguiente no valida los vídeos de la TVG:
     #p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=\w+)?(?:&\w+=\w+)*)?)?)?$', re.IGNORECASE)
-    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=[-a-z0-9/%:,]+)?(?:&\w+=[-a-zA-Z0-9/%:,]+)*)?)?)?$', re.IGNORECASE)
+    p = re.compile('^(https?)://([-a-z0-9\.]+)(?:(/[^?\s]+)(?:\?((?:\w+=[-a-z0-9/%:,._]+)?(?:&\w+=[-a-zA-Z0-9/%:,._]+)*)?)?)?$', re.IGNORECASE)
     m = p.match(url)
     if m:
         return True

@@ -19,19 +19,17 @@
 # Pequeña descripción de qué canal de tv es el módulo
 
 __author__="aabilio"
-__date__ ="$15-may-2011 11:03:38$"
+__date__ ="$19-may-2011 11:03:38$"
 
 from Descargar import Descargar
 from utiles import salir, formatearNombre, printt
 import sys  
 
-class EITB(object):
+class RTVC(object):
     '''
-        Clase que maneja la descarga los vídeos de la EITB
+        Clase que maneja la descarga los vídeos de RTVC
     '''
     
-    URL_EITB = "http://www.eitb.com/"
-
     def __init__(self, url=""):
         self._URL_recibida = url
 
@@ -63,19 +61,13 @@ class EITB(object):
         '''
         
         streamHTML = self.__descHTML(self._URL_recibida)
-        if self._URL_recibida.find("audios/") != -1 or self._URL_recibida.find("audioak/") != -1:
-            printt(u"[INFO] Audio")
-            name = streamHTML.split("<title>")[1].split("<")[0]
-            streamMP3 = streamHTML.split("<a id=\"descargaMp3\"")[1].split(">")[0]
-            url = self.URL_EITB + streamMP3.split("href=\"")[1].split("\"")[0]
-            name += ".mp3"
-            
-        elif self._URL_recibida.find("videos/") != -1 or self._URL_recibida.find("bideoak/") != -1:
-            printt(u"[INFO] Vídeo de %s" % (self._URL_recibida.split("/")[4]))
-            name = streamHTML.split("<title>")[1].split("<")[0]
-            streamMP4 = streamHTML.split("<a id=\"descargaMp4\"")[1].split(">")[0]
-            url = self.URL_EITB + streamMP4.split("href=\"")[1].split("\"")[0]
-            name += ".mp4"
+        if self._URL_recibida.find(".WMV") != -1:
+            name = streamHTML.split("<span id=\"lbltitulo_detalle\">")[1].split("<")[0]
+            url = streamHTML.split("<input type=\"hidden\" id=\"hidden_url\" value=\'")[1].split("\'")[0]
+            ext = "." + url.split(".")[-1].lower()
+            name += ext
+        elif self._URL_recibida.find("youtube"):
+            salir(u"[!!!] No se reconoce el tipo de contenido.\nPuede que el vídeo sea de YouTube??")
         else:
             salir(u"[!!!] No se reconoce el tipo de contenido")
         

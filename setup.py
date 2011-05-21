@@ -59,7 +59,8 @@ setup(name="PydownTV",
                 "Servers.Descargar",
                 "Servers.pyaxel.pyaxel",
                 "Servers.pylibmms.core",
-                "Servers.pylibmms.libmms"]
+                "Servers.pylibmms.libmms", 
+                "ez_setup"]
 )
     
     

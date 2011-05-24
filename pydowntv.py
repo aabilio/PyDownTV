@@ -50,6 +50,7 @@ from Servers.riasbaixas import RiasBaixas
 from Servers.rtvcyl import RTVCYL
 from Servers.rtvc import RTVC
 from Servers.rtvcm import RTVCM
+from Servers.planetaurbe import PlanetaUrbe
 from Servers.Descargar import Descargar
 
 from Servers.utiles import salir, windows_end, PdtVersion, printt
@@ -150,6 +151,10 @@ class Servidor(object):
         '''return True si la url pertenece a RTV de Castilla - La Mancha'''
         if self._url.find("rtvcm.es/") != -1:
             return True
+    def isPlanetaUrbe_(self):
+        '''return True si la url pertenece a PlanetaUrbe.tv'''
+        if self._url.find("planetaurbe.tv/") != -1:
+            return True
     
     # COMPLEMENTAR CON LOS DIFERENTES SERVIDORES QUE SE VAYAN SOPORTANDO
     
@@ -175,6 +180,7 @@ class Servidor(object):
     isRTVCYL = property(isRTVCYL_)
     isRTVC = property(isRTVC_)
     isRTVCM = property(isRTVCM_)
+    isPlanetaUrbe = property(isPlanetaUrbe_)
     
 def qServidor(url):
     '''
@@ -250,6 +256,9 @@ def qServidor(url):
     elif server.isRTVCM:
         printt(u"[INFO] Radio Televisión de Castilla - La Mancha")
         return RTVCM(url)
+    elif server.isPlanetaUrbe:
+        printt(u"[INFO] Planeta Urbe TV")
+        return PlanetaUrbe(url)
     else:
         msgErr = u"ERROR: La URL \"" + url + u"\" no pertenece a ninguna Televisión soportada"
         salir(msgErr)

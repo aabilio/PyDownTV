@@ -90,8 +90,8 @@ class Descargar(object):
             elif self._URL == PdtVersion.URL_VERSION:
                 return -1
             else:
-                print e
-                salir(u"[!!!] ERROR al descargar:")
+                printt(u"[!!!] ERROR al descargar:", e)
+                salir(u"")
         else:
             pass
             

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PyDownTV -->
-<!-- Saved: 2011-05-21, 02:16:46 -->
+<!-- Saved: 2011-05-25, 01:12:17 -->
 <!-- Copyright (C) 2011 aabilio, aabilio@gmail.com -->
 <Project version="4.6">
   <Language></Language>
@@ -49,6 +49,7 @@
     <Source>Servers/rtvc.py</Source>
     <Source>Servers/rtvcm.py</Source>
     <Source>ez_setup.py</Source>
+    <Source>Servers/planetaurbe.py</Source>
   </Sources>
   <Forms>
   </Forms>

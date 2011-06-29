@@ -27,7 +27,7 @@ from distutils.core import setup
 import py2exe
 
 setup(name="PydownTV", 
-    version="3.0.1",
+    version="3.0.2",
     description=u"Descarga vídeos de las webs de TVs Españolas".encode("cp850"),
     author="Abilio Almeida Eiroa",
     author_email="aabilio@gmail.com",
@@ -49,7 +49,7 @@ setup(name="PydownTV",
                 "Servers.eitb", 
                 "Servers.extremadura", 
                 "Servers.televigo", 
-                "Servers.tvamuercia", 
+                "Servers.tvamurcia", 
                 "Servers.intereconomia", 
                 "Servers.giraldatv", 
                 "Servers.riasbaixas", 

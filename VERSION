@@ -3,11 +3,13 @@
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
 
-- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
-- Soporte para Radio TV de Castilla y León
+- Corregido problemas al descargar los vídeos enteros de antena 3
+  Cuando no esté disponible la descarga de 000.mp4 se descargará por partes.
 
 CAMBIOS EN LA VERSIÓN ANTERIOR:
 
+- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
+- Soporte para Radio TV de Castilla y León
 - Soporte para Vídeos de Play Cuatro
 - Soporte para vídeos Comunes de Cuatro (no Play Cuatro)
 - Soporte para Extremadura Televisión
@@ -24,11 +26,13 @@ CAMBIOS EN LA VERSIÓN ANTERIOR:
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
 
-- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
-- Soporte para Radio TV de Castilla y León
+- Corregido problemas al descargar los vídeos enteros de antena 3
+  Cuando no esté disponible la descarga de 000.mp4 se descargará por partes.
 
 CAMBIOS EN LA VERSIÓN ANTERIOR:
 
+- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
+- Soporte para Radio TV de Castilla y León
 - Soporte para Vídeos de Play Cuatro
 - Soporte para vídeos Comunes de Cuatro (no Play Cuatro)
 - Soporte para Extremadura Televisión

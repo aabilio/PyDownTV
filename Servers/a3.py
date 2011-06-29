@@ -23,6 +23,8 @@ __author__="aabilio"
 __date__ ="$29-mar-2011 11:03:38$"
 
 import sys
+import urllib2
+import re
 from Descargar import Descargar
 from utiles import salir, formatearNombre, printt
 
@@ -56,9 +58,26 @@ class A3(object):
         printt(u"[INFO] Modo Salón")
         streamXML = \
         self.__descXML(self.URL_DE_ANTENA3 + streamHTML.split("player_capitulo.xml='")[1].split("'")[0])
-        url2down = self.URL_DE_DESCARGA + \
+        # Comprobar aquí si se puede descargar 000.mp4:
+        url2down1 = self.URL_DE_DESCARGA + \
             streamXML.split("<archivo><![CDATA[")[1].split("001.mp4]]></archivo>")[0] + "000.mp4"
-        name = streamXML.split("<nombre><![CDATA[")[1].split("]]>")[0] + ".mp4"
+        try: # Descargar entero
+            urllib2.urlopen(url2down1)
+            url2down = url2down1
+            name = streamXML.split("<nombre><![CDATA[")[1].split("]]>")[0] + ".mp4"
+        except urllib2.HTTPError: # Descargar por partes:
+            printt(u"[!!!]  No se puede descargar el vídeo en un archivo (000.mp4)")
+            printt(u"[INFO] El vídeo se descargará por partes")
+            parts = re.findall("\<archivo\>\<\!\[CDATA\[.*\.mp4\]\]\>\<\/archivo\>", streamXML)
+            if parts:
+                name1 = streamXML.split("<nombre><![CDATA[")[1].split("]]>")[0]
+                url2down = []
+                name = []
+                for i in parts:
+                    url2down.append(self.URL_DE_DESCARGA + i.split("<archivo><![CDATA[")[1].split("]]></archivo>")[0])
+                    name.append(name1 + "_" + i.split("]")[0].split("/")[-1])
+            else:
+                salir(u"[!!!] ERROR: No se encuentran las partes del vídeo")
         
         return [url2down,  name]
     def __modoNormalConURL(self,  streamHTML):

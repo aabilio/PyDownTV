@@ -263,28 +263,26 @@ class Descargar(object):
             printt(u"[ URL DE DESCARGA FINAL ]", self._URL)
 
         
-        printt(u"[INFO] Presiona \"Ctrl + C\" para cancelar")
+        printt(u"[INFO] Presiona \"Ctrl + C\" para cancelar (Por partes)")
         printt(u"")
         if type(self._URL) == list:
             for i in range(0, len(self._URL)):
                 printt(u"[Descargando %d parte]" % (int(i) + 1))
                 options = {"output_file": self._outputName[i], "verbose": True, "max_speed": None, "num_connections": 4}
                 pyaxel.download(self._URL[i], options)
-                if i < len(self._URL)-1: 
-                    printt(u"==================================")
-                    printt(u"")
-                    printt(u"Parte descargada o cancelanda")
-                    printt(u"Presiona [ENTER] para continuar")
-                    printt(u"Presiona[Ctrl + C] para Cancelar")
-                    printt(u"")
-                    printt(u"==================================")
-                    try:
-                        raw_input()
-                    except KeyboardInterrupt:
-                        salir(u"\nBye!")
-            #for (i, b) in (self._URL, self._outputName):
-            #    options = {"output_file": b, "verbose": True, "max_speed": None, "num_connections": 4}
-            #    pyaxel.download(i, options)
+                print "\n"
+#                if i < len(self._URL)-1: 
+#                    printt(u"==================================")
+#                    printt(u"")
+#                    printt(u"Parte descargada o cancelanda")
+#                    printt(u"Presiona [ENTER] para continuar")
+#                    printt(u"Presiona[Ctrl + C] para Cancelar")
+#                    printt(u"")
+#                    printt(u"==================================")
+#                    try:
+#                        raw_input()
+#                    except KeyboardInterrupt:
+#                        salir(u"\nBye!")
         else:
             options = {"output_file": self._outputName, "verbose": True, "max_speed": None, "num_connections": 4}
             pyaxel.download(self._URL, options)

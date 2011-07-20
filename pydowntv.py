@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "3.0.2-BETA"
+__version__ = "3.1-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -33,7 +33,7 @@ from Servers.tve import TVE
 from Servers.rtve import RTVE
 # DEPRECATED from Servers.tvalacarta import TvAlacarta
 from Servers.telecinco import Telecinco
-# from Servers.lasexta import LaSexta
+from Servers.lasexta import LaSexta
 from Servers.cuatro import Cuatro
 from Servers.crtvg import CRTVG
 from Servers.btv import BTV
@@ -85,7 +85,7 @@ class Servidor(object):
             return True
     def isLaSexta_(self):
         '''return True si la URL pertenece a La Sexta'''
-        if self._url.find("lasexta.com/sextatv/") != -1:
+        if self._url.find("lasexta.com/") != -1:
             return True
     def isCuatro_(self):
         '''return True si la URL pertenece a Cuatro'''
@@ -206,8 +206,8 @@ def qServidor(url):
         printt(u"[INFO] Telecinco")
         return Telecinco(url)
     elif server.isLaSexta:
-        salir(u"La Sexta: Todavía no implementado")
-        # return LaSexta(url)
+        printt(u"[INFO] La Sexta")
+        return LaSexta(url)
     elif server.isCuatro:
         printt(u"[INFO] Cuatro")
         return Cuatro(url)

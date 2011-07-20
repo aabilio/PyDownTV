@@ -26,7 +26,7 @@ from setuptools import setup
 import py2app
 
 setup(name="PydownTV", 
-    version="3.0.2",
+    version="3.1",
     description="Descarga vídeos de las webs de TVs Españolas",
     author="Abilio Almeida Eiroa",
     author_email="aabilio@gmail.com",
@@ -41,6 +41,7 @@ setup(name="PydownTV",
                 "Servers.rtve",
                 "Servers.a3",
                 "Servers.telecinco",
+                "Servers.lasexta", 
                 "Servers.crtvg",
                 "Servers.btv", 
                 "Servers.canalsur", 

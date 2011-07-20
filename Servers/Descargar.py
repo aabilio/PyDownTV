@@ -170,7 +170,7 @@ class Descargar(object):
             GNU/Linux como para Mac OS X y Windows cuando el protocolo es mms:// se utiliza libmms (por ahora Windows no)
             y cuando el protocolo es rtmp:// se utiliza el binario rtmpdump que el cliente debe tener instalado.
         '''
-        # Utilizar el binario de rtmpdu si el protocolo es rtmp://
+        # Utilizar el binario de rtmpdump si el protocolo es rtmp://
         if type(self._URL) != list and self._URL.startswith("rtmp://"):
             printt(u"")
             printt(u"DESCARGAR:")
@@ -205,6 +205,116 @@ class Descargar(object):
                 
             return
             
+        # RTMP con varias partes:
+        
+        if type(self._URL) is list and self._URL[0].startswith("rtmp://"):
+            printt(u"")
+            printt(u"DESCARGAR:")
+            printt(u"----------------------------------------------------------------")
+            b=1
+            for i in self._URL:
+                printt(u"[ URL DE DESCARGA FINAL ] [Parte %d] %s" % (b, i))
+                b += 1
+            
+            printt(u"[INFO] Presiona \"Ctrl + C\" para cancelar (Por partes)")
+            printt(u"")
+            
+            printt(u"[?] Quieres descargar todas las partes? [s/n]:")
+            opc = ""
+            while opc != "s" and opc != "n":
+                opc = raw_input()
+                if opc is not "s" or opc is not "n":
+                    printt(u"[!!!] [s/n]")
+            
+            if opc is "s":
+                for i in range(0, len(self._URL)):
+                    printt(u"[ Descargando %d parte ]" % (int(i) + 1))
+                    printt(u"[ Destino ] %s" % self.outputName[i])
+                    
+                    rtmpdump = "rtmpdump -o \"" + self.outputName[i] +  "\" -r \"" + self._URL[i] + "\""
+                    rtmpdump_resume = "rtmpdump --resume -o \"" + self.outputName[i] +  "\" -r \"" + self._URL[i] + "\""
+                    rtmpdump_win = "rtmpdump.exe -o \"" + self.outputName[i] +  "\" -r \"" + self._URL[i] + "\""
+                    rtmpdump_resume_win = "rtmpdump.exe --resume -o \"" + self.outputName[i] +  "\" -r \"" + self._URL[i] + "\""
+        
+                    try:
+                        if path.isfile(self.outputName[i]):
+                            printt(u"Se ha encontrado una descarga parcial anterior, se continúa...\n")
+                            printt(u"\nLanzando rtmpdump...\n")
+                            if sys.platform == "win32":
+                                system(rtmpdump_resume_win)
+                            else:
+                                system(rtmpdump_resume)
+                        else:
+                            printt(u"\nLanzando rtmpdump...\n")
+                            if sys.platform == "win32":
+                                system(rtmpdump_win)
+                            else:
+                                system(rtmpdump)
+                    except OSError, e:
+                        printt(u"[!!!] ERROR. No se encuenta rtmpdump:", e)
+                    except KeyboardInterrupt:
+                        salir(u"Bye!")
+                        
+                        print "\n"
+            elif opc is "n":
+                printt(u"\n[?] Qué partes quieres descargar?")
+                printt(u"[INFO] Puedes introducir varias partes separadas por comas")
+                
+                ERROR = True
+                while ERROR is True: 
+                    ERROR = False
+                    printt(u"[INFO] Partes:")
+                    b = 1
+                    for i in range(0, len(self._URL)):
+                        printt(u"[Parte %s] %s" % (str(b), self._URL[i]))
+                        b += 1
+                    del b
+                    printt(u"[?] --> ")
+                    partes = raw_input()
+                    partes = partes.split(",")
+                    for i in partes:
+                        if not i.isdigit():
+                            printt(u"[!!!] ERROR. No se reconoce la parte %s" % i)
+                            ERROR = True
+                            break
+                        if int(i) < 1 or int(i) > len(self._URL):
+                            printt(u"[!!!] ERROR. La parte \"%s\" no existe" % int(i))
+                            ERROR = True
+                            break
+                            
+                printt(u"[OK] Se descargarán las partes:", partes)
+                for i in partes:
+                    printt(u"\n")
+                    printt(u"[ Descargando %d parte ]" % (int(i)))
+                    printt(u"[ Destino ] %s" % self.outputName[int(i)-1])
+                    
+                    rtmpdump = "rtmpdump -o \"" + self.outputName[int(i)-1] +  "\" -r \"" + self._URL[int(i)-1] + "\""
+                    rtmpdump_resume = "rtmpdump --resume -o \"" + self.outputName[int(i)-1] +  "\" -r \"" + self._URL[int(i)-1] + "\""
+                    rtmpdump_win = "rtmpdump.exe -o \"" + self.outputName[int(i)-1] +  "\" -r \"" + self._URL[int(i)-1] + "\""
+                    rtmpdump_resume_win = "rtmpdump.exe --resume -o \"" + self.outputName[int(i)-1] +  "\" -r \"" + self._URL[int(i)-1] + "\""
+        
+                    try:
+                        if path.isfile(self.outputName[int(i)-1]):
+                            printt(u"Se ha encontrado una descarga parcial anterior, se continúa...\n")
+                            printt(u"\nLanzando rtmpdump...\n")
+                            if sys.platform == "win32":
+                                system(rtmpdump_resume_win)
+                            else:
+                                system(rtmpdump_resume)
+                        else:
+                            printt(u"\nLanzando rtmpdump...\n")
+                            if sys.platform == "win32":
+                                system(rtmpdump_win)
+                            else:
+                                system(rtmpdump)
+                    except OSError, e:
+                        printt(u"[!!!] ERROR. No se encuenta rtmpdump:", e)
+                    except KeyboardInterrupt:
+                        salir(u"Bye!")
+                        
+                        print "\n"
+            
+            return
         #### FIN RTMP://
             
             
@@ -266,11 +376,53 @@ class Descargar(object):
         printt(u"[INFO] Presiona \"Ctrl + C\" para cancelar (Por partes)")
         printt(u"")
         if type(self._URL) == list:
-            for i in range(0, len(self._URL)):
-                printt(u"[Descargando %d parte]" % (int(i) + 1))
-                options = {"output_file": self._outputName[i], "verbose": True, "max_speed": None, "num_connections": 4}
-                pyaxel.download(self._URL[i], options)
-                print "\n"
+            printt(u"[?] Quieres descargar todas las partes? [s/n]:")
+            opc = ""
+            while opc != "s" and opc != "n":
+                opc = raw_input()
+                if opc is not "s" or opc is not "n":
+                    printt(u"[!!!] [s/n]")
+            
+            if opc is "s":
+                for i in range(0, len(self._URL)):
+                    printt(u"[Descargando %d parte]" % (int(i) + 1))
+                    options = {"output_file": self._outputName[i], "verbose": True, "max_speed": None, "num_connections": 4}
+                    pyaxel.download(self._URL[i], options)
+                    print "\n"
+            elif opc is "n":
+                printt(u"\n[?] Qué partes quieres descargar?")
+                printt(u"[INFO] Puedes introducir varias partes separadas por comas")
+                
+                ERROR = True
+                while ERROR is True: 
+                    ERROR = False
+                    printt(u"[INFO] Partes:")
+                    b = 1
+                    for i in range(0, len(self._URL)):
+                        printt(u"[Parte %s] %s" % (str(b), self._URL[i]))
+                        b += 1
+                    del b
+                    printt(u"[?] --> ")
+                    partes = raw_input()
+                    partes = partes.split(",")
+                    for i in partes:
+                        if not i.isdigit():
+                            printt(u"[!!!] ERROR. No se reconoce la parte %s" % i)
+                            ERROR = True
+                            break
+                        if int(i) < 1 or int(i) > len(self._URL):
+                            printt(u"[!!!] ERROR. La parte \"%s\" no existe" % int(i))
+                            ERROR = True
+                            break
+                            
+                printt(u"[OK] Se descargarán las partes:", partes)
+                for i in partes:
+                    printt(u"[Descargando %d parte]" % (int(i)))
+                    options = {"output_file": self._outputName[int(i)-1], "verbose": True, "max_speed": None, "num_connections": 4}
+                    pyaxel.download(self._URL[int(i)-1], options)
+                    print "\n"
+                
+                
 #                if i < len(self._URL)-1: 
 #                    printt(u"==================================")
 #                    printt(u"")

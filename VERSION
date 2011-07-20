@@ -1,50 +1,36 @@
-"3.0.2-BETA"
-"3.0.2-BETA"
+"3.1-BETA"
+"3.1-BETA"
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
+
+- Soporte para vídeos de La Sexta :D
+- Descarga por partes seguidas sin intervención de user
+- Descarga partes sueltas
+
+CAMBIOS EN LA VERSIÓN ANTERIOR:
 
 - Corregido problemas al descargar los vídeos enteros de antena 3
   Cuando no esté disponible la descarga de 000.mp4 se descargará por partes.
 - Soporte para Castilla La Mancha TV
 - Soporte para Planeta Urbe TV
 
-CAMBIOS EN LA VERSIÓN ANTERIOR:
-
-- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
-- Soporte para Radio TV de Castilla y León
-- Soporte para Vídeos de Play Cuatro
-- Soporte para vídeos Comunes de Cuatro (no Play Cuatro)
-- Soporte para Extremadura Televisión
-- Soporte para EITB
-- Soporte para TV Autonómica de Murcia (A la carta)
-- Soporte para Giralda TV
-- Soporte para Tele Vigo
-- Soporte para Intereconomía
-- Soporte para Canal Rías Baixas
-- Pequeños bugs arreglados
-
 --> [Para descargar] http://code.google.com/p/pydowntv/downloads/list
 "
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
 
-- Corregido problemas al descargar los vídeos enteros de antena 3
-  Cuando no esté disponible la descarga de 000.mp4 se descargará por partes.
+- Soporte para vídeos de La Sexta :D
+- Descarga por partes seguidas sin intervención de user
+- Descarga de partes sueltas
 
 CAMBIOS EN LA VERSIÓN ANTERIOR:
 
-- Corregido error que se producía al descargar vídeos de varias partes de antena3.com
-- Soporte para Radio TV de Castilla y León
-- Soporte para Vídeos de Play Cuatro
-- Soporte para vídeos Comunes de Cuatro (no Play Cuatro)
-- Soporte para Extremadura Televisión
-- Soporte para EITB
-- Soporte para TV Autonómica de Murcia (A la carta)
-- Soporte para Giralda TV
-- Soporte para Tele Vigo
-- Soporte para Intereconomía
-- Soporte para Canal Rías Baixas
-- Pequeños bugs arreglados
+- Corregido problemas al descargar los vídeos enteros de antena 3
+  Cuando no esté disponible la descarga de 000.mp4 se descargará por partes.
+- Soporte para Castilla La Mancha TV
+- Soporte para Planeta Urbe TV
 
 --> [Para descargar] http://code.google.com/p/pydowntv/downloads/list
 "
+
+# Cambios en Descargar.py para incluir descarga automática de varias partes sin que intervenga el user

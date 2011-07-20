@@ -210,6 +210,7 @@ def qServidor(url):
         return LaSexta(url)
     elif server.isCuatro:
         printt(u"[INFO] Cuatro")
+        printt(u"[!!!] Actualmente los vídeos de Play Cuatro dan ERROR")
         return Cuatro(url)
     elif server.isCRTVG:
         printt(u"[INFO] Televisión de Galiza")
@@ -348,10 +349,14 @@ if __name__ == "__main__":
             help(argv)
             salir(u"")
             
+            
         i = ""
         url = []
         
         if argv[1] == "--no-check-version":
+            for i in argv[2:]:
+                url.append(i)
+        elif argv[1] == "--show" or argv[1] == "-s":
             for i in argv[2:]:
                 url.append(i)
         else:
@@ -399,6 +404,15 @@ if __name__ == "__main__":
             salir(u"[!!!] Todas las URLs son incorrectas (empiezan por: http://)")
     else:
         salir(u"No has introducido ninguna URL!")
+        
+    # SOLO MOSTRAR ENLACES
+    for i in argv:
+        if i == "--show" or i == "-s":
+            printt(u"[INFO] Solo mostrar enlaces:")
+            urlDeDescarga, outputName = servidor.procesarDescarga()
+            for i in urlDeDescarga:
+                printt(u"%s" % i)
+            salir(u"")
 
     # Llegados a este punto tenemos la url comprobada y tenemos el objeto
     # "servidor" perteneciente a la correspondiente Clase de servers en la que estemos

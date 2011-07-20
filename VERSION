@@ -1,11 +1,12 @@
-"3.0.2-BETA"
-"3.0.2-BETA"
+"3.1-BETA"
+"3.1-BETA"
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
 
 - Soporte para vídeos de La Sexta :D
 - Descarga por partes seguidas sin intervención de user
 - Descarga partes sueltas
+- Flag "-s" o "--show" --> solo mostrará los enlaces (como: http://pydowntv.appspot.com/)
 
 CAMBIOS EN LA VERSIÓN ANTERIOR:
 
@@ -22,6 +23,7 @@ DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
 - Soporte para vídeos de La Sexta :D
 - Descarga por partes seguidas sin intervención de user
 - Descarga de partes sueltas
+- Flag "-s" o "--show" --> solo mostrará los enlaces (como: http://pydowntv.appspot.com/)
 
 CAMBIOS EN LA VERSIÓN ANTERIOR:
 

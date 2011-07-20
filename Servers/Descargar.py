@@ -274,7 +274,7 @@ class Descargar(object):
                     partes = partes.split(",")
                     for i in partes:
                         if not i.isdigit():
-                            printt(u"[!!!] ERROR. No se reconoce la parte %s" % i)
+                            printt(u"[!!!] ERROR. No se reconoce la parte \"%s\"" % i)
                             ERROR = True
                             break
                         if int(i) < 1 or int(i) > len(self._URL):
@@ -282,7 +282,7 @@ class Descargar(object):
                             ERROR = True
                             break
                             
-                printt(u"[OK] Se descargarán las partes:", partes)
+                printt(u"[OK] Se descargarán las partes")
                 for i in partes:
                     printt(u"\n")
                     printt(u"[ Descargando %d parte ]" % (int(i)))
@@ -407,7 +407,7 @@ class Descargar(object):
                     partes = partes.split(",")
                     for i in partes:
                         if not i.isdigit():
-                            printt(u"[!!!] ERROR. No se reconoce la parte %s" % i)
+                            printt(u"[!!!] ERROR. No se reconoce la parte \"%s\"" % i)
                             ERROR = True
                             break
                         if int(i) < 1 or int(i) > len(self._URL):
@@ -415,7 +415,7 @@ class Descargar(object):
                             ERROR = True
                             break
                             
-                printt(u"[OK] Se descargarán las partes:", partes)
+                printt(u"[OK] Se descargarán las partes")
                 for i in partes:
                     printt(u"[Descargando %d parte]" % (int(i)))
                     options = {"output_file": self._outputName[int(i)-1], "verbose": True, "max_speed": None, "num_connections": 4}

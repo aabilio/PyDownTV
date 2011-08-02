@@ -47,7 +47,7 @@ object
 <td>Procesa la descarga del v&#237;deo llamanda a la funci&#243;n download de pyaxel para la mayor&#237;a de los v&#237;deos en GNU/Linux y Mac OS X.</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Descargar.descargarVideoWindows">descargarVideoWindows</a></td>
-<td></td>
+<td>Procesa la descarga del v&#237;deo llamanda a la funci&#243;n download de pyaxel para la mayor&#237;a de los v&#237;deos en GNU/Linux y Mac OS X.</td>
 </tr><tr>
 <td><a style="color:#0000FF" href="#Descargar.estadodescarga">estadodescarga</a></td>
 <td>funci&#243;n reporthook que representa en pantalla informaci&#243;n mientras se realiza la descarga</td>
@@ -79,7 +79,12 @@ object
 </p><a NAME="Descargar.descargarVideoWindows" ID="Descargar.descargarVideoWindows"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Descargar.descargarVideoWindows</h3>
 <b>descargarVideoWindows</b>(<i>nombre=None</i>)
-<a NAME="Descargar.estadodescarga" ID="Descargar.estadodescarga"></a>
+<p>
+            Procesa la descarga del v&#237;deo llamanda a la funci&#243;n download de pyaxel para la mayor&#237;a de los
+            v&#237;deos en GNU/Linux y Mac OS X. Para sistemas win32, se llama a descargarVideoWindows() y tanto para
+            GNU/Linux como para Mac OS X y Windows cuando el protocolo es mms:// se utiliza libmms (por ahora Windows no)
+            y cuando el protocolo es rtmp:// se utiliza el binario rtmpdump que el user debe tener instalado.
+</p><a NAME="Descargar.estadodescarga" ID="Descargar.estadodescarga"></a>
 <h3 style="background-color:#FFFFFF;color:#FF0000">Descargar.estadodescarga</h3>
 <b>estadodescarga</b>(<i>tamano_bloque, tamano_total</i>)
 <p>

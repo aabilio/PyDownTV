@@ -20,7 +20,7 @@
 
 __author__ = "aabilio"
 __date__ = "$29-mar-2011 11:01:48$"
-__version__ = "3.1-BETA"
+__version__ = "3.2-BETA"
 
 from sys import argv, exit, platform
 import re
@@ -85,7 +85,7 @@ class Servidor(object):
             return True
     def isLaSexta_(self):
         '''return True si la URL pertenece a La Sexta'''
-        if self._url.find("lasexta.com/") != -1:
+        if self._url.find("lasexta.com/") != -1 or self._url.find("lasextadeportes.com") != -1:
             return True
     def isCuatro_(self):
         '''return True si la URL pertenece a Cuatro'''

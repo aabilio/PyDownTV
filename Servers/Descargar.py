@@ -96,6 +96,12 @@ class Descargar(object):
             pass
             
     def descargarVideoWindows(self, nombre=None):
+        '''
+            Procesa la descarga del vídeo llamanda a la función download de pyaxel para la mayoría de los
+            vídeos en GNU/Linux y Mac OS X. Para sistemas win32, se llama a descargarVideoWindows() y tanto para
+            GNU/Linux como para Mac OS X y Windows cuando el protocolo es mms:// se utiliza libmms (por ahora Windows no)
+            y cuando el protocolo es rtmp:// se utiliza el binario rtmpdump que el user debe tener instalado.
+        '''
         url = self._URL
         name = nombre if nombre != None else self._URL.split('/')[-1]
         
@@ -132,29 +138,67 @@ class Descargar(object):
             # TODO: Agregar velocidad de descarga al progreso
             sys.stdout.write("\r[Descargando]: [ %.2f MiB / %.2f MiB ]\t\t[ %.1f%% ]" \
                             % (cant_descargada, tamano_total, porcentaje))
-        
+                            
+        #######
+                            
         if type(self._URL) == list:
-            for i in range(0, len(self._URL)):
-                printt(u"[Descargando %d parte]" % (int(i) + 1))
-                printt(u"[Destino]", name[i])
-                try:
-                    urllib.urlretrieve(url[i], name[i], reporthook=estadodescarga)
-                    print ""
-                except KeyboardInterrupt:
-                    sys.exit("\nCiao!")
-                    
-                if i < len(self._URL)-1: 
-                    printt(u"==================================")
-                    printt(u"")
-                    printt(u"Parte descargada o cancelanda")
-                    printt(u"Presiona [ENTER] para continuar")
-                    printt(u"Presiona[Ctrl + C] para Cancelar")
-                    printt(u"")
-                    printt(u"==================================")
+            printt(u"[?] Quieres descargar todas las partes? [s/n]:")
+            opc = ""
+            while opc != "s" and opc != "n":
+                opc = raw_input()
+                if opc is not "s" or opc is not "n":
+                    printt(u"[!!!] [s/n]")
+            
+            if opc is "s":
+                for i in range(0, len(self._URL)):
+                    printt(u"[Descargando %d parte]" % (int(i) + 1))
+                    printt(u"[Destino]", name[i])
                     try:
-                        raw_input()
-                    except KeyboardInterrupt:
-                        salir(u"\nBye!")
+                        urllib.urlretrieve(url[i], name[i], reporthook=estadodescarga)
+                        print ""
+                    #except KeyboardInterrupt:
+                    #    sys.exit("\nCiao!")
+                    except:
+                        pass
+                    print "\n"
+            elif opc is "n":
+                printt(u"\n[?] Qué partes quieres descargar?")
+                printt(u"[INFO] Puedes introducir varias partes separadas por comas")
+                
+                ERROR = True
+                while ERROR is True: 
+                    ERROR = False
+                    printt(u"[INFO] Partes:")
+                    b = 1
+                    for i in range(0, len(self._URL)):
+                        printt(u"[Parte %s] %s" % (str(b), self._URL[i]))
+                        b += 1
+                    del b
+                    printt(u"[?] --> ")
+                    partes = raw_input()
+                    partes = partes.split(",")
+                    for i in partes:
+                        if not i.isdigit():
+                            printt(u"[!!!] ERROR. No se reconoce la parte \"%s\"" % i)
+                            ERROR = True
+                            break
+                        if int(i) < 1 or int(i) > len(self._URL):
+                            printt(u"[!!!] ERROR. La parte \"%s\" no existe" % int(i))
+                            ERROR = True
+                            break
+                            
+                printt(u"[OK] Se descargarán las partes")
+                for i in partes:
+                    printt(u"[Descargando %d parte]" % (int(i)))
+                    printt(u"[Destino]", name[int(i)-1])
+                    try:
+                        urllib.urlretrieve(url[int(i)-1], name[int(i)-1], reporthook=estadodescarga)
+                        print ""
+                    #except KeyboardInterrupt:
+                    #    sys.exit("\nCiao!")
+                    except:
+                        pass
+                    print "\n"
         else:
             try:
                 printt(u"[Destino]", name)
@@ -162,6 +206,42 @@ class Descargar(object):
                 print ""
             except KeyboardInterrupt:
                 salir("\nCiao!")
+  
+  
+        #######
+                            
+                            
+                            
+        
+#        if type(self._URL) == list:
+#            for i in range(0, len(self._URL)):
+#                printt(u"[Descargando %d parte]" % (int(i) + 1))
+#                printt(u"[Destino]", name[i])
+#                try:
+#                    urllib.urlretrieve(url[i], name[i], reporthook=estadodescarga)
+#                    print ""
+#                except KeyboardInterrupt:
+#                    sys.exit("\nCiao!")
+#                    
+#                if i < len(self._URL)-1: 
+#                    printt(u"==================================")
+#                    printt(u"")
+#                    printt(u"Parte descargada o cancelanda")
+#                    printt(u"Presiona [ENTER] para continuar")
+#                    printt(u"Presiona[Ctrl + C] para Cancelar")
+#                    printt(u"")
+#                    printt(u"==================================")
+#                    try:
+#                        raw_input()
+#                    except KeyboardInterrupt:
+#                        salir(u"\nBye!")
+#        else:
+#            try:
+#                printt(u"[Destino]", name)
+#                urllib.urlretrieve(url, name, reporthook=estadodescarga)
+#                print ""
+#            except KeyboardInterrupt:
+#                salir("\nCiao!")
 
     def descargarVideo(self):
         '''

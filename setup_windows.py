@@ -27,7 +27,7 @@ from distutils.core import setup
 import py2exe
 
 setup(name="PydownTV", 
-    version="3.1",
+    version="3.2",
     description=u"Descarga vídeos de las webs de TVs Españolas".encode("cp850"),
     author="Abilio Almeida Eiroa",
     author_email="aabilio@gmail.com",

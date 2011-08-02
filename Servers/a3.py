@@ -53,14 +53,45 @@ class A3(object):
         ''' Método que utiliza la clase descargar para descargar HTML '''
         D = Descargar(url2down)
         return D.descargar()
+        
+    def __modoSalonNuevo(self, streamXML):
+        '''Nuevos vídeos con extensión .m4v'''
+        printt(u"[INFO] Nuevos vídeos en formato f4v")
+        url2down1 = self.URL_DE_DESCARGA + \
+                streamXML.split("<archivo><![CDATA[")[1].split("001.f4v]]></archivo>")[0] + "000.f4v"
+        try: # Descargar entero
+            urllib2.urlopen(url2down1)
+            url2down = url2down1
+            name = streamXML.split("<nombre><![CDATA[")[1].split("]]>")[0] + ".f4v"
+        except urllib2.HTTPError: # Descargar por partes:
+            printt(u"[!!!]  No se puede descargar el vídeo en un archivo (000.m4v)")
+            printt(u"[INFO] El vídeo se descargará por partes")
+            parts = re.findall("\<archivo\>\<\!\[CDATA\[.*\.f4v\]\]\>\<\/archivo\>", streamXML)
+            if parts:
+                name1 = streamXML.split("<nombre><![CDATA[")[1].split("]]>")[0]
+                url2down = []
+                name = []
+                for i in parts:
+                    url2down.append(self.URL_DE_DESCARGA + i.split("<archivo><![CDATA[")[1].split("]]></archivo>")[0])
+                    name.append(name1 + "_" + i.split("]")[0].split("/")[-1])
+            else:
+                salir(u"[!!!] ERROR: No se encuentran las partes del vídeo")
+        
+        return [url2down,  name]
 
     def __modoSalon(self, streamHTML):
         printt(u"[INFO] Modo Salón")
         streamXML = \
         self.__descXML(self.URL_DE_ANTENA3 + streamHTML.split("player_capitulo.xml='")[1].split("'")[0])
         # Comprobar aquí si se puede descargar 000.mp4:
-        url2down1 = self.URL_DE_DESCARGA + \
-            streamXML.split("<archivo><![CDATA[")[1].split("001.mp4]]></archivo>")[0] + "000.mp4"
+        if streamXML.find(".mp4") != -1:
+            url2down1 = self.URL_DE_DESCARGA + \
+                streamXML.split("<archivo><![CDATA[")[1].split("001.mp4]]></archivo>")[0] + "000.mp4"
+        elif streamXML.find(".f4v") != -1:
+            [url2down, name] = self.__modoSalonNuevo(streamXML)
+            return [url2down, name]
+        else:
+            salir(u"[!!!] ERROR: No se encuentra vídeos mp4 o f4v")
         try: # Descargar entero
             urllib2.urlopen(url2down1)
             url2down = url2down1

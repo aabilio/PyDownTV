@@ -15,6 +15,9 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with PyDownTV.  If not, see <http://www.gnu.org/licenses/>.
+#
+# __GetStream, __HexToBytes, __BytesToStr and __showURL functions are a implmentation for
+# PyDownTV of a "RC4 implementation in Python" from Eliot Ball <http://www.eliotball.com/rc4-implementation-in-python>
 
 # Módulo para manejar los vídeos de la web de La Sexta
 
@@ -24,12 +27,14 @@ __date__ ="$07-abr-2011 11:03:38$"
 from Descargar import Descargar
 from utiles import salir, formatearNombre, printt
 import sys
-from pprint import pprint
 
 class LaSexta(object): 
     '''
         Clase para manejar los videos de la página web de La Sexta
     '''
+    
+    URL_PLAYLIST = "http://www.lasextadeportes.com/feeds/playlist/"
+    URL_VIDEOPOINTS = "http://www.lasextadeportes.com/feeds/videopoints/461033"
 
     def __init__(self, url=""):
         self._URL_recibida = url
@@ -57,18 +62,21 @@ class LaSexta(object):
         return stream
     
     def __HexToBytes(self, Hex):
+        '''take a hex string a return a byte string'''
         Bytes = []
         for i in xrange(len(Hex) / 2):
             Bytes.append(int(Hex[i * 2: (i + 1) * 2], 16))
         return Bytes
 
     def __BytesToStr(self, Bytes):
+        '''take a hex string and return a char string'''
         result = ""
         for byte in Bytes:
             result += chr(byte)
         return result
 
     def __showURL(self, ciphertext):
+        '''return the video url from a hex rc4 encrypt string'''
         ciphertext = self.__HexToBytes(ciphertext)
         stream = self.__GetStream(len(ciphertext))
         result = []
@@ -97,14 +105,14 @@ class LaSexta(object):
         '''
         
         streamHTML = self.__descHTML(self._URL_recibida)
-        if streamHTML.find("_urlVideo=") != -1: # Vídeo en un sola parte:
+        if streamHTML.find("_urlVideo=") != -1: # Vídeo en un sola parte
             codURL = streamHTML.split("_urlVideo=")[1].split("&")[0]
             url = self.__showURL(codURL)
             name = streamHTML.split("<title>")[1].split("<")[0]
             if url.find("?start=") != -1: ext="." + url.split("?start=")[0].split(".")[-1]
             else: ext= "." + url.split(".")[-1]
             name += ext
-        elif streamHTML.find("_url_list=") != -1:
+        elif streamHTML.find("_url_list=") != -1: # Vídeo en varias partes
             name1 = streamHTML.split("<title>")[1].split("<")[0]
             codURL1 = streamHTML.split("_url_list=")[1].split("&")[0]
             url1 = self.__showURL(codURL1)
@@ -128,8 +136,21 @@ class LaSexta(object):
                 name.append(name1 + "_part0" + str(b) + ext)
                 b += 1
             del b
+        elif streamHTML.find("_id_list=") != -1:
+            id = streamHTML.split("_id_list=")[1].split("&")[0]
+            sPlayList = self.__descHTML(self.URL_PLAYLIST + id)
+            partes = sPlayList.split("<video>")[1:]
+            url = []
+            name = []
+            for i in partes:
+                tmpURL = i.split("<url>")[1].split("<")[0]
+                ext = "." + tmpURL.split(".")[-1]
+                if tmpURL.find("/mp4:") != -1: tmpURL = tmpURL.replace("/mp4:", "/")
+                if tmpURL.find("/flv:") != -1: tmpURL = tmpURL.replace("/flv:", "/")
+                url.append(tmpURL)
+                name.append(i.split("<title>")[1].split("<")[0].capitalize() + ext)
         else:
-            salir(u"[!!!] ERROR: No se ha encontradoel vídeo")
+            salir(u"[!!!] ERROR: No se ha encontrado el vídeo")
         
         if type(name) is list:
             for i in name:

@@ -1,36 +1,33 @@
-"3.2-BETA"
-"3.2-BETA"
+"3.3-BETA"
+"3.3-BETA"
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
+
+- FIXED error al descargar vídeos antiguos de Antena 3
+- FIXED error al descargar vídeos de Antena 3 (22/09/11)
+- BUGs corregidos de codificación
+
+CAMBIOS EN LA VERSIÓN ANTERIOR:
 
 - Soporte para más vídeos de La Sexta (Fórmula 1, ...)
 - Soporte para los nuevos vídeos de Antena 3 Modo Salón (.f4v)
 - FIXED errores descarga de varias partes en Windows
-
-CAMBIOS EN LA VERSIÓN ANTERIOR:
-
-- Soporte para vídeos de La Sexta :D
-- Descarga por partes seguidas sin intervención de user
-- Descarga partes sueltas
-- Flag -s o --show --> solo mostrará los enlaces (como: http://pydowntv.com/)
 
 --> [Para descargar] http://code.google.com/p/pydowntv/downloads/list
 "
 "
 DISPONILBE PARA GNU/LINUX, MAC OS X Y WINDOWS
 
+- FIXED error al descargar vídeos antiguos de Antena 3
+- FIXED error al descargar vídeos de Antena 3 (22/09/11)
+- BUGs corregidos de codificación
+
+CAMBIOS EN LA VERSIÓN ANTERIOR:
+
 - Soporte para más vídeos de La Sexta (Fórmula 1, ...)
 - Soporte para los nuevos vídeos de Antena 3 Modo Salón (.f4v)
 - FIXED errores descarga de varias partes en Windows
 
-CAMBIOS EN LA VERSIÓN ANTERIOR:
-
-- Soporte para vídeos de La Sexta :D
-- Descarga por partes seguidas sin intervención de user
-- Descarga partes sueltas
-- Flag -s o --show --> solo mostrará los enlaces (como: http://pydowntv.com/)
-
 --> [Para descargar] http://code.google.com/p/pydowntv/downloads/list
 "
 
-# Cambios en Descargar.py para incluir descarga automática de varias partes sin que intervenga el user

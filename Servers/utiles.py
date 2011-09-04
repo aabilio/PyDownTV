@@ -53,8 +53,8 @@ class PdtVersion(object):
     '''
     
     # Recordar subir antes los archivos a Downloads aumentar la versión en VERSION
-    PDT_VERSION_NIX = "3.2-BETA"
-    PDT_VERSION_WIN = "3.2-BETA"
+    PDT_VERSION_NIX = "3.3-BETA"
+    PDT_VERSION_WIN = "3.3-BETA"
     URL_VERSION = "http://pydowntv.googlecode.com/svn/trunk/trunk/VERSION"
     
     def __init__(self):
@@ -145,6 +145,16 @@ def formatearNombre(nombre):
     nombre = nombre.replace("ì", "i")
     nombre = nombre.replace("ò", "o")
     nombre = nombre.replace("ù", "u")
+    nombre = nombre.replace("Á", "a")
+    nombre = nombre.replace("É", "e")
+    nombre = nombre.replace("Í", "i")
+    nombre = nombre.replace("Ó", "o")
+    nombre = nombre.replace("Ú", "u")
+    nombre = nombre.replace("À", "a")
+    nombre = nombre.replace("È", "e")
+    nombre = nombre.replace("Ì", "i")
+    nombre = nombre.replace("Ò", "o")
+    nombre = nombre.replace("Ù", "u")
     nombre = nombre.replace("&aacute;", "a")
     nombre = nombre.replace("&eacute;", "e")
     nombre = nombre.replace("&iacute;", "i")

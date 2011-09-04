@@ -33,7 +33,7 @@ class A3(object):
         Clase de de A3 que maneja los métodos para descargar los vídeos de
         la web de antena3.com
     '''
-    URL_DE_ANTENA3  = "http://antena3.com/"
+    URL_DE_ANTENA3  = "http://www.antena3.com/"
     URL_DE_DESCARGA = "http://desprogresiva.antena3.com/"
 
     def __init__(self, url=""):
@@ -81,8 +81,14 @@ class A3(object):
 
     def __modoSalon(self, streamHTML):
         printt(u"[INFO] Modo Salón")
-        streamXML = \
-        self.__descXML(self.URL_DE_ANTENA3 + streamHTML.split("player_capitulo.xml='")[1].split("'")[0])
+        if streamHTML.find("so.addVariable(\"xml\"") != -1:
+            streamXML = \
+            self.__descXML(self.URL_DE_ANTENA3 + streamHTML.split("so.addVariable(\"xml\",\"")[1].split("\"")[0])
+        elif streamHTML.find("player_capitulo.xml='") != -1:
+            streamXML = \
+            self.__descXML(self.URL_DE_ANTENA3 + streamHTML.split("player_capitulo.xml='")[1].split("'")[0])
+        else:
+            salir(u"[!!!] ERROR No se encuentra el XML")
         # Comprobar aquí si se puede descargar 000.mp4:
         if streamXML.find(".mp4") != -1:
             url2down1 = self.URL_DE_DESCARGA + \

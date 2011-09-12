@@ -1,6 +1,9 @@
 PyDownTV:
 =========
 
+Este proyecto está alojado bajo SVN en google code en: http://code.google.com/p/pydowntv/
+Puede que no esté actualizado en GitHub hasta que migre completamente a esta plataforma.
+
 Script programado en python al que se le pasa una url de un vdeo y muestra la url de localizacin del vdeo y lo descarga.
 
 Por ahora solo funciona con:

@@ -10,9 +10,6 @@ Por ahora solo funciona con:
 - Cualquier vdeo de la web de Antena 3 (no solo modo salón)
 - Audios de Radio Nacional
 - Telecinco
-
-Prximamente
-- Cuatro
 - La Sexta
 
 Lo he pensado para que cada servidor se pueda implementar de manera independiente de cualquier otro, y en el proyecto existe una plantilla con los pasos comunes a seguir.
